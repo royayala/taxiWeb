@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{vehiculoParqueoBean.page}'/>
+		<f:event type="preRenderView" listener='#{vehiculoParqueoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Vehiculo Parqueo entities"/>
+
+	<ui:define name="header">
+		Vehiculo Parqueo
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Vehiculo Parqueo entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="vehiculoParqueoBeanExampleIdVehiculoParqueo" value="Id Vehiculo Parqueo:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoParqueoBeanExampleIdVehiculoParqueo" value="#{vehiculoParqueoBean.example.idVehiculoParqueo}"/>
+							<h:message for="vehiculoParqueoBeanExampleIdVehiculoParqueo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoParqueoBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoParqueoBeanExampleCompania" value="#{vehiculoParqueoBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="vehiculoParqueoBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoParqueoBeanExampleParqueo" value="Parqueo:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{parqueoBean.converter}" id="vehiculoParqueoBeanExampleParqueo" value="#{vehiculoParqueoBean.example.parqueo}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{parqueoBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="vehiculoParqueoBeanExampleParqueo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoParqueoBeanExampleVehiculo" value="Vehiculo:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoParqueoBeanExampleVehiculo" value="#{vehiculoParqueoBean.example.vehiculo}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="vehiculoParqueoBeanExampleVehiculo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoParqueoBeanExampleFlagEstado" value="Flag Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoParqueoBeanExampleFlagEstado" maxLength="2" value="#{vehiculoParqueoBean.example.flagEstado}"/>
+							<h:message for="vehiculoParqueoBeanExampleFlagEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{vehiculoParqueoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{vehiculoParqueoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="vehiculoParqueoBeanPageItems" styleClass="data-table" value="#{vehiculoParqueoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Vehiculo Parqueo"/>
+					</f:facet>
+					<h:link outcome="/vehiculoParqueo/view">
+						<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
+						<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Ingreso"/>
+					</f:facet>
+					<h:link outcome="/vehiculoParqueo/view">
+						<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
+						<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
+							<f:convertDateTime type="both"/>
+						</h:outputText>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{vehiculoParqueoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

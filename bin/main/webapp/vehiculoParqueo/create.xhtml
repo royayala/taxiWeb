@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vehiculoParqueoBean.id}'/>
+		<f:event type="preRenderView" listener='#{vehiculoParqueoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Vehiculo Parqueo"/>
+
+	<ui:define name="header">
+		Vehiculo Parqueo
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty vehiculoParqueoBean.id}'>
+				Edit existing Vehiculo Parqueo
+			</c:when>
+			<c:otherwise>
+				Create a new Vehiculo Parqueo
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" value="Id Vehiculo Parqueo:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" required="true" value="#{vehiculoParqueoBean.vehiculoParqueo.idVehiculoParqueo}"/>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoParqueoBeanVehiculoParqueoCompania" value="#{vehiculoParqueoBean.vehiculoParqueo.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoParqueo" value="Parqueo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{parqueoBean.converter}" id="vehiculoParqueoBeanVehiculoParqueoParqueo" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{parqueoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoParqueo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoVehiculo" value="Vehiculo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoParqueoBeanVehiculoParqueoVehiculo" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoVehiculo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaIngreso" value="Fecha Ingreso:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoFechaIngreso" maxLength="29" required="true" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaIngreso}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoFechaIngreso" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoFlagEstado" maxLength="2" value="#{vehiculoParqueoBean.vehiculoParqueo.flagEstado}"/>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoFechaReg" maxLength="29" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioReg" maxLength="30" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioReg}"/>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoFechaMod" maxLength="29" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioMod" maxLength="30" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioMod}"/>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoFechaBorrado" maxLength="29" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioBorrado" maxLength="30" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioBorrado}"/>
+					<h:message for="vehiculoParqueoBeanVehiculoParqueoUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{vehiculoParqueoBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty vehiculoParqueoBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{vehiculoParqueoBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{vehiculoParqueoBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vehiculoPersonaBean.id}'/>
+		<f:event type="preRenderView" listener='#{vehiculoPersonaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Vehiculo Persona"/>
+
+	<ui:define name="header">
+		Vehiculo Persona
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty vehiculoPersonaBean.id}'>
+				Edit existing Vehiculo Persona
+			</c:when>
+			<c:otherwise>
+				Create a new Vehiculo Persona
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" value="Id Vehiculo Persona:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" required="true" value="#{vehiculoPersonaBean.vehiculoPersona.idVehiculoPersona}"/>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoPersonaBeanVehiculoPersonaCompania" value="#{vehiculoPersonaBean.vehiculoPersona.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value="Persona By Id Chofer:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value="Persona By Id Persona:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="Vehiculo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaVehiculo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaInicio" value="Fecha Inicio:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFechaInicio" maxLength="29" required="true" value="#{vehiculoPersonaBean.vehiculoPersona.fechaInicio}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFechaInicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaFin" value="Fecha Fin:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFechaFin" maxLength="29" value="#{vehiculoPersonaBean.vehiculoPersona.fechaFin}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFechaFin" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFlagEstado" maxLength="2" value="#{vehiculoPersonaBean.vehiculoPersona.flagEstado}"/>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFechaReg" maxLength="29" value="#{vehiculoPersonaBean.vehiculoPersona.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioReg" maxLength="30" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioReg}"/>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFechaMod" maxLength="29" value="#{vehiculoPersonaBean.vehiculoPersona.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioMod" maxLength="30" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioMod}"/>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaFechaBorrado" maxLength="29" value="#{vehiculoPersonaBean.vehiculoPersona.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioBorrado" maxLength="30" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioBorrado}"/>
+					<h:message for="vehiculoPersonaBeanVehiculoPersonaUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{vehiculoPersonaBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty vehiculoPersonaBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{vehiculoPersonaBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{vehiculoPersonaBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

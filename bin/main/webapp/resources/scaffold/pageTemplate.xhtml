@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>#{empty pageTitle ? 'Page Title' : pageTitle}</title>
+	<link rel="icon" href='#{resource["favicon.ico"]}' />
+	<h:outputStylesheet name="bootstrap.css" />
+	<h:outputStylesheet name="forge-style.css" />
+</h:head>
+
+<h:body>
+	
+
+	<div class="container forgecontainer">
+		<div id="navigation">
+			<h:link id="homeLink" outcome="/index.xhtml">
+				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 150px; width : 150px;"/>
+			</h:link>
+			<h:form>
+			<p:growl autoUpdate="true"/>
+			<p:panelMenu style="width:300px">
+        <p:submenu label="Parametros">
+        	<p:menuitem value="Tipo Vehiculo" outcome="/tipoVehiculo/search"/>
+            <p:menuitem value="Vehiculo" outcome="/vehiculo/search"/>
+            <p:menuitem value="Transaccion" outcome="/transaccion/search"/>
+            <p:menuitem value="Tipo Transaccion" outcome="/tipoTransaccion/search"/>
+            <p:menuitem value="Persona" outcome="/persona/search"/>
+            <p:menuitem value="Ciudad" outcome="/ciudad/search"/>
+            <p:menuitem value="Departamento" outcome="/departamento/search"/>
+            <p:menuitem value="Tarifa" outcome="/tarifa/search"/>
+            <p:menuitem value="Servicio" outcome="/servicio/search"/>
+            <p:menuitem value="Parqueo" outcome="/parqueo/search"/>
+        </p:submenu>
+        <p:submenu label="Procesos">
+            <p:menuitem value="Persona" outcome="/persona/search"/>
+            <p:menuitem value="Vehiculo" outcome="/vehiculo/search"/>
+            <p:submenu label="Asignacion">
+            	<p:menuitem value="Persona Vehiculo" outcome="/vehiculoPersona/search"/>
+            	<p:menuitem value="Chofer Vehiculo" outcome="/vehiculoPersona/search"/>
+            </p:submenu>
+            <p:menuitem value="Afiliacion" outcome="/vehiculoAfiliacion/search"/>
+            <p:menuitem value="Persona Servicio" outcome="/personaServicio/search"/>
+            <p:menuitem value="Carrera" outcome="/carrera/search"/>
+           	<p:menuitem value="Transaccion" outcome="/transaccion/search"/>            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Consultas">
+            <p:menuitem value="Vehiculos Parqueo" outcome="/vehiculoParqueo/search"/>
+            <p:menuitem value="Persona Vehiculo" outcome="/vehiculoPersona/search"/>
+             <p:submenu label="Transaccion">
+            	<p:menuitem value="Ingreso" outcome="/vehiculoPersona/search"/>
+            	<p:menuitem value="Egreso" outcome="/parqueo/search"/>
+            </p:submenu>
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Reportes">
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Utilitarios" >
+            
+        </p:submenu>
+    </p:panelMenu>
+			</h:form>
+
+		</div>
+
+		<div id="content">
+			<h1>
+				<ui:insert name="header" />
+			</h1>
+			<h2>
+				<ui:insert name="subheader" />
+			</h2>
+
+			<ui:insert name="main" />
+		</div>
+	</div>
+
+	<footer>
+		<div id="footer-wrapper">
+	    	
+	    </div>
+	</footer>
+
+</h:body>
+</html>

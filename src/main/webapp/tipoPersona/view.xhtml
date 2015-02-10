@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tipoPersonaBean.id}'/>
+		<f:event type="preRenderView" listener='#{tipoPersonaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Tipo Persona"/>
+
+	<ui:define name="header">
+		Tipo Persona
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Tipo Persona
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaIdTipoPersona" value="Id Tipo Persona:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaIdTipoPersona" value="#{tipoPersonaBean.tipoPersona.idTipoPersona}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaNombre" value="Nombre:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaNombre" value="#{tipoPersonaBean.tipoPersona.nombre}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaDescripcion" value="Descripcion:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaDescripcion" value="#{tipoPersonaBean.tipoPersona.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaFlagEstado" value="#{tipoPersonaBean.tipoPersona.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaFechaReg" value="#{tipoPersonaBean.tipoPersona.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaUsuarioReg" value="#{tipoPersonaBean.tipoPersona.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaFechaMod" value="#{tipoPersonaBean.tipoPersona.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaUsuarioMod" value="#{tipoPersonaBean.tipoPersona.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaFechaBorrado" value="#{tipoPersonaBean.tipoPersona.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="tipoPersonaBeanTipoPersonaUsuarioBorrado" value="#{tipoPersonaBean.tipoPersona.usuarioBorrado}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoPersonaBeanTipoPersonaPersonas" value="Personas:"/>
+			<h:dataTable id="tipoPersonaBeanTipoPersonaPersonas" styleClass="data-table" value="#{forgeview:asList(tipoPersonaBean.tipoPersona.personas)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Persona"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemIdPersona" value="#{_item.idPersona}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemNombre" value="#{_item.nombre}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Telefono 1"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemTelefono1" value="#{_item.telefono1}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Telefono 2"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemTelefono2" value="#{_item.telefono2}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Documento Identidad"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemDocumentoIdentidad" value="#{_item.documentoIdentidad}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

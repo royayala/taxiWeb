@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{usuarioBean.id}'/>
+		<f:event type="preRenderView" listener='#{usuarioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Usuario"/>
+
+	<ui:define name="header">
+		Usuario
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty usuarioBean.id}'>
+				Edit existing Usuario
+			</c:when>
+			<c:otherwise>
+				Create a new Usuario
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="usuarioBeanUsuarioIdUsuario" value="Id Usuario:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioIdUsuario" required="true" value="#{usuarioBean.usuario.idUsuario}"/>
+					<h:message for="usuarioBeanUsuarioIdUsuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="usuarioBeanUsuarioCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="usuarioBeanUsuarioCompania" value="#{usuarioBean.usuario.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="usuarioBeanUsuarioCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioNombreCompleto" value="Nombre Completo:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioNombreCompleto" maxLength="200" required="true" value="#{usuarioBean.usuario.nombreCompleto}"/>
+					<h:message for="usuarioBeanUsuarioNombreCompleto" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="usuarioBeanUsuarioUsuarioLogin" value="Usuario Login:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioUsuarioLogin" maxLength="30" required="true" value="#{usuarioBean.usuario.usuarioLogin}"/>
+					<h:message for="usuarioBeanUsuarioUsuarioLogin" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="usuarioBeanUsuarioUsuarioPassword" value="Usuario Password:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioUsuarioPassword" maxLength="100" required="true" value="#{usuarioBean.usuario.usuarioPassword}"/>
+					<h:message for="usuarioBeanUsuarioUsuarioPassword" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="usuarioBeanUsuarioFlagLdap" value="Flag Ldap:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioFlagLdap" maxLength="2" value="#{usuarioBean.usuario.flagLdap}"/>
+					<h:message for="usuarioBeanUsuarioFlagLdap" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioIdioma" value="Idioma:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioIdioma" maxLength="2" value="#{usuarioBean.usuario.idioma}"/>
+					<h:message for="usuarioBeanUsuarioIdioma" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioEmailUsuario" value="Email Usuario:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioEmailUsuario" maxLength="50" value="#{usuarioBean.usuario.emailUsuario}"/>
+					<h:message for="usuarioBeanUsuarioEmailUsuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioTelefono" value="Telefono:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioTelefono" maxLength="20" value="#{usuarioBean.usuario.telefono}"/>
+					<h:message for="usuarioBeanUsuarioTelefono" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioTipoUsuario" value="Tipo Usuario:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioTipoUsuario" maxLength="30" value="#{usuarioBean.usuario.tipoUsuario}"/>
+					<h:message for="usuarioBeanUsuarioTipoUsuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioFlagEstado" maxLength="2" value="#{usuarioBean.usuario.flagEstado}"/>
+					<h:message for="usuarioBeanUsuarioFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioFechaReg" maxLength="29" value="#{usuarioBean.usuario.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="usuarioBeanUsuarioFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioUsuarioReg" maxLength="30" value="#{usuarioBean.usuario.usuarioReg}"/>
+					<h:message for="usuarioBeanUsuarioUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioFechaMod" maxLength="29" value="#{usuarioBean.usuario.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="usuarioBeanUsuarioFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioUsuarioMod" maxLength="30" value="#{usuarioBean.usuario.usuarioMod}"/>
+					<h:message for="usuarioBeanUsuarioUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioFechaBorrado" maxLength="29" value="#{usuarioBean.usuario.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="usuarioBeanUsuarioFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioUsuarioBorrado" maxLength="30" value="#{usuarioBean.usuario.usuarioBorrado}"/>
+					<h:message for="usuarioBeanUsuarioUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="usuarioBeanUsuarioIpUsuario" value="Ip Usuario:"/>
+				<h:panelGroup>
+					<h:inputText id="usuarioBeanUsuarioIpUsuario" maxLength="20" value="#{usuarioBean.usuario.ipUsuario}"/>
+					<h:message for="usuarioBeanUsuarioIpUsuario" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{usuarioBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty usuarioBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{usuarioBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{usuarioBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

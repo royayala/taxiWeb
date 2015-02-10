@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{tarifaBean.page}'/>
+		<f:event type="preRenderView" listener='#{tarifaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Tarifa entities"/>
+
+	<ui:define name="header">
+		Tarifa
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Tarifa entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="tarifaBeanExampleIdTarifa" value="Id Tarifa:"/>
+						<h:panelGroup>
+							<h:inputText id="tarifaBeanExampleIdTarifa" value="#{tarifaBean.example.idTarifa}"/>
+							<h:message for="tarifaBeanExampleIdTarifa" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tarifaBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="tarifaBeanExampleCompania" value="#{tarifaBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="tarifaBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tarifaBeanExampleDescripcion" value="Descripcion:"/>
+						<h:panelGroup>
+							<h:inputText id="tarifaBeanExampleDescripcion" maxLength="200" value="#{tarifaBean.example.descripcion}"/>
+							<h:message for="tarifaBeanExampleDescripcion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tarifaBeanExampleFlagEstado" value="Flag Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="tarifaBeanExampleFlagEstado" maxLength="2" value="#{tarifaBean.example.flagEstado}"/>
+							<h:message for="tarifaBeanExampleFlagEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="tarifaBeanExampleUsuarioReg" value="Usuario Reg:"/>
+						<h:panelGroup>
+							<h:inputText id="tarifaBeanExampleUsuarioReg" maxLength="30" value="#{tarifaBean.example.usuarioReg}"/>
+							<h:message for="tarifaBeanExampleUsuarioReg" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{tarifaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{tarifaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="tarifaBeanPageItems" styleClass="data-table" value="#{tarifaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Tarifa"/>
+					</f:facet>
+					<h:link outcome="/tarifa/view">
+						<f:param name="id" value="#{_item.idTarifa}"/>
+						<h:outputText id="itemIdTarifa" value="#{_item.idTarifa}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Monto"/>
+					</f:facet>
+					<h:link outcome="/tarifa/view">
+						<f:param name="id" value="#{_item.idTarifa}"/>
+						<h:outputText id="itemMonto" value="#{_item.monto}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/tarifa/view">
+						<f:param name="id" value="#{_item.idTarifa}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{tarifaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

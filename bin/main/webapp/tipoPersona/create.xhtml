@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tipoPersonaBean.id}'/>
+		<f:event type="preRenderView" listener='#{tipoPersonaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Tipo Persona"/>
+
+	<ui:define name="header">
+		Tipo Persona
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty tipoPersonaBean.id}'>
+				Edit existing Tipo Persona
+			</c:when>
+			<c:otherwise>
+				Create a new Tipo Persona
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaIdTipoPersona" value="Id Tipo Persona:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaIdTipoPersona" required="true" value="#{tipoPersonaBean.tipoPersona.idTipoPersona}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaIdTipoPersona" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaNombre" value="Nombre:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaNombre" maxLength="50" required="true" value="#{tipoPersonaBean.tipoPersona.nombre}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaNombre" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaDescripcion" maxLength="100" value="#{tipoPersonaBean.tipoPersona.descripcion}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaFlagEstado" maxLength="2" value="#{tipoPersonaBean.tipoPersona.flagEstado}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaFechaReg" maxLength="29" value="#{tipoPersonaBean.tipoPersona.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="tipoPersonaBeanTipoPersonaFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaUsuarioReg" maxLength="30" value="#{tipoPersonaBean.tipoPersona.usuarioReg}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaFechaMod" maxLength="29" value="#{tipoPersonaBean.tipoPersona.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="tipoPersonaBeanTipoPersonaFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaUsuarioMod" maxLength="30" value="#{tipoPersonaBean.tipoPersona.usuarioMod}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaFechaBorrado" maxLength="29" value="#{tipoPersonaBean.tipoPersona.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="tipoPersonaBeanTipoPersonaFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="tipoPersonaBeanTipoPersonaUsuarioBorrado" maxLength="30" value="#{tipoPersonaBean.tipoPersona.usuarioBorrado}"/>
+					<h:message for="tipoPersonaBeanTipoPersonaUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="tipoPersonaBeanTipoPersonaPersonas" value="Personas:"/>
+				<h:panelGroup>
+					<ui:param name="_collection" value="#{tipoPersonaBean.tipoPersona.personas}"/>
+					<h:dataTable id="tipoPersonaBeanTipoPersonaPersonas" styleClass="data-table" value="#{forgeview:asList(_collection)}" var="_item">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id Persona"/>
+							</f:facet>
+							<h:link outcome="/persona/view">
+								<f:param name="id" value="#{_item.idPersona}"/>
+								<h:outputText id="itemIdPersona" value="#{_item.idPersona}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="personaBeanAddIdPersona" value="#{personaBean.add.idPersona}"/>
+								<h:message for="personaBeanAddIdPersona" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nombre"/>
+							</f:facet>
+							<h:link outcome="/persona/view">
+								<f:param name="id" value="#{_item.idPersona}"/>
+								<h:outputText id="itemNombre" value="#{_item.nombre}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="personaBeanAddNombre" maxLength="20" value="#{personaBean.add.nombre}"/>
+								<h:message for="personaBeanAddNombre" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Telefono 1"/>
+							</f:facet>
+							<h:link outcome="/persona/view">
+								<f:param name="id" value="#{_item.idPersona}"/>
+								<h:outputText id="itemTelefono1" value="#{_item.telefono1}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="personaBeanAddTelefono1" value="#{personaBean.add.telefono1}"/>
+								<h:message for="personaBeanAddTelefono1" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Telefono 2"/>
+							</f:facet>
+							<h:link outcome="/persona/view">
+								<f:param name="id" value="#{_item.idPersona}"/>
+								<h:outputText id="itemTelefono2" value="#{_item.telefono2}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="personaBeanAddTelefono2" value="#{personaBean.add.telefono2}"/>
+								<h:message for="personaBeanAddTelefono2" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Documento Identidad"/>
+							</f:facet>
+							<h:link outcome="/persona/view">
+								<f:param name="id" value="#{_item.idPersona}"/>
+								<h:outputText id="itemDocumentoIdentidad" value="#{_item.documentoIdentidad}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="personaBeanAddDocumentoIdentidad" value="#{personaBean.add.documentoIdentidad}"/>
+								<h:message for="personaBeanAddDocumentoIdentidad" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column footerClass="remove-column" headerClass="remove-column">
+							<h:commandLink action="#{_collection.remove(_item)}" styleClass="remove-button"/>
+							<f:facet name="footer">
+								<h:commandLink action="#{_collection.add(personaBean.added)}" id="tipoPersonaBeanTipoPersonaPersonasAdd" styleClass="add-button">
+									<f:setPropertyActionListener target="#{personaBean.add.tipoPersona}" value="#{tipoPersonaBean.tipoPersona}"/>
+								</h:commandLink>
+							</f:facet>
+						</h:column>
+					</h:dataTable>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{tipoPersonaBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty tipoPersonaBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{tipoPersonaBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{tipoPersonaBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

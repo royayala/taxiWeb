@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{ciudadBean.page}'/>
+		<f:event type="preRenderView" listener='#{ciudadBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Ciudad entities"/>
+
+	<ui:define name="header">
+		Ciudad
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Ciudad entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="ciudadBeanExampleIdCiudad" value="Id Ciudad:"/>
+						<h:panelGroup>
+							<h:inputText id="ciudadBeanExampleIdCiudad" value="#{ciudadBean.example.idCiudad}"/>
+							<h:message for="ciudadBeanExampleIdCiudad" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ciudadBeanExampleDepartamento" value="Departamento:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{departamentoBean.converter}" id="ciudadBeanExampleDepartamento" value="#{ciudadBean.example.departamento}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{departamentoBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="ciudadBeanExampleDepartamento" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ciudadBeanExampleNombre" value="Nombre:"/>
+						<h:panelGroup>
+							<h:inputText id="ciudadBeanExampleNombre" maxLength="20" value="#{ciudadBean.example.nombre}"/>
+							<h:message for="ciudadBeanExampleNombre" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ciudadBeanExampleFlagEstado" value="Flag Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="ciudadBeanExampleFlagEstado" maxLength="2" value="#{ciudadBean.example.flagEstado}"/>
+							<h:message for="ciudadBeanExampleFlagEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="ciudadBeanExampleUsuarioReg" value="Usuario Reg:"/>
+						<h:panelGroup>
+							<h:inputText id="ciudadBeanExampleUsuarioReg" maxLength="30" value="#{ciudadBean.example.usuarioReg}"/>
+							<h:message for="ciudadBeanExampleUsuarioReg" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{ciudadBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{ciudadBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="ciudadBeanPageItems" styleClass="data-table" value="#{ciudadBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Ciudad"/>
+					</f:facet>
+					<h:link outcome="/ciudad/view">
+						<f:param name="id" value="#{_item.idCiudad}"/>
+						<h:outputText id="itemIdCiudad" value="#{_item.idCiudad}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre"/>
+					</f:facet>
+					<h:link outcome="/ciudad/view">
+						<f:param name="id" value="#{_item.idCiudad}"/>
+						<h:outputText id="itemNombre" value="#{_item.nombre}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{ciudadBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

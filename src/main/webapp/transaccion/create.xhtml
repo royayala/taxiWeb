@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{transaccionBean.id}'/>
+		<f:event type="preRenderView" listener='#{transaccionBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Transaccion"/>
+
+	<ui:define name="header">
+		Transaccion
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty transaccionBean.id}'>
+				Edit existing Transaccion
+			</c:when>
+			<c:otherwise>
+				Create a new Transaccion
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="transaccionBeanTransaccionIdTransaccion" value="Id Transaccion:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionIdTransaccion" required="true" value="#{transaccionBean.transaccion.idTransaccion}"/>
+					<h:message for="transaccionBeanTransaccionIdTransaccion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="transaccionBeanTransaccionCarrera" value="Carrera:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{carreraBean.converter}" id="transaccionBeanTransaccionCarrera" value="#{transaccionBean.transaccion.carrera}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{carreraBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionCarrera" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="transaccionBeanTransaccionCompania" value="#{transaccionBean.transaccion.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionPersona" value="Persona:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaBean.converter}" id="transaccionBeanTransaccionPersona" value="#{transaccionBean.transaccion.persona}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionPersona" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionPersonaServicio" value="Persona Servicio:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaServicioBean.converter}" id="transaccionBeanTransaccionPersonaServicio" value="#{transaccionBean.transaccion.personaServicio}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaServicioBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionPersonaServicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionTipoTransaccion" value="Tipo Transaccion:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{tipoTransaccionBean.converter}" id="transaccionBeanTransaccionTipoTransaccion" value="#{transaccionBean.transaccion.tipoTransaccion}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{tipoTransaccionBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionTipoTransaccion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionVehiculo" value="Vehiculo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoBean.converter}" id="transaccionBeanTransaccionVehiculo" value="#{transaccionBean.transaccion.vehiculo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionVehiculo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionVehiculoAfiliacion" value="Vehiculo Afiliacion:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoAfiliacionBean.converter}" id="transaccionBeanTransaccionVehiculoAfiliacion" value="#{transaccionBean.transaccion.vehiculoAfiliacion}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoAfiliacionBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="transaccionBeanTransaccionVehiculoAfiliacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionFechaTransaccion" value="Fecha Transaccion:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionFechaTransaccion" maxLength="29" required="true" value="#{transaccionBean.transaccion.fechaTransaccion}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="transaccionBeanTransaccionFechaTransaccion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="transaccionBeanTransaccionMontoTotal" value="Monto Total:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionMontoTotal" required="true" value="#{transaccionBean.transaccion.montoTotal}"/>
+					<h:message for="transaccionBeanTransaccionMontoTotal" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="transaccionBeanTransaccionDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionDescripcion" maxLength="200" required="true" value="#{transaccionBean.transaccion.descripcion}"/>
+					<h:message for="transaccionBeanTransaccionDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="transaccionBeanTransaccionFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionFechaReg" maxLength="29" value="#{transaccionBean.transaccion.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="transaccionBeanTransaccionFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionUsuarioReg" maxLength="30" value="#{transaccionBean.transaccion.usuarioReg}"/>
+					<h:message for="transaccionBeanTransaccionUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionFechaMod" maxLength="29" value="#{transaccionBean.transaccion.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="transaccionBeanTransaccionFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionUsuarioMod" maxLength="30" value="#{transaccionBean.transaccion.usuarioMod}"/>
+					<h:message for="transaccionBeanTransaccionUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionFechaBorrado" maxLength="29" value="#{transaccionBean.transaccion.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="transaccionBeanTransaccionFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="transaccionBeanTransaccionUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="transaccionBeanTransaccionUsuarioBorrado" maxLength="30" value="#{transaccionBean.transaccion.usuarioBorrado}"/>
+					<h:message for="transaccionBeanTransaccionUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{transaccionBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty transaccionBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{transaccionBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{transaccionBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

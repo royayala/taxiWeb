@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+ <datasource jndi-name="java:jboss/datasources/connTaxi" enabled="true" 
+     use-java-context="true" pool-name="connTaxi">
+  <connection-url>jdbc:postgresql://192.168.101.11:5444/taxiDB</connection-url>
+  <driver>postgresql-9.3-1102.jdbc4.jar</driver>
+  <pool></pool>
+  <security>
+   <user-name>taxi</user-name>
+   <password>taxi</password>
+  </security>
+ </datasource>
+</datasources>

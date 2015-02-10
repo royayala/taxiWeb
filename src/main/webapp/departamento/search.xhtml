@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{departamentoBean.page}'/>
+		<f:event type="preRenderView" listener='#{departamentoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Departamento entities"/>
+
+	<ui:define name="header">
+		Departamento
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Departamento entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="departamentoBeanExampleIdDepartamento" value="Id Departamento:"/>
+						<h:panelGroup>
+							<h:inputText id="departamentoBeanExampleIdDepartamento" value="#{departamentoBean.example.idDepartamento}"/>
+							<h:message for="departamentoBeanExampleIdDepartamento" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="departamentoBeanExampleNombre" value="Nombre:"/>
+						<h:panelGroup>
+							<h:inputText id="departamentoBeanExampleNombre" maxLength="20" value="#{departamentoBean.example.nombre}"/>
+							<h:message for="departamentoBeanExampleNombre" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="departamentoBeanExampleFlagEstado" value="Flag Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="departamentoBeanExampleFlagEstado" maxLength="2" value="#{departamentoBean.example.flagEstado}"/>
+							<h:message for="departamentoBeanExampleFlagEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="departamentoBeanExampleUsuarioReg" value="Usuario Reg:"/>
+						<h:panelGroup>
+							<h:inputText id="departamentoBeanExampleUsuarioReg" maxLength="30" value="#{departamentoBean.example.usuarioReg}"/>
+							<h:message for="departamentoBeanExampleUsuarioReg" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="departamentoBeanExampleUsuarioMod" value="Usuario Mod:"/>
+						<h:panelGroup>
+							<h:inputText id="departamentoBeanExampleUsuarioMod" maxLength="30" value="#{departamentoBean.example.usuarioMod}"/>
+							<h:message for="departamentoBeanExampleUsuarioMod" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{departamentoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{departamentoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="departamentoBeanPageItems" styleClass="data-table" value="#{departamentoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Departamento"/>
+					</f:facet>
+					<h:link outcome="/departamento/view">
+						<f:param name="id" value="#{_item.idDepartamento}"/>
+						<h:outputText id="itemIdDepartamento" value="#{_item.idDepartamento}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre"/>
+					</f:facet>
+					<h:link outcome="/departamento/view">
+						<f:param name="id" value="#{_item.idDepartamento}"/>
+						<h:outputText id="itemNombre" value="#{_item.nombre}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{departamentoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

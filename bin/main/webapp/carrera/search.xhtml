@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{carreraBean.page}'/>
+		<f:event type="preRenderView" listener='#{carreraBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Carrera entities"/>
+
+	<ui:define name="header">
+		Carrera
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Carrera entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="carreraBeanExampleIdCarrera" value="Id Carrera:"/>
+						<h:panelGroup>
+							<h:inputText id="carreraBeanExampleIdCarrera" value="#{carreraBean.example.idCarrera}"/>
+							<h:message for="carreraBeanExampleIdCarrera" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="carreraBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="carreraBeanExampleCompania" value="#{carreraBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="carreraBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="carreraBeanExampleTarifa" value="Tarifa:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{tarifaBean.converter}" id="carreraBeanExampleTarifa" value="#{carreraBean.example.tarifa}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{tarifaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="carreraBeanExampleTarifa" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="carreraBeanExampleVehiculo" value="Vehiculo:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="carreraBeanExampleVehiculo" value="#{carreraBean.example.vehiculo}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="carreraBeanExampleVehiculo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="carreraBeanExampleOrigen" value="Origen:"/>
+						<h:panelGroup>
+							<h:inputText id="carreraBeanExampleOrigen" maxLength="200" value="#{carreraBean.example.origen}"/>
+							<h:message for="carreraBeanExampleOrigen" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{carreraBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{carreraBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="carreraBeanPageItems" styleClass="data-table" value="#{carreraBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Carrera"/>
+					</f:facet>
+					<h:link outcome="/carrera/view">
+						<f:param name="id" value="#{_item.idCarrera}"/>
+						<h:outputText id="itemIdCarrera" value="#{_item.idCarrera}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Origen"/>
+					</f:facet>
+					<h:link outcome="/carrera/view">
+						<f:param name="id" value="#{_item.idCarrera}"/>
+						<h:outputText id="itemOrigen" value="#{_item.origen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha"/>
+					</f:facet>
+					<h:link outcome="/carrera/view">
+						<f:param name="id" value="#{_item.idCarrera}"/>
+						<h:outputText id="itemFecha" value="#{_item.fecha}">
+							<f:convertDateTime type="both"/>
+						</h:outputText>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{carreraBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{parqueoBean.page}'/>
+		<f:event type="preRenderView" listener='#{parqueoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Parqueo entities"/>
+
+	<ui:define name="header">
+		Parqueo
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Parqueo entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="parqueoBeanExampleIdParqueo" value="Id Parqueo:"/>
+						<h:panelGroup>
+							<h:inputText id="parqueoBeanExampleIdParqueo" value="#{parqueoBean.example.idParqueo}"/>
+							<h:message for="parqueoBeanExampleIdParqueo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="parqueoBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="parqueoBeanExampleCompania" value="#{parqueoBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="parqueoBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="parqueoBeanExampleDireccion" value="Direccion:"/>
+						<h:panelGroup>
+							<h:inputText id="parqueoBeanExampleDireccion" maxLength="200" value="#{parqueoBean.example.direccion}"/>
+							<h:message for="parqueoBeanExampleDireccion" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="parqueoBeanExampleIdCiudad" value="Id Ciudad:"/>
+						<h:panelGroup>
+							<h:inputText id="parqueoBeanExampleIdCiudad" value="#{parqueoBean.example.idCiudad}"/>
+							<h:message for="parqueoBeanExampleIdCiudad" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="parqueoBeanExampleLatitud" value="Latitud:"/>
+						<h:panelGroup>
+							<h:inputText id="parqueoBeanExampleLatitud" maxLength="20" value="#{parqueoBean.example.latitud}"/>
+							<h:message for="parqueoBeanExampleLatitud" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{parqueoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{parqueoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="parqueoBeanPageItems" styleClass="data-table" value="#{parqueoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Parqueo"/>
+					</f:facet>
+					<h:link outcome="/parqueo/view">
+						<f:param name="id" value="#{_item.idParqueo}"/>
+						<h:outputText id="itemIdParqueo" value="#{_item.idParqueo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Direccion"/>
+					</f:facet>
+					<h:link outcome="/parqueo/view">
+						<f:param name="id" value="#{_item.idParqueo}"/>
+						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Ciudad"/>
+					</f:facet>
+					<h:link outcome="/parqueo/view">
+						<f:param name="id" value="#{_item.idParqueo}"/>
+						<h:outputText id="itemIdCiudad" value="#{_item.idCiudad}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Latitud"/>
+					</f:facet>
+					<h:link outcome="/parqueo/view">
+						<f:param name="id" value="#{_item.idParqueo}"/>
+						<h:outputText id="itemLatitud" value="#{_item.latitud}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Longitud"/>
+					</f:facet>
+					<h:link outcome="/parqueo/view">
+						<f:param name="id" value="#{_item.idParqueo}"/>
+						<h:outputText id="itemLongitud" value="#{_item.longitud}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{parqueoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

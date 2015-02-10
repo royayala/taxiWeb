@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{detallaPersonaServicioBean.id}'/>
+		<f:event type="preRenderView" listener='#{detallaPersonaServicioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Detalla Persona Servicio"/>
+
+	<ui:define name="header">
+		Detalla Persona Servicio
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty detallaPersonaServicioBean.id}'>
+				Edit existing Detalla Persona Servicio
+			</c:when>
+			<c:otherwise>
+				Create a new Detalla Persona Servicio
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioIdDetPersonaServicio" value="Id Det Persona Servicio:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioIdDetPersonaServicio" required="true" value="#{detallaPersonaServicioBean.detallaPersonaServicio.idDetPersonaServicio}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioIdDetPersonaServicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="detallaPersonaServicioBeanDetallaPersonaServicioCompania" value="#{detallaPersonaServicioBean.detallaPersonaServicio.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioPersonaServicio" value="Persona Servicio:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaServicioBean.converter}" id="detallaPersonaServicioBeanDetallaPersonaServicioPersonaServicio" value="#{detallaPersonaServicioBean.detallaPersonaServicio.personaServicio}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaServicioBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioPersonaServicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioVehiculo" value="Vehiculo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoBean.converter}" id="detallaPersonaServicioBeanDetallaPersonaServicioVehiculo" value="#{detallaPersonaServicioBean.detallaPersonaServicio.vehiculo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioVehiculo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFechaDetPersonaServicio" value="Fecha Det Persona Servicio:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioFechaDetPersonaServicio" maxLength="29" required="true" value="#{detallaPersonaServicioBean.detallaPersonaServicio.fechaDetPersonaServicio}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFechaDetPersonaServicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioHoraInicio" value="Hora Inicio:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioHoraInicio" maxLength="29" required="true" value="#{detallaPersonaServicioBean.detallaPersonaServicio.horaInicio}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioHoraInicio" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioHoraFin" value="Hora Fin:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioHoraFin" maxLength="29" value="#{detallaPersonaServicioBean.detallaPersonaServicio.horaFin}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioHoraFin" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioObservaciones" value="Observaciones:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioObservaciones" value="#{detallaPersonaServicioBean.detallaPersonaServicio.observaciones}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioObservaciones" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioDireccionInicion" value="Direccion Inicion:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioDireccionInicion" maxLength="200" value="#{detallaPersonaServicioBean.detallaPersonaServicio.direccionInicion}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioDireccionInicion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioDireccionFin" value="Direccion Fin:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioDireccionFin" maxLength="200" value="#{detallaPersonaServicioBean.detallaPersonaServicio.direccionFin}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioDireccionFin" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioMonto" value="Monto:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioMonto" value="#{detallaPersonaServicioBean.detallaPersonaServicio.monto}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioMonto" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioReprogramadoReferencia" value="Reprogramado Referencia:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioReprogramadoReferencia" value="#{detallaPersonaServicioBean.detallaPersonaServicio.reprogramadoReferencia}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioReprogramadoReferencia" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioFlagEstado" maxLength="2" value="#{detallaPersonaServicioBean.detallaPersonaServicio.flagEstado}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioFechaReg" maxLength="29" value="#{detallaPersonaServicioBean.detallaPersonaServicio.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioReg" maxLength="30" value="#{detallaPersonaServicioBean.detallaPersonaServicio.usuarioReg}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioFechaMod" maxLength="29" value="#{detallaPersonaServicioBean.detallaPersonaServicio.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioMod" maxLength="30" value="#{detallaPersonaServicioBean.detallaPersonaServicio.usuarioMod}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioFechaBorrado" maxLength="29" value="#{detallaPersonaServicioBean.detallaPersonaServicio.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioBorrado" maxLength="30" value="#{detallaPersonaServicioBean.detallaPersonaServicio.usuarioBorrado}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFlagCobrar" value="Flag Cobrar:"/>
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="detallaPersonaServicioBeanDetallaPersonaServicioFlagCobrar" value="#{detallaPersonaServicioBean.detallaPersonaServicio.flagCobrar}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFlagCobrar" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="detallaPersonaServicioBeanDetallaPersonaServicioFlagReprogramado" value="Flag Reprogramado:"/>
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="detallaPersonaServicioBeanDetallaPersonaServicioFlagReprogramado" value="#{detallaPersonaServicioBean.detallaPersonaServicio.flagReprogramado}"/>
+					<h:message for="detallaPersonaServicioBeanDetallaPersonaServicioFlagReprogramado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{detallaPersonaServicioBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty detallaPersonaServicioBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{detallaPersonaServicioBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{detallaPersonaServicioBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

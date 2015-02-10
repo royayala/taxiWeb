@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vehiculoParqueoBean.id}'/>
+		<f:event type="preRenderView" listener='#{vehiculoParqueoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Vehiculo Parqueo"/>
+
+	<ui:define name="header">
+		Vehiculo Parqueo
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Vehiculo Parqueo
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" value="Id Vehiculo Parqueo:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" value="#{vehiculoParqueoBean.vehiculoParqueo.idVehiculoParqueo}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoCompania" value="Compania:"/>
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoCompania" outcome="/compania/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.compania}" value="#{vehiculoParqueoBean.vehiculoParqueo.compania}">
+				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoParqueo" value="Parqueo:"/>
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoParqueo" outcome="/parqueo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.parqueo}" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo}">
+				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo.idParqueo}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoVehiculo" value="Vehiculo:"/>
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoVehiculo" outcome="/vehiculo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.vehiculo}" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo}">
+				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo.idVehiculo}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaIngreso" value="Fecha Ingreso:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoFechaIngreso" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaIngreso}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoFlagEstado" value="#{vehiculoParqueoBean.vehiculoParqueo.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoFechaReg" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioReg" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoFechaMod" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioMod" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoFechaBorrado" value="#{vehiculoParqueoBean.vehiculoParqueo.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoUsuarioBorrado" value="#{vehiculoParqueoBean.vehiculoParqueo.usuarioBorrado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

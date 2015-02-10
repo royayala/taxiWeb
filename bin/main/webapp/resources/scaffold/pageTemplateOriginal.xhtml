@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>#{empty pageTitle ? 'Page Title' : pageTitle}</title>
+	<link rel="icon" href='#{resource["favicon.ico"]}' />
+	<h:outputStylesheet name="bootstrap.css" />
+	<h:outputStylesheet name="forge-style.css" />
+</h:head>
+
+<h:body>
+	<ui:debug rendered="#{facesContext.application.projectStage == 'Development'}" />
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<h:link id="brandLink" outcome="/index.xhtml" styleClass="brand">
+					<h:outputText value="Welcome to " rendered=" #{request.userPrincipal !=null} "/>
+                    Taxi Web
+                    <h:outputText value=",  #{request.userPrincipal.name}" rendered="#{request.userPrincipal !=null} "/>
+				</h:link>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="http://forge.jboss.org/docs/important_plugins/ui-scaffolding.html">How to Customize</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container forgecontainer">
+		<div id="navigation">
+			<h:link id="homeLink" outcome="/index.xhtml">
+				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 193px; width : 204px;"/>
+			</h:link>
+			<ul>
+				<li>
+					<h:link outcome="/carrera/search" value="Carrera"/>
+				</li>
+				<li>
+					<h:link outcome="/ciudad/search" value="Ciudad"/>
+				</li>
+				<li>
+					<h:link outcome="/compania/search" value="Compania"/>
+				</li>
+				<li>
+					<h:link outcome="/departamento/search" value="Departamento"/>
+				</li>
+				<li>
+					<h:link outcome="/detallaPersonaServicio/search" value="Detalla Persona Servicio"/>
+				</li>
+				<li>
+					<h:link outcome="/parqueo/search" value="Parqueo"/>
+				</li>
+				<li>
+					<h:link outcome="/persona/search" value="Persona"/>
+				</li>
+				<li>
+					<h:link outcome="/personaServicio/search" value="Persona Servicio"/>
+				</li>
+				<li>
+					<h:link outcome="/servicio/search" value="Servicio"/>
+				</li>
+				<li>
+					<h:link outcome="/tarifa/search" value="Tarifa"/>
+				</li>
+				<li>
+					<h:link outcome="/tipoPersona/search" value="Tipo Persona"/>
+				</li>
+				<li>
+					<h:link outcome="/tipoTransaccion/search" value="Tipo Transaccion"/>
+				</li>
+				<li>
+					<h:link outcome="/tipoVehiculo/search" value="Tipo Vehiculo"/>
+				</li>
+				<li>
+					<h:link outcome="/transaccion/search" value="Transaccion"/>
+				</li>
+				<li>
+					<h:link outcome="/usuario/search" value="Usuario"/>
+				</li>
+				<li>
+					<h:link outcome="/vehiculo/search" value="Vehiculo"/>
+				</li>
+				<li>
+					<h:link outcome="/vehiculoAfiliacion/search" value="Vehiculo Afiliacion"/>
+				</li>
+				<li>
+					<h:link outcome="/vehiculoParqueo/search" value="Vehiculo Parqueo"/>
+				</li>
+				<li>
+					<h:link outcome="/vehiculoPersona/search" value="Vehiculo Persona"/>
+				</li>
+			</ul>
+		</div>
+
+		<div id="content">
+			<h1>
+				<ui:insert name="header" />
+			</h1>
+			<h2>
+				<ui:insert name="subheader" />
+			</h2>
+
+			<ui:insert name="main" />
+		</div>
+	</div>
+
+	<footer>
+		<div id="footer-wrapper">
+	    	<p>Powered by <a href="http://jboss.org/forge">Forge</a></p>
+	    </div>
+	</footer>
+
+</h:body>
+</html>

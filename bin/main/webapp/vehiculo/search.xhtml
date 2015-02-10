@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{vehiculoBean.page}'/>
+		<f:event type="preRenderView" listener='#{vehiculoBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Vehiculo entities"/>
+
+	<ui:define name="header">
+		Vehiculo
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Vehiculo entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="vehiculoBeanExampleIdVehiculo" value="Id Vehiculo:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoBeanExampleIdVehiculo" value="#{vehiculoBean.example.idVehiculo}"/>
+							<h:message for="vehiculoBeanExampleIdVehiculo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoBeanExampleCompania" value="#{vehiculoBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="vehiculoBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoBeanExampleTipoVehiculo" value="Tipo Vehiculo:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{tipoVehiculoBean.converter}" id="vehiculoBeanExampleTipoVehiculo" value="#{vehiculoBean.example.tipoVehiculo}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{tipoVehiculoBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="vehiculoBeanExampleTipoVehiculo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoBeanExamplePlaca" value="Placa:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoBeanExamplePlaca" maxLength="10" value="#{vehiculoBean.example.placa}"/>
+							<h:message for="vehiculoBeanExamplePlaca" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="vehiculoBeanExampleModelo" value="Modelo:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoBeanExampleModelo" maxLength="20" value="#{vehiculoBean.example.modelo}"/>
+							<h:message for="vehiculoBeanExampleModelo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{vehiculoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{vehiculoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="vehiculoBeanPageItems" styleClass="data-table" value="#{vehiculoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Vehiculo"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemPlaca" value="#{_item.placa}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemModelo" value="#{_item.modelo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Marca"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemMarca" value="#{_item.marca}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Numero Motor"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{vehiculoBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

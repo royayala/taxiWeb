@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vehiculoAfiliacionBean.id}'/>
+		<f:event type="preRenderView" listener='#{vehiculoAfiliacionBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Create Vehiculo Afiliacion"/>
+
+	<ui:define name="header">
+		Vehiculo Afiliacion
+	</ui:define>
+
+	<ui:define name="subheader">
+		<c:choose>
+			<c:when test='#{!empty vehiculoAfiliacionBean.id}'>
+				Edit existing Vehiculo Afiliacion
+			</c:when>
+			<c:otherwise>
+				Create a new Vehiculo Afiliacion
+			</c:otherwise>
+		</c:choose>
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="create">
+			<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionIdVehiculoAfiliacion" value="Id Vehiculo Afiliacion:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionIdVehiculoAfiliacion" required="true" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.idVehiculoAfiliacion}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionIdVehiculoAfiliacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" value="Compania:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.compania}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" value="Persona:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.persona}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" value="Vehiculo:"/>
+				<h:panelGroup>
+					<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo}">
+						<f:selectItem/>
+						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaAfiliacion" value="Fecha Afiliacion:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionFechaAfiliacion" maxLength="29" required="true" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.fechaAfiliacion}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaAfiliacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionMonto" value="Monto:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionMonto" required="true" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.monto}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionMonto" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText value="*"/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionDescripcion" value="Descripcion:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionDescripcion" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.descripcion}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionDescripcion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagReglamento" value="Flag Reglamento:"/>
+				<h:panelGroup>
+					<h:selectOneMenu id="vehiculoAfiliacionBeanVehiculoAfiliacionFlagReglamento" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.flagReglamento}">
+						<f:selectItem/>
+						<f:selectItem itemLabel="Yes" itemValue="true"/>
+						<f:selectItem itemLabel="No" itemValue="false"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagReglamento" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEquipoComunicacion" value="Flag Equipo Comunicacion:"/>
+				<h:panelGroup>
+					<h:selectOneMenu id="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEquipoComunicacion" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.flagEquipoComunicacion}">
+						<f:selectItem/>
+						<f:selectItem itemLabel="Yes" itemValue="true"/>
+						<f:selectItem itemLabel="No" itemValue="false"/>
+					</h:selectOneMenu>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEquipoComunicacion" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEstado" value="Flag Estado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEstado" maxLength="2" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.flagEstado}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFlagEstado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaReg" value="Fecha Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionFechaReg" maxLength="29" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.fechaReg}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioReg" value="Usuario Reg:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioReg" maxLength="30" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.usuarioReg}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioReg" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaMod" value="Fecha Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionFechaMod" maxLength="29" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.fechaMod}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioMod" value="Usuario Mod:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioMod" maxLength="30" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.usuarioMod}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioMod" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaBorrado" value="Fecha Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionFechaBorrado" maxLength="29" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.fechaBorrado}">
+						<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+					</h:inputText>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionFechaBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioBorrado" value="Usuario Borrado:"/>
+				<h:panelGroup>
+					<h:inputText id="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioBorrado" maxLength="30" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.usuarioBorrado}"/>
+					<h:message for="vehiculoAfiliacionBeanVehiculoAfiliacionUsuarioBorrado" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionTransaccions" value="Transaccions:"/>
+				<h:panelGroup>
+					<ui:param name="_collection" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.transaccions}"/>
+					<h:dataTable id="vehiculoAfiliacionBeanVehiculoAfiliacionTransaccions" styleClass="data-table" value="#{forgeview:asList(_collection)}" var="_item">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id Transaccion"/>
+							</f:facet>
+							<h:link outcome="/transaccion/view">
+								<f:param name="id" value="#{_item.idTransaccion}"/>
+								<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="transaccionBeanAddIdTransaccion" value="#{transaccionBean.add.idTransaccion}"/>
+								<h:message for="transaccionBeanAddIdTransaccion" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Fecha Transaccion"/>
+							</f:facet>
+							<h:link outcome="/transaccion/view">
+								<f:param name="id" value="#{_item.idTransaccion}"/>
+								<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
+									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+								</h:outputText>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="transaccionBeanAddFechaTransaccion" maxLength="29" value="#{transaccionBean.add.fechaTransaccion}">
+									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+								</h:inputText>
+								<h:message for="transaccionBeanAddFechaTransaccion" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Monto Total"/>
+							</f:facet>
+							<h:link outcome="/transaccion/view">
+								<f:param name="id" value="#{_item.idTransaccion}"/>
+								<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="transaccionBeanAddMontoTotal" value="#{transaccionBean.add.montoTotal}"/>
+								<h:message for="transaccionBeanAddMontoTotal" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Descripcion"/>
+							</f:facet>
+							<h:link outcome="/transaccion/view">
+								<f:param name="id" value="#{_item.idTransaccion}"/>
+								<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+							</h:link>
+							<f:facet name="footer">
+								<h:inputText id="transaccionBeanAddDescripcion" maxLength="200" value="#{transaccionBean.add.descripcion}"/>
+								<h:message for="transaccionBeanAddDescripcion" styleClass="error"/>
+							</f:facet>
+						</h:column>
+						<h:column footerClass="remove-column" headerClass="remove-column">
+							<h:commandLink action="#{_collection.remove(_item)}" styleClass="remove-button"/>
+							<f:facet name="footer">
+								<h:commandLink action="#{_collection.add(transaccionBean.added)}" id="vehiculoAfiliacionBeanVehiculoAfiliacionTransaccionsAdd" styleClass="add-button">
+									<f:setPropertyActionListener target="#{transaccionBean.add.vehiculoAfiliacion}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion}"/>
+								</h:commandLink>
+							</f:facet>
+						</h:column>
+					</h:dataTable>
+				</h:panelGroup>
+				<h:outputText/>
+			</h:panelGrid>
+
+			<div class="buttons">
+				<h:commandLink value="Save" action='#{vehiculoAfiliacionBean.update}' styleClass="btn btn-primary"/>
+				<c:choose>
+					<c:when test='#{!empty vehiculoAfiliacionBean.id}'>
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+							<f:param name="id" value='#{vehiculoAfiliacionBean.id}'/>
+						</h:link>
+						<h:commandLink value="Delete" action='#{vehiculoAfiliacionBean.delete}' styleClass="btn btn-primary"/>
+					</c:when>
+					<c:otherwise>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
