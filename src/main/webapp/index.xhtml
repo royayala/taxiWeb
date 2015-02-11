@@ -24,7 +24,15 @@
 			<span/>
 			
 			<br />
-			<a href="/taxiWeb/logout">Logout</a>
+			
+			<h:outputText rendered="#{request.getUserPrincipal() == null}" value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() == null}" value="#{request.contextPath}/faces/login.xhtml" >
+                            <h:outputText value="Login" />
+                        </h:outputLink>
+			 <h:outputText value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() != null}" value="#{request.contextPath}/logoutServlet" >
+                            <h:outputText value="Log out" />
+                        </h:outputLink>
 	</ui:define>
 
 </ui:composition>

@@ -12,35 +12,41 @@
 	</ui:define>
 
 	<ui:define name="main">
-		<h:form method="POST" prependId="false">
-		
-		<h:messages globalOnly="true" styleClass="error"/>
+	
+	<p>Login to access secure pages:</p>
 
-			<h:panelGrid columnClasses="label,component,required" columns="3">
-				
-				<h:outputLabel for="j_username" value="Usuario:"/>
-				<h:panelGroup>
-					<h:inputText id="j_username" />
-					<h:message for="j_username" styleClass="error"/>
-				</h:panelGroup>
-				<h:outputText/>
-				
-				<h:outputLabel for="j_password" value="Password:"/>
-				<h:panelGroup>
-					<h:inputSecret id="j_password"/>
-					<h:message for="j_password" styleClass="error"/>
-				</h:panelGroup>
-				<h:outputText/>
-				
-				<h:outputText />
-				<h:panelGroup>
-					<h:commandButton id="login" value="Login"
-				action="j_security_check" />
-				</h:panelGroup>
-				<h:outputText/>
-				
-			</h:panelGrid>		
-		</h:form>
+ <form method='post' action='j_security_check'>
+
+  <h:messages layout='table' errorStyle='background: #AFEEEE;'
+
+   infoStyle='background: #AFEEEE;' globalOnly='true' />
+
+  <h:panelGrid columns='2'>
+
+   <h:outputLabel value='Username: ' />
+
+   <input type='text' id='j_username' name='j_username' />
+
+   <h:outputLabel value='Password: ' />
+
+   <input type='password' id='j_password' name='j_password' />
+
+   <h:outputText value='' />
+
+   <h:panelGrid columns='1'>
+
+    <input type='submit' name='submit' value='Login' />
+
+   </h:panelGrid>
+
+  </h:panelGrid>
+
+  <br />
+
+ </form>
+	
+	
+	
 	</ui:define>
 
 </ui:composition>
