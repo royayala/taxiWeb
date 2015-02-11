@@ -14,7 +14,7 @@
   <mime-type>image/x-icon</mime-type>
  </mime-mapping>
  <welcome-file-list>
-  <welcome-file>/index.html</welcome-file>
+  <welcome-file>/faces/index.xhtml</welcome-file>
  </welcome-file-list>
  <error-page>
   <error-code>404</error-code>
@@ -33,18 +33,25 @@
   <web-resource-collection>
    <web-resource-name>Protected Area</web-resource-name>
    <url-pattern>/faces/param/*</url-pattern>
+   <url-pattern>/logoutServlet</url-pattern>
+   <url-pattern>/faces/index.xhtml</url-pattern>
    <http-method>DELETE</http-method>
    <http-method>GET</http-method>
    <http-method>POST</http-method>
    <http-method>PUT</http-method>
   </web-resource-collection>
   <auth-constraint>
-   <role-name>ADMIN</role-name>
+   <role-name>SUPER</role-name>
+      <role-name>ADMIN</role-name>
+    <role-name>USUARIO1</role-name>
+    <role-name>USUARIO2</role-name>
   </auth-constraint>
   <user-data-constraint>
    <transport-guarantee>NONE</transport-guarantee>
   </user-data-constraint>
  </security-constraint>
+ 
+ 
  <login-config>
   <auth-method>FORM</auth-method>
   <realm-name>validarUsuarioDB</realm-name>
@@ -53,12 +60,22 @@
    <form-error-page>/error.html</form-error-page>
   </form-login-config>
  </login-config>
+  <security-role>
+  <description>A user super Admin</description>
+  <role-name>SUPER</role-name>
+ </security-role>
  <security-role>
-  <description>A user</description>
+  <description>A user Admin</description>
   <role-name>ADMIN</role-name>
  </security-role>
  <security-role>
-  <description>A user</description>
-  <role-name>USUARIO</role-name>
+  <description>A user normal operaciones</description>
+  <role-name>USUARIO1</role-name>
  </security-role>
+  <security-role>
+  <description>A user normal reportes y consultas</description>
+  <role-name>USUARIO2</role-name>
+ </security-role>
+
+ 
 </web-app>

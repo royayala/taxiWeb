@@ -23,7 +23,11 @@
 			<h:form>
 			<p:growl autoUpdate="true"/>
 			<p:panelMenu style="width:300px">
-        <p:submenu label="Parametros" rendered="#{request.isUserInRole('ADMIN')}">
+		<p:submenu label="Administracion" rendered="#{request.isUserInRole('SUPER')}">
+        	<p:menuitem value="Usuarios" outcome="/param/usuario/search"/>
+        	
+        </p:submenu>
+        <p:submenu label="Parametros" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN')}">
         	<p:menuitem value="Tipo Vehiculo" outcome="/param/tipoVehiculo/search"/>
             <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
             <p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>
@@ -35,7 +39,7 @@
             <p:menuitem value="Servicio" outcome="/param/servicio/search"/>
             <p:menuitem value="Parqueo" outcome="/param/parqueo/search"/>
         </p:submenu>
-        <p:submenu label="Procesos" rendered="#{request.isUserInRole('USUARIO')}">
+        <p:submenu label="Procesos" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO1')}">
             <p:menuitem value="Persona" outcome="/param/persona/search"/>
             <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
             <p:submenu label="Asignacion">
@@ -48,7 +52,7 @@
            	<p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>            
         </p:submenu>
         <p:separator />
-        <p:submenu label="Consultas">
+        <p:submenu label="Consultas" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO2')}">
             <p:menuitem value="Vehiculos Parqueo" outcome="/param/vehiculoParqueo/search"/>
             <p:menuitem value="Persona Vehiculo" outcome="/param/vehiculoPersona/search"/>
              <p:submenu label="Transaccion">
@@ -57,11 +61,11 @@
             </p:submenu>
         </p:submenu>
         <p:separator />
-        <p:submenu label="Reportes">
+        <p:submenu label="Reportes" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO2')}">
             
         </p:submenu>
         <p:separator />
-        <p:submenu label="Utilitarios" >
+        <p:submenu label="Utilitarios" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN')}">
             
         </p:submenu>
     </p:panelMenu>
