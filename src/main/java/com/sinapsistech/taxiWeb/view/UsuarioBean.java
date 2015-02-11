@@ -2,6 +2,7 @@ package com.sinapsistech.taxiWeb.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
@@ -23,6 +25,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
 import com.sinapsistech.taxiWeb.model.Usuario;
 import com.sinapsistech.taxiWeb.model.Compania;
@@ -125,6 +128,13 @@ public class UsuarioBean implements Serializable
 
    public String update()
    {
+	   FacesContext context = FacesContext.getCurrentInstance();
+       ExternalContext externalContext = context.getExternalContext();
+       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+       System.out.println("Agarrando el contexto.");
+       String nombre = request.getUserPrincipal().getName();
+	   
+	   
 	      System.out.println("Entro por Udpdate()");
       this.conversation.end();
 
@@ -132,12 +142,19 @@ public class UsuarioBean implements Serializable
       {
          if (this.id == null)
          {
+        	System.out.println("Entro por usuario nuevo");
+        	this.usuario.setFechaReg(new Date());
+        	
+        	this.usuario.setUsuarioReg(nombre);
             this.entityManager.persist(this.usuario);
             return "search?faces-redirect=true";
          }
          else
          {
-            this.entityManager.merge(this.usuario);
+        	 System.out.println("Entro por usuario actulizando");
+        	 this.usuario.setFechaMod(new Date());
+        	 this.usuario.setUsuarioMod(nombre);
+        	 this.entityManager.merge(this.usuario);
             return "view?faces-redirect=true&id=" + this.usuario.getIdUsuario();
          }
       }
