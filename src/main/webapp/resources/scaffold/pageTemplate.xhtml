@@ -15,44 +15,45 @@
 	
 
 	<div class="container forgecontainer">
+		 <h:panelGrid id="panel" columns="1" border="0" cellpadding="0" cellspacing="2" rendered="#{request.userPrincipal.name!=null}">
 		<div id="navigation">
-			<h:link id="homeLink" outcome="/index.xhtml">
+			<h:link id="homeLink" outcome="/param/index.xhtml">
 				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 150px; width : 150px;"/>
 			</h:link>
 			<h:form>
 			<p:growl autoUpdate="true"/>
 			<p:panelMenu style="width:300px">
-        <p:submenu label="Parametros">
-        	<p:menuitem value="Tipo Vehiculo" outcome="/tipoVehiculo/search"/>
-            <p:menuitem value="Vehiculo" outcome="/vehiculo/search"/>
-            <p:menuitem value="Transaccion" outcome="/transaccion/search"/>
-            <p:menuitem value="Tipo Transaccion" outcome="/tipoTransaccion/search"/>
-            <p:menuitem value="Persona" outcome="/persona/search"/>
-            <p:menuitem value="Ciudad" outcome="/ciudad/search"/>
-            <p:menuitem value="Departamento" outcome="/departamento/search"/>
-            <p:menuitem value="Tarifa" outcome="/tarifa/search"/>
-            <p:menuitem value="Servicio" outcome="/servicio/search"/>
-            <p:menuitem value="Parqueo" outcome="/parqueo/search"/>
+        <p:submenu label="Parametros" rendered="#{request.isUserInRole('ADMIN')}">
+        	<p:menuitem value="Tipo Vehiculo" outcome="/param/tipoVehiculo/search"/>
+            <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
+            <p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>
+            <p:menuitem value="Tipo Transaccion" outcome="/param/tipoTransaccion/search"/>
+            <p:menuitem value="Persona" outcome="/param/persona/search"/>
+            <p:menuitem value="Ciudad" outcome="/param/ciudad/search"/>
+            <p:menuitem value="Departamento" outcome="/param/departamento/search"/>
+            <p:menuitem value="Tarifa" outcome="/param/tarifa/search"/>
+            <p:menuitem value="Servicio" outcome="/param/servicio/search"/>
+            <p:menuitem value="Parqueo" outcome="/param/parqueo/search"/>
         </p:submenu>
-        <p:submenu label="Procesos">
-            <p:menuitem value="Persona" outcome="/persona/search"/>
-            <p:menuitem value="Vehiculo" outcome="/vehiculo/search"/>
+        <p:submenu label="Procesos" rendered="#{request.isUserInRole('USUARIO')}">
+            <p:menuitem value="Persona" outcome="/param/persona/search"/>
+            <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
             <p:submenu label="Asignacion">
-            	<p:menuitem value="Persona Vehiculo" outcome="/vehiculoPersona/search"/>
-            	<p:menuitem value="Chofer Vehiculo" outcome="/vehiculoPersona/search"/>
+            	<p:menuitem value="Persona Vehiculo" outcome="/param/vehiculoPersona/search"/>
+            	<p:menuitem value="Chofer Vehiculo" outcome="/param/vehiculoPersona/search"/>
             </p:submenu>
-            <p:menuitem value="Afiliacion" outcome="/vehiculoAfiliacion/search"/>
-            <p:menuitem value="Persona Servicio" outcome="/personaServicio/search"/>
-            <p:menuitem value="Carrera" outcome="/carrera/search"/>
-           	<p:menuitem value="Transaccion" outcome="/transaccion/search"/>            
+            <p:menuitem value="Afiliacion" outcome="/param/vehiculoAfiliacion/search"/>
+            <p:menuitem value="Persona Servicio" outcome="/param/personaServicio/search"/>
+            <p:menuitem value="Carrera" outcome="/param/carrera/search"/>
+           	<p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>            
         </p:submenu>
         <p:separator />
         <p:submenu label="Consultas">
-            <p:menuitem value="Vehiculos Parqueo" outcome="/vehiculoParqueo/search"/>
-            <p:menuitem value="Persona Vehiculo" outcome="/vehiculoPersona/search"/>
+            <p:menuitem value="Vehiculos Parqueo" outcome="/param/vehiculoParqueo/search"/>
+            <p:menuitem value="Persona Vehiculo" outcome="/param/vehiculoPersona/search"/>
              <p:submenu label="Transaccion">
-            	<p:menuitem value="Ingreso" outcome="/vehiculoPersona/search"/>
-            	<p:menuitem value="Egreso" outcome="/parqueo/search"/>
+            	<p:menuitem value="Ingreso" outcome="/param/vehiculoPersona/search"/>
+            	<p:menuitem value="Egreso" outcome="/param/parqueo/search"/>
             </p:submenu>
         </p:submenu>
         <p:separator />
@@ -67,7 +68,7 @@
 			</h:form>
 
 		</div>
-
+</h:panelGrid>
 		<div id="content">
 			<h1>
 				<ui:insert name="header" />

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/resources/scaffold/pageTemplate.xhtml">
+	template="/resources/scaffold/pageTemplate.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
 
 	<ui:param name="pageTitle" value="Welcome to Forge" />
 
@@ -19,7 +20,11 @@
 			
 			Con esta herramienta usted podrá tener un mejor control de su empresa, a su ves le mostrara datos preciso del estado de la misma, 
 			para posterior mente realizar los cambios o modificaciones correspondiente para un optimo desempeño 
-		
+			<h:outputText value="#{request.userPrincipal.name}"/> <h:outputText value="#{request.isUserInRole('ADMIN')}"/>
+			<span/>
+			
+			<br />
+			<a href="/taxiWeb/logout">Logout</a>
 	</ui:define>
 
 </ui:composition>

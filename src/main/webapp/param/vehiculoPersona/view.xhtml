@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{vehiculoPersonaBean.id}'/>
+		<f:event type="preRenderView" listener='#{vehiculoPersonaBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Vehiculo Persona"/>
+
+	<ui:define name="header">
+		Vehiculo Persona
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Vehiculo Persona
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" value="Id Vehiculo Persona:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" value="#{vehiculoPersonaBean.vehiculoPersona.idVehiculoPersona}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaCompania" value="Compania:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.compania}" value="#{vehiculoPersonaBean.vehiculoPersona.compania}">
+				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value="Persona By Id Chofer:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}">
+				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer.idPersona}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value="Persona By Id Persona:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}">
+				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona.idPersona}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="Vehiculo:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.vehiculo}" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo}">
+				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo.idVehiculo}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaInicio" value="Fecha Inicio:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFechaInicio" value="#{vehiculoPersonaBean.vehiculoPersona.fechaInicio}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaFin" value="Fecha Fin:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFechaFin" value="#{vehiculoPersonaBean.vehiculoPersona.fechaFin}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFlagEstado" value="#{vehiculoPersonaBean.vehiculoPersona.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFechaReg" value="#{vehiculoPersonaBean.vehiculoPersona.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioReg" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFechaMod" value="#{vehiculoPersonaBean.vehiculoPersona.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioMod" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaFechaBorrado" value="#{vehiculoPersonaBean.vehiculoPersona.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaUsuarioBorrado" value="#{vehiculoPersonaBean.vehiculoPersona.usuarioBorrado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

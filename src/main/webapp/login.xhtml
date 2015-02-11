@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/resources/scaffold/TemplateBlanco.xhtml">
+
+	<ui:param name="pageTitle" value="Server error" />
+
+	<ui:define name="header">
+		Auntentificacion
+	</ui:define>
+
+	<ui:define name="main">
+		<h:form method="POST" prependId="false">
+		
+		<h:messages globalOnly="true" styleClass="error"/>
+
+			<h:panelGrid columnClasses="label,component,required" columns="3">
+				
+				<h:outputLabel for="j_username" value="Usuario:"/>
+				<h:panelGroup>
+					<h:inputText id="j_username" />
+					<h:message for="j_username" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				
+				<h:outputLabel for="j_password" value="Password:"/>
+				<h:panelGroup>
+					<h:inputSecret id="j_password"/>
+					<h:message for="j_password" styleClass="error"/>
+				</h:panelGroup>
+				<h:outputText/>
+				
+				<h:outputText />
+				<h:panelGroup>
+					<h:commandButton id="login" value="Login"
+				action="j_security_check" />
+				</h:panelGroup>
+				<h:outputText/>
+				
+			</h:panelGrid>		
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+

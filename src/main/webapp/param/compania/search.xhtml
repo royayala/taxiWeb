@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="page" value='#{companiaBean.page}'/>
+		<f:event type="preRenderView" listener='#{companiaBean.paginate}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="Search Compania entities"/>
+
+	<ui:define name="header">
+		Compania
+	</ui:define>
+
+	<ui:define name="subheader">
+		Search Compania entities
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:form id="search">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="companiaBeanExampleIdCia" value="Id Cia:"/>
+						<h:panelGroup>
+							<h:inputText id="companiaBeanExampleIdCia" value="#{companiaBean.example.idCia}"/>
+							<h:message for="companiaBeanExampleIdCia" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="companiaBeanExampleNombreCorto" value="Nombre Corto:"/>
+						<h:panelGroup>
+							<h:inputText id="companiaBeanExampleNombreCorto" maxLength="20" value="#{companiaBean.example.nombreCorto}"/>
+							<h:message for="companiaBeanExampleNombreCorto" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="companiaBeanExampleNombreLargo" value="Nombre Largo:"/>
+						<h:panelGroup>
+							<h:inputText id="companiaBeanExampleNombreLargo" maxLength="200" value="#{companiaBean.example.nombreLargo}"/>
+							<h:message for="companiaBeanExampleNombreLargo" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="companiaBeanExampleFlagEstado" value="Flag Estado:"/>
+						<h:panelGroup>
+							<h:inputText id="companiaBeanExampleFlagEstado" maxLength="2" value="#{companiaBean.example.flagEstado}"/>
+							<h:message for="companiaBeanExampleFlagEstado" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="companiaBeanExampleUsuarioReg" value="Usuario Reg:"/>
+						<h:panelGroup>
+							<h:inputText id="companiaBeanExampleUsuarioReg" maxLength="30" value="#{companiaBean.example.usuarioReg}"/>
+							<h:message for="companiaBeanExampleUsuarioReg" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+					<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{companiaBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{companiaBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="companiaBeanPageItems" styleClass="data-table" value="#{companiaBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Cia"/>
+					</f:facet>
+					<h:link outcome="/param/compania/view">
+						<f:param name="id" value="#{_item.idCia}"/>
+						<h:outputText id="itemIdCia" value="#{_item.idCia}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Corto"/>
+					</f:facet>
+					<h:link outcome="/param/compania/view">
+						<f:param name="id" value="#{_item.idCia}"/>
+						<h:outputText id="itemNombreCorto" value="#{_item.nombreCorto}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Largo"/>
+					</f:facet>
+					<h:link outcome="/param/compania/view">
+						<f:param name="id" value="#{_item.idCia}"/>
+						<h:outputText id="itemNombreLargo" value="#{_item.nombreLargo}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{companiaBean}'/>
+			</ui:include>
+		</h:form>
+			
+	</ui:define>
+
+</ui:composition>

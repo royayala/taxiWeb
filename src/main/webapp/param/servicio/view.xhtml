@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{servicioBean.id}'/>
+		<f:event type="preRenderView" listener='#{servicioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Servicio"/>
+
+	<ui:define name="header">
+		Servicio
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Servicio
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="servicioBeanServicioIdServicio" value="Id Servicio:"/>
+			<h:outputText id="servicioBeanServicioIdServicio" value="#{servicioBean.servicio.idServicio}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioCompania" value="Compania:"/>
+			<h:link id="servicioBeanServicioCompania" outcome="/param/compania/view" rendered="#{!empty servicioBean.servicio.compania}" value="#{servicioBean.servicio.compania}">
+				<f:param name="id" value="#{servicioBean.servicio.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioNombre" value="Nombre:"/>
+			<h:outputText id="servicioBeanServicioNombre" value="#{servicioBean.servicio.nombre}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioDescripcion" value="Descripcion:"/>
+			<h:outputText id="servicioBeanServicioDescripcion" value="#{servicioBean.servicio.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="servicioBeanServicioFlagEstado" value="#{servicioBean.servicio.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="servicioBeanServicioFechaReg" value="#{servicioBean.servicio.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="servicioBeanServicioUsuarioReg" value="#{servicioBean.servicio.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="servicioBeanServicioFechaMod" value="#{servicioBean.servicio.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="servicioBeanServicioUsuarioMod" value="#{servicioBean.servicio.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="servicioBeanServicioFechaBorrado" value="#{servicioBean.servicio.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="servicioBeanServicioUsuarioBorrado" value="#{servicioBean.servicio.usuarioBorrado}"/>
+			<h:outputText/>
+			<h:outputLabel for="servicioBeanServicioPersonaServicios" value="Persona Servicios:"/>
+			<h:dataTable id="servicioBeanServicioPersonaServicios" styleClass="data-table" value="#{forgeview:asList(servicioBean.servicio.personaServicios)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Persona Servicio"/>
+					</f:facet>
+					<h:link outcome="/param/personaServicio/view">
+						<f:param name="id" value="#{_item.idPersonaServicio}"/>
+						<h:outputText id="itemIdPersonaServicio" value="#{_item.idPersonaServicio}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Inicio"/>
+					</f:facet>
+					<h:link outcome="/param/personaServicio/view">
+						<f:param name="id" value="#{_item.idPersonaServicio}"/>
+						<h:outputText id="itemFechaInicio" value="#{_item.fechaInicio}">
+							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+						</h:outputText>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"/>
+					</f:facet>
+					<h:link outcome="/param/personaServicio/view">
+						<f:param name="id" value="#{_item.idPersonaServicio}"/>
+						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Origen"/>
+					</f:facet>
+					<h:link outcome="/param/personaServicio/view">
+						<f:param name="id" value="#{_item.idPersonaServicio}"/>
+						<h:outputText id="itemOrigen" value="#{_item.origen}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Desitino"/>
+					</f:facet>
+					<h:link outcome="/param/personaServicio/view">
+						<f:param name="id" value="#{_item.idPersonaServicio}"/>
+						<h:outputText id="itemDesitino" value="#{_item.desitino}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+			<h:outputLabel value="Flag Cortecia:"/>
+			<h:outputText styleClass="#{servicioBean.servicio.flagCortecia ? 'boolean-true' : 'boolean-false'}" value=""/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

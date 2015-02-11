@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{usuarioBean.id}'/>
+		<f:event type="preRenderView" listener='#{usuarioBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Usuario"/>
+
+	<ui:define name="header">
+		Usuario
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Usuario
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="usuarioBeanUsuarioIdUsuario" value="Id Usuario:"/>
+			<h:outputText id="usuarioBeanUsuarioIdUsuario" value="#{usuarioBean.usuario.idUsuario}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioCompania" value="Compania:"/>
+			<h:link id="usuarioBeanUsuarioCompania" outcome="/param/compania/view" rendered="#{!empty usuarioBean.usuario.compania}" value="#{usuarioBean.usuario.compania}">
+				<f:param name="id" value="#{usuarioBean.usuario.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioNombreCompleto" value="Nombre Completo:"/>
+			<h:outputText id="usuarioBeanUsuarioNombreCompleto" value="#{usuarioBean.usuario.nombreCompleto}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioUsuarioLogin" value="Usuario Login:"/>
+			<h:outputText id="usuarioBeanUsuarioUsuarioLogin" value="#{usuarioBean.usuario.usuarioLogin}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioUsuarioPassword" value="Usuario Password:"/>
+			<h:outputText id="usuarioBeanUsuarioUsuarioPassword" value="#{usuarioBean.usuario.usuarioPassword}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioFlagLdap" value="Flag Ldap:"/>
+			<h:outputText id="usuarioBeanUsuarioFlagLdap" value="#{usuarioBean.usuario.flagLdap}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioIdioma" value="Idioma:"/>
+			<h:outputText id="usuarioBeanUsuarioIdioma" value="#{usuarioBean.usuario.idioma}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioEmailUsuario" value="Email Usuario:"/>
+			<h:outputText id="usuarioBeanUsuarioEmailUsuario" value="#{usuarioBean.usuario.emailUsuario}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioTelefono" value="Telefono:"/>
+			<h:outputText id="usuarioBeanUsuarioTelefono" value="#{usuarioBean.usuario.telefono}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioTipoUsuario" value="Tipo Usuario:"/>
+			<h:outputText id="usuarioBeanUsuarioTipoUsuario" value="#{usuarioBean.usuario.tipoUsuario}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="usuarioBeanUsuarioFlagEstado" value="#{usuarioBean.usuario.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="usuarioBeanUsuarioFechaReg" value="#{usuarioBean.usuario.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="usuarioBeanUsuarioUsuarioReg" value="#{usuarioBean.usuario.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="usuarioBeanUsuarioFechaMod" value="#{usuarioBean.usuario.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="usuarioBeanUsuarioUsuarioMod" value="#{usuarioBean.usuario.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="usuarioBeanUsuarioFechaBorrado" value="#{usuarioBean.usuario.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="usuarioBeanUsuarioUsuarioBorrado" value="#{usuarioBean.usuario.usuarioBorrado}"/>
+			<h:outputText/>
+			<h:outputLabel for="usuarioBeanUsuarioIpUsuario" value="Ip Usuario:"/>
+			<h:outputText id="usuarioBeanUsuarioIpUsuario" value="#{usuarioBean.usuario.ipUsuario}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

@@ -1,23 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-<display-name>taxiWeb</display-name>
-  <session-config>
-  <session-timeout>30</session-timeout>
-  </session-config>
-  <mime-mapping>
-  <extension>ico</extension>
-    <mime-type>image/x-icon</mime-type>
-  </mime-mapping>
-  <context-param>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <display-name>taxiWeb</display-name>
+ <context-param>
   <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
-    <param-value>true</param-value>
-  </context-param>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/faces/error.xhtml</location>
-  </error-page>
-  <error-page>
-    <error-code>500</error-code>
-    <location>/faces/error.xhtml</location>
-  </error-page>
+  <param-value>true</param-value>
+ </context-param>
+ <session-config>
+  <session-timeout>30</session-timeout>
+ </session-config>
+ <mime-mapping>
+  <extension>ico</extension>
+  <mime-type>image/x-icon</mime-type>
+ </mime-mapping>
+ <welcome-file-list>
+  <welcome-file>/index.html</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/faces/error.xhtml</location>
+ </error-page>
+ <error-page>
+  <error-code>500</error-code>
+  <location>/faces/error.xhtml</location>
+ </error-page>
+ <error-page>
+  <error-code>401</error-code>
+  <location>/error.html</location>
+ </error-page>
+ <security-constraint>
+  <display-name>Example Security Constraint</display-name>
+  <web-resource-collection>
+   <web-resource-name>Protected Area</web-resource-name>
+   <url-pattern>/faces/param/*</url-pattern>
+   <http-method>DELETE</http-method>
+   <http-method>GET</http-method>
+   <http-method>POST</http-method>
+   <http-method>PUT</http-method>
+  </web-resource-collection>
+  <auth-constraint>
+   <role-name>ADMIN</role-name>
+  </auth-constraint>
+  <user-data-constraint>
+   <transport-guarantee>NONE</transport-guarantee>
+  </user-data-constraint>
+ </security-constraint>
+ <login-config>
+  <auth-method>FORM</auth-method>
+  <realm-name>validarUsuarioDB</realm-name>
+  <form-login-config>
+   <form-login-page>/faces/login.xhtml</form-login-page>
+   <form-error-page>/error.html</form-error-page>
+  </form-login-config>
+ </login-config>
+ <security-role>
+  <description>A user</description>
+  <role-name>ADMIN</role-name>
+ </security-role>
+ <security-role>
+  <description>A user</description>
+  <role-name>USUARIO</role-name>
+ </security-role>
 </web-app>

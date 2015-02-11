@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{transaccionBean.id}'/>
+		<f:event type="preRenderView" listener='#{transaccionBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Transaccion"/>
+
+	<ui:define name="header">
+		Transaccion
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Transaccion
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="transaccionBeanTransaccionIdTransaccion" value="Id Transaccion:"/>
+			<h:outputText id="transaccionBeanTransaccionIdTransaccion" value="#{transaccionBean.transaccion.idTransaccion}"/>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionCarrera" value="Carrera:"/>
+			<h:link id="transaccionBeanTransaccionCarrera" outcome="/param/carrera/view" rendered="#{!empty transaccionBean.transaccion.carrera}" value="#{transaccionBean.transaccion.carrera}">
+				<f:param name="id" value="#{transaccionBean.transaccion.carrera.idCarrera}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionCompania" value="Compania:"/>
+			<h:link id="transaccionBeanTransaccionCompania" outcome="/param/compania/view" rendered="#{!empty transaccionBean.transaccion.compania}" value="#{transaccionBean.transaccion.compania}">
+				<f:param name="id" value="#{transaccionBean.transaccion.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionPersona" value="Persona:"/>
+			<h:link id="transaccionBeanTransaccionPersona" outcome="/param/persona/view" rendered="#{!empty transaccionBean.transaccion.persona}" value="#{transaccionBean.transaccion.persona}">
+				<f:param name="id" value="#{transaccionBean.transaccion.persona.idPersona}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionPersonaServicio" value="Persona Servicio:"/>
+			<h:link id="transaccionBeanTransaccionPersonaServicio" outcome="/param/personaServicio/view" rendered="#{!empty transaccionBean.transaccion.personaServicio}" value="#{transaccionBean.transaccion.personaServicio}">
+				<f:param name="id" value="#{transaccionBean.transaccion.personaServicio.idPersonaServicio}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionTipoTransaccion" value="Tipo Transaccion:"/>
+			<h:link id="transaccionBeanTransaccionTipoTransaccion" outcome="/param/tipoTransaccion/view" rendered="#{!empty transaccionBean.transaccion.tipoTransaccion}" value="#{transaccionBean.transaccion.tipoTransaccion}">
+				<f:param name="id" value="#{transaccionBean.transaccion.tipoTransaccion.idTipoTransaccion}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionVehiculo" value="Vehiculo:"/>
+			<h:link id="transaccionBeanTransaccionVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty transaccionBean.transaccion.vehiculo}" value="#{transaccionBean.transaccion.vehiculo}">
+				<f:param name="id" value="#{transaccionBean.transaccion.vehiculo.idVehiculo}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionVehiculoAfiliacion" value="Vehiculo Afiliacion:"/>
+			<h:link id="transaccionBeanTransaccionVehiculoAfiliacion" outcome="/param/vehiculoAfiliacion/view" rendered="#{!empty transaccionBean.transaccion.vehiculoAfiliacion}" value="#{transaccionBean.transaccion.vehiculoAfiliacion}">
+				<f:param name="id" value="#{transaccionBean.transaccion.vehiculoAfiliacion.idVehiculoAfiliacion}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionFechaTransaccion" value="Fecha Transaccion:"/>
+			<h:outputText id="transaccionBeanTransaccionFechaTransaccion" value="#{transaccionBean.transaccion.fechaTransaccion}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionMontoTotal" value="Monto Total:"/>
+			<h:outputText id="transaccionBeanTransaccionMontoTotal" value="#{transaccionBean.transaccion.montoTotal}"/>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionDescripcion" value="Descripcion:"/>
+			<h:outputText id="transaccionBeanTransaccionDescripcion" value="#{transaccionBean.transaccion.descripcion}"/>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="transaccionBeanTransaccionFechaReg" value="#{transaccionBean.transaccion.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="transaccionBeanTransaccionUsuarioReg" value="#{transaccionBean.transaccion.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="transaccionBeanTransaccionFechaMod" value="#{transaccionBean.transaccion.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="transaccionBeanTransaccionUsuarioMod" value="#{transaccionBean.transaccion.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="transaccionBeanTransaccionFechaBorrado" value="#{transaccionBean.transaccion.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="transaccionBeanTransaccionUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="transaccionBeanTransaccionUsuarioBorrado" value="#{transaccionBean.transaccion.usuarioBorrado}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

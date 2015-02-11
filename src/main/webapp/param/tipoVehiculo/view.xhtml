@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{tipoVehiculoBean.id}'/>
+		<f:event type="preRenderView" listener='#{tipoVehiculoBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Tipo Vehiculo"/>
+
+	<ui:define name="header">
+		Tipo Vehiculo
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Tipo Vehiculo
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" value="Id Tipo Vehiculo:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" value="#{tipoVehiculoBean.tipoVehiculo.idTipoVehiculo}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoNombre" value="Nombre:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoNombre" value="#{tipoVehiculoBean.tipoVehiculo.nombre}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoFlagEstado" value="Flag Estado:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoFlagEstado" value="#{tipoVehiculoBean.tipoVehiculo.flagEstado}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoFechaReg" value="Fecha Reg:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoFechaReg" value="#{tipoVehiculoBean.tipoVehiculo.fechaReg}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoUsuarioReg" value="Usuario Reg:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoUsuarioReg" value="#{tipoVehiculoBean.tipoVehiculo.usuarioReg}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoFechaMod" value="Fecha Mod:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoFechaMod" value="#{tipoVehiculoBean.tipoVehiculo.fechaMod}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoUsuarioMod" value="Usuario Mod:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoUsuarioMod" value="#{tipoVehiculoBean.tipoVehiculo.usuarioMod}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoFechaBorrado" value="Fecha Borrado:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoFechaBorrado" value="#{tipoVehiculoBean.tipoVehiculo.fechaBorrado}">
+				<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+			</h:outputText>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoUsuarioBorrado" value="Usuario Borrado:"/>
+			<h:outputText id="tipoVehiculoBeanTipoVehiculoUsuarioBorrado" value="#{tipoVehiculoBean.tipoVehiculo.usuarioBorrado}"/>
+			<h:outputText/>
+			<h:outputLabel for="tipoVehiculoBeanTipoVehiculoVehiculos" value="Vehiculos:"/>
+			<h:dataTable id="tipoVehiculoBeanTipoVehiculoVehiculos" styleClass="data-table" value="#{forgeview:asList(tipoVehiculoBean.tipoVehiculo.vehiculos)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Vehiculo"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemPlaca" value="#{_item.placa}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemModelo" value="#{_item.modelo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Marca"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemMarca" value="#{_item.marca}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Numero Motor"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

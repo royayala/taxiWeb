@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/TemplateBlanco.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:param name="pageTitle" value="Welcome to Forge" />
+
+	<ui:define name="header">
+		Sistema el Veloz
+	</ui:define>
+
+	<ui:define name="main">
+		<h2 class="success">
+			Gestionando su flota de Moviles.
+		</h2>
+		
+			Bien venido al sistema de gestión del radio movil "El Veloz".
+			
+			Con esta herramienta usted podrá tener un mejor control de su empresa, a su ves le mostrara datos preciso del estado de la misma, 
+			para posterior mente realizar los cambios o modificaciones correspondiente para un optimo desempeño 
+			<br/>
+				<h:link id="brandLink" outcome="/param/index.xhtml" styleClass="brand">
+					<h:outputText value="Para ingresar "/>
+                     a la 
+                    <h:outputText value="Aplicacion  "/>
+				</h:link>
+	</ui:define>
+
+
+</ui:composition>
