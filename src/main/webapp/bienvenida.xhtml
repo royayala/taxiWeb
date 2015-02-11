@@ -21,11 +21,16 @@
 			Con esta herramienta usted podrá tener un mejor control de su empresa, a su ves le mostrara datos preciso del estado de la misma, 
 			para posterior mente realizar los cambios o modificaciones correspondiente para un optimo desempeño 
 			<br/>
-				<h:link id="brandLink" outcome="/param/index.xhtml" styleClass="brand">
-					<h:outputText value="Para ingresar "/>
-                     a la 
-                    <h:outputText value="Aplicacion  "/>
-				</h:link>
+<br />
+			
+			<h:outputText rendered="#{request.getUserPrincipal() == null}" value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() == null}" value="#{request.contextPath}/faces/login.xhtml" >
+                            <h:outputText value="Login" />
+                        </h:outputLink>
+			 <h:outputText value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() != null}" value="#{request.contextPath}/logoutServlet" >
+                            <h:outputText value="Log out" />
+                        </h:outputLink>
 	</ui:define>
 
 
