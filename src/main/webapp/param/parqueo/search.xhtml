@@ -67,8 +67,8 @@
 						<h:outputText/>
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{parqueoBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{parqueoBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{parqueoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Adicionar" action='#{parqueoBean.create}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
@@ -78,7 +78,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Parqueo"/>
 					</f:facet>
-					<h:link outcome="/parqueo/view">
+					<h:link outcome="/param/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemIdParqueo" value="#{_item.idParqueo}"/>
 					</h:link>
@@ -87,7 +87,7 @@
 					<f:facet name="header">
 						<h:outputText value="Direccion"/>
 					</f:facet>
-					<h:link outcome="/parqueo/view">
+					<h:link outcome="/param/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
 					</h:link>
@@ -96,7 +96,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Ciudad"/>
 					</f:facet>
-					<h:link outcome="/parqueo/view">
+					<h:link outcome="/param/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemIdCiudad" value="#{_item.idCiudad}"/>
 					</h:link>
@@ -105,7 +105,7 @@
 					<f:facet name="header">
 						<h:outputText value="Latitud"/>
 					</f:facet>
-					<h:link outcome="/parqueo/view">
+					<h:link outcome="/param/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemLatitud" value="#{_item.latitud}"/>
 					</h:link>
@@ -114,7 +114,7 @@
 					<f:facet name="header">
 						<h:outputText value="Longitud"/>
 					</f:facet>
-					<h:link outcome="/parqueo/view">
+					<h:link outcome="/param/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemLongitud" value="#{_item.longitud}"/>
 					</h:link>

@@ -48,7 +48,7 @@
 					<f:facet name="header">
 						<h:outputText value="Nombre"/>
 					</f:facet>
-					<h:link outcome="/persona/view">
+					<h:link outcome="/param/persona/view">
 						<f:param name="id" value="#{_item.idPersona}"/>
 						<h:outputText id="itemNombre" value="#{_item.nombre} #{_item.apellidoPaterno} #{_item.apellidoMaterno}"/>
 					</h:link>
@@ -58,7 +58,7 @@
 					<f:facet name="header">
 						<h:outputText value="Telefonos"/>
 					</f:facet>
-					<h:link outcome="/persona/view">
+					<h:link outcome="/param/persona/view">
 						<f:param name="id" value="#{_item.idPersona}"/>
 						<h:outputText id="itemTelefono1" value="#{_item.telefono1} ~ #{_item.telefono2}"/>
 					</h:link>
@@ -68,7 +68,7 @@
 					<f:facet name="header">
 						<h:outputText value="Direccion"/>
 					</f:facet>
-					<h:link outcome="/persona/view">
+					<h:link outcome="/param/persona/view">
 						<f:param name="id" value="#{_item.idPersona}"/>
 						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
 					</h:link>
@@ -78,7 +78,7 @@
 					<f:facet name="header">
 						<h:outputText value="C.I"/>
 					</f:facet>
-					<h:link outcome="/persona/view">
+					<h:link outcome="/param/persona/view">
 						<f:param name="id" value="#{_item.idPersona}"/>
 						<h:outputText id="itemDocumentoIdentidad" value="#{_item.documentoIdentidad}"/>
 					</h:link>
@@ -105,8 +105,8 @@
 						<h:outputText/>
 					</h:panelGrid>
 						<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{vehiculoBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{vehiculoBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{vehiculoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Adicionar" action='#{vehiculoBean.create}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
@@ -116,7 +116,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Vehiculo"/>
 					</f:facet>
-					<h:link outcome="/vehiculo/view">
+					<h:link outcome="/param/vehiculo/view">
 						<f:param name="id" value="#{_item.idVehiculo}"/>
 						<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
 					</h:link>
@@ -125,7 +125,7 @@
 					<f:facet name="header">
 						<h:outputText value="Placa"/>
 					</f:facet>
-					<h:link outcome="/vehiculo/view">
+					<h:link outcome="/param/vehiculo/view">
 						<f:param name="id" value="#{_item.idVehiculo}"/>
 						<h:outputText id="itemPlaca" value="#{_item.placa}"/>
 					</h:link>
@@ -134,7 +134,7 @@
 					<f:facet name="header">
 						<h:outputText value="Modelo"/>
 					</f:facet>
-					<h:link outcome="/vehiculo/view">
+					<h:link outcome="/param/vehiculo/view">
 						<f:param name="id" value="#{_item.idVehiculo}"/>
 						<h:outputText id="itemModelo" value="#{_item.modelo}"/>
 					</h:link>
@@ -143,7 +143,7 @@
 					<f:facet name="header">
 						<h:outputText value="Marca"/>
 					</f:facet>
-					<h:link outcome="/vehiculo/view">
+					<h:link outcome="/param/vehiculo/view">
 						<f:param name="id" value="#{_item.idVehiculo}"/>
 						<h:outputText id="itemMarca" value="#{_item.marca}"/>
 					</h:link>
@@ -152,7 +152,7 @@
 					<f:facet name="header">
 						<h:outputText value="Numero Motor"/>
 					</f:facet>
-					<h:link outcome="/vehiculo/view">
+					<h:link outcome="/param/vehiculo/view">
 						<f:param name="id" value="#{_item.idVehiculo}"/>
 						<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
 					</h:link>

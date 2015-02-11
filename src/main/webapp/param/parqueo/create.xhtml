@@ -134,7 +134,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Parqueo"/>
 							</f:facet>
-							<h:link outcome="/vehiculoParqueo/view">
+							<h:link outcome="/param/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 							</h:link>
@@ -147,7 +147,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Ingreso"/>
 							</f:facet>
-							<h:link outcome="/vehiculoParqueo/view">
+							<h:link outcome="/param/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
