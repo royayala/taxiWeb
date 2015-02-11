@@ -22,10 +22,10 @@
 	<ui:define name="subheader">
 		<c:choose>
 			<c:when test='#{!empty parqueoBean.id}'>
-				Edit existing Parqueo
+				Editar Parqueo
 			</c:when>
 			<c:otherwise>
-				Create a new Parqueo
+				Crear nuevo Parqueo
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
@@ -60,8 +60,10 @@
 				<h:outputText value="*"/>
 				<h:outputLabel for="parqueoBeanParqueoIdCiudad" value="Id Ciudad:"/>
 				<h:panelGroup>
-					<h:inputText id="parqueoBeanParqueoIdCiudad" required="true" value="#{parqueoBean.parqueo.idCiudad}"/>
-					<h:message for="parqueoBeanParqueoIdCiudad" styleClass="error"/>
+					<h:selectOneMenu>
+                		<f:selectItem id="parqueoBeanParqueoIdCiudad" itemLabel="#{ciudadBean.ciudad.nombre}" 
+                		itemValue="#{ciudadBean.ciudad.idCiudad}" value="#{parqueoBean.parqueo.idCiudad}" />
+            		</h:selectOneMenu>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="parqueoBeanParqueoLatitud" value="Latitud:"/>
@@ -132,7 +134,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Parqueo"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 							</h:link>
@@ -145,7 +147,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Ingreso"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>

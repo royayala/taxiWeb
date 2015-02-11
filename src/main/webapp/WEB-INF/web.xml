@@ -32,7 +32,7 @@
   <display-name>Example Security Constraint</display-name>
   <web-resource-collection>
    <web-resource-name>Protected Area</web-resource-name>
-   <url-pattern>/faces/param/*</url-pattern>
+   <url-pattern>/faces/param/usuario*</url-pattern>
    <http-method>DELETE</http-method>
    <http-method>GET</http-method>
    <http-method>POST</http-method>

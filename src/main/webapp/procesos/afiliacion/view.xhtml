@@ -30,17 +30,17 @@
 			<h:outputText id="vehiculoAfiliacionBeanVehiculoAfiliacionIdVehiculoAfiliacion" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.idVehiculoAfiliacion}"/>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" value="Compania:"/>
-			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.compania}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.compania}">
+			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionCompania" outcome="/compania/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.compania}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.compania}">
 				<f:param name="id" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" value="Persona:"/>
-			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" outcome="/param/persona/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.persona}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.persona}">
+			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionPersona" outcome="/persona/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.persona}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.persona}">
 				<f:param name="id" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.persona.idPersona}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" value="Vehiculo:"/>
-			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo}">
+			<h:link id="vehiculoAfiliacionBeanVehiculoAfiliacionVehiculo" outcome="/vehiculo/view" rendered="#{!empty vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo}" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo}">
 				<f:param name="id" value="#{vehiculoAfiliacionBean.vehiculoAfiliacion.vehiculo.idVehiculo}"/>
 			</h:link>
 			<h:outputText/>
@@ -94,7 +94,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
 					</h:link>
@@ -103,7 +103,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -114,7 +114,7 @@
 					<f:facet name="header">
 						<h:outputText value="Monto Total"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
 					</h:link>
@@ -123,7 +123,7 @@
 					<f:facet name="header">
 						<h:outputText value="Descripcion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 					</h:link>

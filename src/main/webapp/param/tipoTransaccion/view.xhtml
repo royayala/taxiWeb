@@ -30,7 +30,7 @@
 			<h:outputText id="tipoTransaccionBeanTipoTransaccionIdTipoTransaccion" value="#{tipoTransaccionBean.tipoTransaccion.idTipoTransaccion}"/>
 			<h:outputText/>
 			<h:outputLabel for="tipoTransaccionBeanTipoTransaccionCompania" value="Compania:"/>
-			<h:link id="tipoTransaccionBeanTipoTransaccionCompania" outcome="/param/compania/view" rendered="#{!empty tipoTransaccionBean.tipoTransaccion.compania}" value="#{tipoTransaccionBean.tipoTransaccion.compania}">
+			<h:link id="tipoTransaccionBeanTipoTransaccionCompania" outcome="/compania/view" rendered="#{!empty tipoTransaccionBean.tipoTransaccion.compania}" value="#{tipoTransaccionBean.tipoTransaccion.compania}">
 				<f:param name="id" value="#{tipoTransaccionBean.tipoTransaccion.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
@@ -76,7 +76,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
 					</h:link>
@@ -85,7 +85,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -96,7 +96,7 @@
 					<f:facet name="header">
 						<h:outputText value="Monto Total"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
 					</h:link>
@@ -105,7 +105,7 @@
 					<f:facet name="header">
 						<h:outputText value="Descripcion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 					</h:link>

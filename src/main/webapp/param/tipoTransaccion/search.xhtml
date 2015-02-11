@@ -15,11 +15,11 @@
 	<ui:param name="pageTitle" value="Search Tipo Transaccion entities"/>
 
 	<ui:define name="header">
-		Tipo Transaccion
+		Tipo de Transaccion
 	</ui:define>
 
 	<ui:define name="subheader">
-		Search Tipo Transaccion entities
+		Buscar Tipo de Transaccion
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -50,6 +50,7 @@
 							<h:inputText id="tipoTransaccionBeanExampleNombre" maxLength="50" value="#{tipoTransaccionBean.example.nombre}"/>
 							<h:message for="tipoTransaccionBeanExampleNombre" styleClass="error"/>
 						</h:panelGroup>
+						<!-- 
 						<h:outputText/>
 						<h:outputLabel for="tipoTransaccionBeanExampleDescripcion" value="Descripcion:"/>
 						<h:panelGroup>
@@ -63,10 +64,11 @@
 							<h:message for="tipoTransaccionBeanExampleTipo" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+						-->
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{tipoTransaccionBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{tipoTransaccionBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{tipoTransaccionBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Adicionar" action='#{tipoTransaccionBean.create}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
@@ -76,7 +78,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Tipo Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/tipoTransaccion/view">
+					<h:link outcome="/tipoTransaccion/view">
 						<f:param name="id" value="#{_item.idTipoTransaccion}"/>
 						<h:outputText id="itemIdTipoTransaccion" value="#{_item.idTipoTransaccion}"/>
 					</h:link>
@@ -85,7 +87,7 @@
 					<f:facet name="header">
 						<h:outputText value="Nombre"/>
 					</f:facet>
-					<h:link outcome="/param/tipoTransaccion/view">
+					<h:link outcome="/tipoTransaccion/view">
 						<f:param name="id" value="#{_item.idTipoTransaccion}"/>
 						<h:outputText id="itemNombre" value="#{_item.nombre}"/>
 					</h:link>
@@ -94,7 +96,7 @@
 					<f:facet name="header">
 						<h:outputText value="Descripcion"/>
 					</f:facet>
-					<h:link outcome="/param/tipoTransaccion/view">
+					<h:link outcome="/tipoTransaccion/view">
 						<f:param name="id" value="#{_item.idTipoTransaccion}"/>
 						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 					</h:link>
@@ -103,7 +105,7 @@
 					<f:facet name="header">
 						<h:outputText value="Tipo"/>
 					</f:facet>
-					<h:link outcome="/param/tipoTransaccion/view">
+					<h:link outcome="/tipoTransaccion/view">
 						<f:param name="id" value="#{_item.idTipoTransaccion}"/>
 						<h:outputText id="itemTipo" value="#{_item.tipo}"/>
 					</h:link>

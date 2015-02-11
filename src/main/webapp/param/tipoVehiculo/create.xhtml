@@ -22,10 +22,10 @@
 	<ui:define name="subheader">
 		<c:choose>
 			<c:when test='#{!empty tipoVehiculoBean.id}'>
-				Edit existing Tipo Vehiculo
+				Editar Tipo Vehiculo
 			</c:when>
 			<c:otherwise>
-				Create a new Tipo Vehiculo
+				Crear nuevo Tipo Vehiculo
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
@@ -39,16 +39,17 @@
 			<h:panelGrid columnClasses="label,component,required" columns="3">
 				<h:outputLabel for="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" value="Id Tipo Vehiculo:"/>
 				<h:panelGroup>
-					<h:inputText id="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" required="true" value="#{tipoVehiculoBean.tipoVehiculo.idTipoVehiculo}"/>
+					<h:inputText id="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" required="true" value="#{tipoVehiculoBean.tipoVehiculo.idTipoVehiculo}" style=" width : 300px;"/>
 					<h:message for="tipoVehiculoBeanTipoVehiculoIdTipoVehiculo" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="tipoVehiculoBeanTipoVehiculoNombre" value="Nombre:"/>
 				<h:panelGroup>
-					<h:inputText id="tipoVehiculoBeanTipoVehiculoNombre" maxLength="20" required="true" value="#{tipoVehiculoBean.tipoVehiculo.nombre}"/>
+					<h:inputText id="tipoVehiculoBeanTipoVehiculoNombre" maxLength="20" required="true" value="#{tipoVehiculoBean.tipoVehiculo.nombre}" style=" width : 300px;"/>
 					<h:message for="tipoVehiculoBeanTipoVehiculoNombre" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
+			<!--
 				<h:outputLabel for="tipoVehiculoBeanTipoVehiculoFlagEstado" value="Flag Estado:"/>
 				<h:panelGroup>
 					<h:inputText id="tipoVehiculoBeanTipoVehiculoFlagEstado" maxLength="2" value="#{tipoVehiculoBean.tipoVehiculo.flagEstado}"/>
@@ -105,7 +106,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculo/view">
+							<h:link outcome="/vehiculo/view">
 								<f:param name="id" value="#{_item.idVehiculo}"/>
 								<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
 							</h:link>
@@ -118,7 +119,7 @@
 							<f:facet name="header">
 								<h:outputText value="Placa"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculo/view">
+							<h:link outcome="/vehiculo/view">
 								<f:param name="id" value="#{_item.idVehiculo}"/>
 								<h:outputText id="itemPlaca" value="#{_item.placa}"/>
 							</h:link>
@@ -131,7 +132,7 @@
 							<f:facet name="header">
 								<h:outputText value="Modelo"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculo/view">
+							<h:link outcome="/vehiculo/view">
 								<f:param name="id" value="#{_item.idVehiculo}"/>
 								<h:outputText id="itemModelo" value="#{_item.modelo}"/>
 							</h:link>
@@ -144,7 +145,7 @@
 							<f:facet name="header">
 								<h:outputText value="Marca"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculo/view">
+							<h:link outcome="/vehiculo/view">
 								<f:param name="id" value="#{_item.idVehiculo}"/>
 								<h:outputText id="itemMarca" value="#{_item.marca}"/>
 							</h:link>
@@ -157,7 +158,7 @@
 							<f:facet name="header">
 								<h:outputText value="Numero Motor"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculo/view">
+							<h:link outcome="/vehiculo/view">
 								<f:param name="id" value="#{_item.idVehiculo}"/>
 								<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
 							</h:link>
@@ -176,20 +177,21 @@
 						</h:column>
 					</h:dataTable>
 				</h:panelGroup>
+				-->
 				<h:outputText/>
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{tipoVehiculoBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{tipoVehiculoBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty tipoVehiculoBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{tipoVehiculoBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{tipoVehiculoBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{tipoVehiculoBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

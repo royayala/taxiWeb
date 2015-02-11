@@ -16,16 +16,16 @@
 	<ui:param name="pageTitle" value="Create Tipo Transaccion"/>
 
 	<ui:define name="header">
-		Tipo Transaccion
+		Tipo de Transaccion
 	</ui:define>
 
 	<ui:define name="subheader">
 		<c:choose>
 			<c:when test='#{!empty tipoTransaccionBean.id}'>
-				Edit existing Tipo Transaccion
+				Editar Tipo de Transaccion
 			</c:when>
 			<c:otherwise>
-				Create a new Tipo Transaccion
+				Crear nuevo Tipo de Transaccion
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
@@ -126,7 +126,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Transaccion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
 							</h:link>
@@ -139,7 +139,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Transaccion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -156,7 +156,7 @@
 							<f:facet name="header">
 								<h:outputText value="Monto Total"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
 							</h:link>
@@ -169,7 +169,7 @@
 							<f:facet name="header">
 								<h:outputText value="Descripcion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 							</h:link>

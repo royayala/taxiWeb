@@ -19,7 +19,7 @@
 	</ui:define>
 
 	<ui:define name="subheader">
-		Search Vehiculo Afiliacion entities
+		Buscar Afiliacion
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -32,31 +32,32 @@
 					<h:panelGrid columnClasses="label,component,required" columns="3">
 						<h:outputLabel for="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" value="Id Vehiculo Afiliacion:"/>
 						<h:panelGroup>
-							<h:inputText id="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" value="#{vehiculoAfiliacionBean.example.idVehiculoAfiliacion}"/>
+							<h:inputText id="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" value="#{vehiculoAfiliacionBean.example.idVehiculoAfiliacion}" style="width : 200px;"/>
 							<h:message for="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
 						<h:outputLabel for="vehiculoAfiliacionBeanExampleCompania" value="Compania:"/>
 						<h:panelGroup>
-							<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoAfiliacionBeanExampleCompania" value="#{vehiculoAfiliacionBean.example.compania}">
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoAfiliacionBeanExampleCompania" value="#{vehiculoAfiliacionBean.example.compania}" style="width : 210px;">
 								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+								<f:selectItems itemLabel="#{forgeview:display(_item.nombreLargo)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
 							</h:selectOneMenu>
 							<h:message for="vehiculoAfiliacionBeanExampleCompania" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
 						<h:outputLabel for="vehiculoAfiliacionBeanExamplePersona" value="Persona:"/>
 						<h:panelGroup>
-							<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoAfiliacionBeanExamplePersona" value="#{vehiculoAfiliacionBean.example.persona}">
+							<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoAfiliacionBeanExamplePersona" value="#{vehiculoAfiliacionBean.example.persona}" style="width : 210px;">
 								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
+								<f:selectItems itemLabel="#{forgeview:display(_item.nombre)} #{forgeview:display(_item.apellidoPaterno)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
 							</h:selectOneMenu>
 							<h:message for="vehiculoAfiliacionBeanExamplePersona" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					<!-- 
 						<h:outputLabel for="vehiculoAfiliacionBeanExampleVehiculo" value="Vehiculo:"/>
 						<h:panelGroup>
-							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoAfiliacionBeanExampleVehiculo" value="#{vehiculoAfiliacionBean.example.vehiculo}">
+							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoAfiliacionBeanExampleVehiculo" value="#{vehiculoAfiliacionBean.example.vehiculo}" style="width : 210px;">
 								<f:selectItem/>
 								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
 							</h:selectOneMenu>
@@ -69,10 +70,11 @@
 							<h:message for="vehiculoAfiliacionBeanExampleDescripcion" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					-->	
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{vehiculoAfiliacionBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{vehiculoAfiliacionBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{vehiculoAfiliacionBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Adicionar" action='#{vehiculoAfiliacionBean.create}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>

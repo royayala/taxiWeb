@@ -30,12 +30,12 @@
 			<h:outputText id="vehiculoBeanVehiculoIdVehiculo" value="#{vehiculoBean.vehiculo.idVehiculo}"/>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoBeanVehiculoCompania" value="Compania:"/>
-			<h:link id="vehiculoBeanVehiculoCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoBean.vehiculo.compania}" value="#{vehiculoBean.vehiculo.compania}">
+			<h:link id="vehiculoBeanVehiculoCompania" outcome="/compania/view" rendered="#{!empty vehiculoBean.vehiculo.compania}" value="#{vehiculoBean.vehiculo.compania}">
 				<f:param name="id" value="#{vehiculoBean.vehiculo.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoBeanVehiculoTipoVehiculo" value="Tipo Vehiculo:"/>
-			<h:link id="vehiculoBeanVehiculoTipoVehiculo" outcome="/param/tipoVehiculo/view" rendered="#{!empty vehiculoBean.vehiculo.tipoVehiculo}" value="#{vehiculoBean.vehiculo.tipoVehiculo}">
+			<h:link id="vehiculoBeanVehiculoTipoVehiculo" outcome="/tipoVehiculo/view" rendered="#{!empty vehiculoBean.vehiculo.tipoVehiculo}" value="#{vehiculoBean.vehiculo.tipoVehiculo}">
 				<f:param name="id" value="#{vehiculoBean.vehiculo.tipoVehiculo.idTipoVehiculo}"/>
 			</h:link>
 			<h:outputText/>
@@ -99,7 +99,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Vehiculo Persona"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoPersona/view">
+					<h:link outcome="/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 						<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
 					</h:link>
@@ -108,7 +108,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Inicio"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoPersona/view">
+					<h:link outcome="/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 						<h:outputText id="itemFechaInicio" value="#{_item.fechaInicio}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -123,7 +123,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Carrera"/>
 					</f:facet>
-					<h:link outcome="/param/carrera/view">
+					<h:link outcome="/carrera/view">
 						<f:param name="id" value="#{_item.idCarrera}"/>
 						<h:outputText id="itemIdCarrera" value="#{_item.idCarrera}"/>
 					</h:link>
@@ -132,7 +132,7 @@
 					<f:facet name="header">
 						<h:outputText value="Origen"/>
 					</f:facet>
-					<h:link outcome="/param/carrera/view">
+					<h:link outcome="/carrera/view">
 						<f:param name="id" value="#{_item.idCarrera}"/>
 						<h:outputText id="itemOrigen" value="#{_item.origen}"/>
 					</h:link>
@@ -141,7 +141,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha"/>
 					</f:facet>
-					<h:link outcome="/param/carrera/view">
+					<h:link outcome="/carrera/view">
 						<f:param name="id" value="#{_item.idCarrera}"/>
 						<h:outputText id="itemFecha" value="#{_item.fecha}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -156,7 +156,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Vehiculo Parqueo"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoParqueo/view">
+					<h:link outcome="/vehiculoParqueo/view">
 						<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 						<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 					</h:link>
@@ -165,7 +165,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Ingreso"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoParqueo/view">
+					<h:link outcome="/vehiculoParqueo/view">
 						<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 						<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -180,7 +180,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Det Persona Servicio"/>
 					</f:facet>
-					<h:link outcome="/param/detallaPersonaServicio/view">
+					<h:link outcome="/detallaPersonaServicio/view">
 						<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 						<h:outputText id="itemIdDetPersonaServicio" value="#{_item.idDetPersonaServicio}"/>
 					</h:link>
@@ -189,7 +189,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Det Persona Servicio"/>
 					</f:facet>
-					<h:link outcome="/param/detallaPersonaServicio/view">
+					<h:link outcome="/detallaPersonaServicio/view">
 						<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 						<h:outputText id="itemFechaDetPersonaServicio" value="#{_item.fechaDetPersonaServicio}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -200,7 +200,7 @@
 					<f:facet name="header">
 						<h:outputText value="Hora Inicio"/>
 					</f:facet>
-					<h:link outcome="/param/detallaPersonaServicio/view">
+					<h:link outcome="/detallaPersonaServicio/view">
 						<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 						<h:outputText id="itemHoraInicio" value="#{_item.horaInicio}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -215,7 +215,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
 					</h:link>
@@ -224,7 +224,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Transaccion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -235,7 +235,7 @@
 					<f:facet name="header">
 						<h:outputText value="Monto Total"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
 					</h:link>
@@ -244,7 +244,7 @@
 					<f:facet name="header">
 						<h:outputText value="Descripcion"/>
 					</f:facet>
-					<h:link outcome="/param/transaccion/view">
+					<h:link outcome="/transaccion/view">
 						<f:param name="id" value="#{_item.idTransaccion}"/>
 						<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 					</h:link>
@@ -257,7 +257,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Vehiculo Afiliacion"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
+					<h:link outcome="/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 						<h:outputText id="itemIdVehiculoAfiliacion" value="#{_item.idVehiculoAfiliacion}"/>
 					</h:link>
@@ -266,7 +266,7 @@
 					<f:facet name="header">
 						<h:outputText value="Fecha Afiliacion"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
+					<h:link outcome="/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 						<h:outputText id="itemFechaAfiliacion" value="#{_item.fechaAfiliacion}">
 							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -277,7 +277,7 @@
 					<f:facet name="header">
 						<h:outputText value="Monto"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
+					<h:link outcome="/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 						<h:outputText id="itemMonto" value="#{_item.monto}"/>
 					</h:link>

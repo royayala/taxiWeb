@@ -41,6 +41,7 @@
 							<h:message for="tipoVehiculoBeanExampleNombre" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					<!-- 
 						<h:outputLabel for="tipoVehiculoBeanExampleFlagEstado" value="Flag Estado:"/>
 						<h:panelGroup>
 							<h:inputText id="tipoVehiculoBeanExampleFlagEstado" maxLength="2" value="#{tipoVehiculoBean.example.flagEstado}"/>
@@ -59,10 +60,11 @@
 							<h:message for="tipoVehiculoBeanExampleUsuarioMod" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					-->
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{tipoVehiculoBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{tipoVehiculoBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{tipoVehiculoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Adicionar" action='#{tipoVehiculoBean.create}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
@@ -70,9 +72,9 @@
 			<h:dataTable id="tipoVehiculoBeanPageItems" styleClass="data-table" value="#{tipoVehiculoBean.pageItems}" var="_item">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ID"/>
+						<h:outputText value="ID Vehiculo"/>
 					</f:facet>
-					<h:link outcome="/param/tipoVehiculo/view">
+					<h:link outcome="/tipoVehiculo/view">
 						<f:param name="id" value="#{_item.idTipoVehiculo}"/>
 						<h:outputText id="itemIdTipoVehiculo" value="#{_item.idTipoVehiculo}"/>
 					</h:link>
@@ -81,7 +83,7 @@
 					<f:facet name="header">
 						<h:outputText value="Nombre"/>
 					</f:facet>
-					<h:link outcome="/param/tipoVehiculo/view">
+					<h:link outcome="/tipoVehiculo/view">
 						<f:param name="id" value="#{_item.idTipoVehiculo}"/>
 						<h:outputText id="itemNombre" value="#{_item.nombre}"/>
 					</h:link>

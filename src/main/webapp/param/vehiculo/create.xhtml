@@ -22,10 +22,10 @@
 	<ui:define name="subheader">
 		<c:choose>
 			<c:when test='#{!empty vehiculoBean.id}'>
-				Edit existing Vehiculo
+				Editar Vehiculo
 			</c:when>
 			<c:otherwise>
-				Create a new Vehiculo
+				Crear nuevo Vehiculo
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
@@ -39,82 +39,83 @@
 			<h:panelGrid columnClasses="label,component,required" columns="3">
 				<h:outputLabel for="vehiculoBeanVehiculoIdVehiculo" value="Id Vehiculo:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoIdVehiculo" required="true" value="#{vehiculoBean.vehiculo.idVehiculo}"/>
+					<h:inputText id="vehiculoBeanVehiculoIdVehiculo" required="true" value="#{vehiculoBean.vehiculo.idVehiculo}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoIdVehiculo" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoCompania" value="Compania:"/>
 				<h:panelGroup>
-					<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoBeanVehiculoCompania" value="#{vehiculoBean.vehiculo.compania}">
+					<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoBeanVehiculoCompania" value="#{vehiculoBean.vehiculo.compania}" style=" width : 380px;">
 						<f:selectItem/>
-						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+						<f:selectItems itemLabel="#{forgeview:display(_item.nombreLargo)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
 					</h:selectOneMenu>
 					<h:message for="vehiculoBeanVehiculoCompania" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText/>
 				<h:outputLabel for="vehiculoBeanVehiculoTipoVehiculo" value="Tipo Vehiculo:"/>
 				<h:panelGroup>
-					<h:selectOneMenu converter="#{tipoVehiculoBean.converter}" id="vehiculoBeanVehiculoTipoVehiculo" value="#{vehiculoBean.vehiculo.tipoVehiculo}">
+					<h:selectOneMenu converter="#{tipoVehiculoBean.converter}" id="vehiculoBeanVehiculoTipoVehiculo" value="#{vehiculoBean.vehiculo.tipoVehiculo}" style=" width : 380px;">
 						<f:selectItem/>
-						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{tipoVehiculoBean.all}" var="_item"/>
+						<f:selectItems itemLabel="#{forgeview:display(_item.nombre)}" itemValue="#{_item}" value="#{tipoVehiculoBean.all}" var="_item"/>
 					</h:selectOneMenu>
 					<h:message for="vehiculoBeanVehiculoTipoVehiculo" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText/>
 				<h:outputLabel for="vehiculoBeanVehiculoPlaca" value="Placa:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoPlaca" maxLength="10" required="true" value="#{vehiculoBean.vehiculo.placa}"/>
+					<h:inputText id="vehiculoBeanVehiculoPlaca" maxLength="10" required="true" value="#{vehiculoBean.vehiculo.placa}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoPlaca" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoModelo" value="Modelo:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoModelo" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.modelo}"/>
+					<h:inputText id="vehiculoBeanVehiculoModelo" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.modelo}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoModelo" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoMarca" value="Marca:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoMarca" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.marca}"/>
+					<h:inputText id="vehiculoBeanVehiculoMarca" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.marca}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoMarca" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoNumeroMotor" value="Numero Motor:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoNumeroMotor" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.numeroMotor}"/>
+					<h:inputText id="vehiculoBeanVehiculoNumeroMotor" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.numeroMotor}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoNumeroMotor" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoNumeroChasis" value="Numero Chasis:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoNumeroChasis" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.numeroChasis}"/>
+					<h:inputText id="vehiculoBeanVehiculoNumeroChasis" maxLength="20" required="true" value="#{vehiculoBean.vehiculo.numeroChasis}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoNumeroChasis" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoNumeroMovilInterno" value="Numero Movil Interno:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoNumeroMovilInterno" required="true" value="#{vehiculoBean.vehiculo.numeroMovilInterno}"/>
+					<h:inputText id="vehiculoBeanVehiculoNumeroMovilInterno" required="true" value="#{vehiculoBean.vehiculo.numeroMovilInterno}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoNumeroMovilInterno" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="vehiculoBeanVehiculoDescripcion" value="Descripcion:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoDescripcion" maxLength="200" value="#{vehiculoBean.vehiculo.descripcion}"/>
+					<h:inputText id="vehiculoBeanVehiculoDescripcion" maxLength="200" value="#{vehiculoBean.vehiculo.descripcion}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoDescripcion" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText/>
 				<h:outputLabel for="vehiculoBeanVehiculoCapacidadPeso" value="Capacidad Peso:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoCapacidadPeso" value="#{vehiculoBean.vehiculo.capacidadPeso}"/>
+					<h:inputText id="vehiculoBeanVehiculoCapacidadPeso" value="#{vehiculoBean.vehiculo.capacidadPeso}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoCapacidadPeso" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText/>
 				<h:outputLabel for="vehiculoBeanVehiculoTamano" value="Tamano:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoTamano" value="#{vehiculoBean.vehiculo.tamano}"/>
+					<h:inputText id="vehiculoBeanVehiculoTamano" value="#{vehiculoBean.vehiculo.tamano}" style=" width : 350px;"/>
 					<h:message for="vehiculoBeanVehiculoTamano" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText/>
+			<!-- 
 				<h:outputLabel for="vehiculoBeanVehiculoFlagEstado" value="Flag Estado:"/>
 				<h:panelGroup>
 					<h:inputText id="vehiculoBeanVehiculoFlagEstado" maxLength="2" value="#{vehiculoBean.vehiculo.flagEstado}"/>
@@ -171,7 +172,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Persona"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoPersona/view">
+							<h:link outcome="/vehiculoPersona/view">
 								<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 								<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
 							</h:link>
@@ -184,7 +185,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Inicio"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoPersona/view">
+							<h:link outcome="/vehiculoPersona/view">
 								<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 								<h:outputText id="itemFechaInicio" value="#{_item.fechaInicio}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -216,7 +217,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Carrera"/>
 							</f:facet>
-							<h:link outcome="/param/carrera/view">
+							<h:link outcome="/carrera/view">
 								<f:param name="id" value="#{_item.idCarrera}"/>
 								<h:outputText id="itemIdCarrera" value="#{_item.idCarrera}"/>
 							</h:link>
@@ -229,7 +230,7 @@
 							<f:facet name="header">
 								<h:outputText value="Origen"/>
 							</f:facet>
-							<h:link outcome="/param/carrera/view">
+							<h:link outcome="/carrera/view">
 								<f:param name="id" value="#{_item.idCarrera}"/>
 								<h:outputText id="itemOrigen" value="#{_item.origen}"/>
 							</h:link>
@@ -242,7 +243,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha"/>
 							</f:facet>
-							<h:link outcome="/param/carrera/view">
+							<h:link outcome="/carrera/view">
 								<f:param name="id" value="#{_item.idCarrera}"/>
 								<h:outputText id="itemFecha" value="#{_item.fecha}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -274,7 +275,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Parqueo"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 							</h:link>
@@ -287,7 +288,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Ingreso"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -319,7 +320,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Det Persona Servicio"/>
 							</f:facet>
-							<h:link outcome="/param/detallaPersonaServicio/view">
+							<h:link outcome="/detallaPersonaServicio/view">
 								<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 								<h:outputText id="itemIdDetPersonaServicio" value="#{_item.idDetPersonaServicio}"/>
 							</h:link>
@@ -332,7 +333,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Det Persona Servicio"/>
 							</f:facet>
-							<h:link outcome="/param/detallaPersonaServicio/view">
+							<h:link outcome="/detallaPersonaServicio/view">
 								<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 								<h:outputText id="itemFechaDetPersonaServicio" value="#{_item.fechaDetPersonaServicio}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -349,7 +350,7 @@
 							<f:facet name="header">
 								<h:outputText value="Hora Inicio"/>
 							</f:facet>
-							<h:link outcome="/param/detallaPersonaServicio/view">
+							<h:link outcome="/detallaPersonaServicio/view">
 								<f:param name="id" value="#{_item.idDetPersonaServicio}"/>
 								<h:outputText id="itemHoraInicio" value="#{_item.horaInicio}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -381,7 +382,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Transaccion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemIdTransaccion" value="#{_item.idTransaccion}"/>
 							</h:link>
@@ -394,7 +395,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Transaccion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemFechaTransaccion" value="#{_item.fechaTransaccion}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -411,7 +412,7 @@
 							<f:facet name="header">
 								<h:outputText value="Monto Total"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemMontoTotal" value="#{_item.montoTotal}"/>
 							</h:link>
@@ -424,7 +425,7 @@
 							<f:facet name="header">
 								<h:outputText value="Descripcion"/>
 							</f:facet>
-							<h:link outcome="/param/transaccion/view">
+							<h:link outcome="/transaccion/view">
 								<f:param name="id" value="#{_item.idTransaccion}"/>
 								<h:outputText id="itemDescripcion" value="#{_item.descripcion}"/>
 							</h:link>
@@ -452,7 +453,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Afiliacion"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoAfiliacion/view">
+							<h:link outcome="/vehiculoAfiliacion/view">
 								<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 								<h:outputText id="itemIdVehiculoAfiliacion" value="#{_item.idVehiculoAfiliacion}"/>
 							</h:link>
@@ -465,7 +466,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Afiliacion"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoAfiliacion/view">
+							<h:link outcome="/vehiculoAfiliacion/view">
 								<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 								<h:outputText id="itemFechaAfiliacion" value="#{_item.fechaAfiliacion}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -482,7 +483,7 @@
 							<f:facet name="header">
 								<h:outputText value="Monto"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoAfiliacion/view">
+							<h:link outcome="/vehiculoAfiliacion/view">
 								<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 								<h:outputText id="itemMonto" value="#{_item.monto}"/>
 							</h:link>
@@ -502,19 +503,20 @@
 					</h:dataTable>
 				</h:panelGroup>
 				<h:outputText/>
+			-->
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{vehiculoBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{vehiculoBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty vehiculoBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{vehiculoBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{vehiculoBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{vehiculoBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -15,14 +15,12 @@
 	<ui:param name="pageTitle" value="Search Vehiculo Afiliacion entities"/>
 
 	<ui:define name="header">
-		Vehiculo Afiliacion
+		Afiliacion
 	</ui:define>
 
 	<ui:define name="subheader">
-		Search Vehiculo Afiliacion entities
+		
 	</ui:define>
-
-	<ui:define name="footer"/>
 
 	<ui:define name="main">
 		<h:form id="search">
@@ -30,81 +28,59 @@
 				<h:panelGroup styleClass="search">
 
 					<h:panelGrid columnClasses="label,component,required" columns="3">
-						<h:outputLabel for="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" value="Id Vehiculo Afiliacion:"/>
+						<h:outputLabel for="personaBeanExampleNombre" value="Nombre:"/>
 						<h:panelGroup>
-							<h:inputText id="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" value="#{vehiculoAfiliacionBean.example.idVehiculoAfiliacion}"/>
-							<h:message for="vehiculoAfiliacionBeanExampleIdVehiculoAfiliacion" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						<h:outputLabel for="vehiculoAfiliacionBeanExampleCompania" value="Compania:"/>
-						<h:panelGroup>
-							<h:selectOneMenu converter="#{companiaBean.converter}" id="vehiculoAfiliacionBeanExampleCompania" value="#{vehiculoAfiliacionBean.example.compania}">
-								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
-							</h:selectOneMenu>
-							<h:message for="vehiculoAfiliacionBeanExampleCompania" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						<h:outputLabel for="vehiculoAfiliacionBeanExamplePersona" value="Persona:"/>
-						<h:panelGroup>
-							<h:selectOneMenu converter="#{personaBean.converter}" id="vehiculoAfiliacionBeanExamplePersona" value="#{vehiculoAfiliacionBean.example.persona}">
-								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{personaBean.all}" var="_item"/>
-							</h:selectOneMenu>
-							<h:message for="vehiculoAfiliacionBeanExamplePersona" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						<h:outputLabel for="vehiculoAfiliacionBeanExampleVehiculo" value="Vehiculo:"/>
-						<h:panelGroup>
-							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoAfiliacionBeanExampleVehiculo" value="#{vehiculoAfiliacionBean.example.vehiculo}">
-								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
-							</h:selectOneMenu>
-							<h:message for="vehiculoAfiliacionBeanExampleVehiculo" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						<h:outputLabel for="vehiculoAfiliacionBeanExampleDescripcion" value="Descripcion:"/>
-						<h:panelGroup>
-							<h:inputText id="vehiculoAfiliacionBeanExampleDescripcion" value="#{vehiculoAfiliacionBean.example.descripcion}"/>
-							<h:message for="vehiculoAfiliacionBeanExampleDescripcion" styleClass="error"/>
+							<h:inputText id="personaBeanExampleNombre" maxLength="20" value="#{personaBean.example.nombre}"/>
+							<h:message for="personaBeanExampleNombre" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Search" action='#{vehiculoAfiliacionBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Create New" action='#{vehiculoAfiliacionBean.create}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Buscar" action='#{personaBean.search}' styleClass="btn btn-primary"/>
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
 			
-			<h:dataTable id="vehiculoAfiliacionBeanPageItems" styleClass="data-table" value="#{vehiculoAfiliacionBean.pageItems}" var="_item">
+			
+			<h:dataTable id="personaBeanPageItems" styleClass="data-table" value="#{personaBean.pageItems}" var="_item">
+				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Id Vehiculo Afiliacion"/>
+						<h:outputText value="Nombre"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
-						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
-						<h:outputText id="itemIdVehiculoAfiliacion" value="#{_item.idVehiculoAfiliacion}"/>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemNombre" value="#{_item.nombre} #{_item.apellidoPaterno} #{_item.apellidoMaterno}"/>
 					</h:link>
 				</h:column>
+				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Fecha Afiliacion"/>
+						<h:outputText value="Telefonos"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
-						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
-						<h:outputText id="itemFechaAfiliacion" value="#{_item.fechaAfiliacion}">
-							<f:convertDateTime type="both"/>
-						</h:outputText>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemTelefono1" value="#{_item.telefono1} ~ #{_item.telefono2}"/>
 					</h:link>
 				</h:column>
+				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Monto"/>
+						<h:outputText value="Direccion"/>
 					</f:facet>
-					<h:link outcome="/param/vehiculoAfiliacion/view">
-						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
-						<h:outputText id="itemMonto" value="#{_item.monto}"/>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
+					</h:link>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="C.I"/>
+					</f:facet>
+					<h:link outcome="/persona/view">
+						<f:param name="id" value="#{_item.idPersona}"/>
+						<h:outputText id="itemDocumentoIdentidad" value="#{_item.documentoIdentidad}"/>
 					</h:link>
 				</h:column>
 			</h:dataTable>
@@ -114,5 +90,84 @@
 		</h:form>
 			
 	</ui:define>
+	
+	<ui:define name="main2">
+		<h:form id="search2">
+			<f:validateBean disabled="true">
+				<h:panelGroup styleClass="search">
+
+					<h:panelGrid columnClasses="label,component,required" columns="3">
+						<h:outputLabel for="vehiculoBeanExamplePlaca" value="Placa:"/>
+						<h:panelGroup>
+							<h:inputText id="vehiculoBeanExamplePlaca" maxLength="10" value="#{vehiculoBean.example.placa}"/>
+							<h:message for="vehiculoBeanExamplePlaca" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+					</h:panelGrid>
+						<h:panelGroup styleClass="buttons">
+						<h:commandLink value="Search" action='#{vehiculoBean.search}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Create New" action='#{vehiculoBean.create}' styleClass="btn btn-primary"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</f:validateBean>
+			
+			<h:dataTable id="vehiculoBeanPageItems" styleClass="data-table" value="#{vehiculoBean.pageItems}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Vehiculo"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemPlaca" value="#{_item.placa}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemModelo" value="#{_item.modelo}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Marca"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemMarca" value="#{_item.marca}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Numero Motor"/>
+					</f:facet>
+					<h:link outcome="/vehiculo/view">
+						<f:param name="id" value="#{_item.idVehiculo}"/>
+						<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<ui:include src="/resources/scaffold/paginator.xhtml">
+				<ui:param name="paginatorBean" value='#{vehiculoBean}'/>
+			</ui:include>
+		</h:form>
+	</ui:define>
+
+
+
+	<ui:define name="footer"/>
+
+	
 
 </ui:composition>

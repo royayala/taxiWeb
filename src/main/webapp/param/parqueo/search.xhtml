@@ -19,7 +19,7 @@
 	</ui:define>
 
 	<ui:define name="subheader">
-		Search Parqueo entities
+		Buscar Parqueos
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -36,6 +36,7 @@
 							<h:message for="parqueoBeanExampleIdParqueo" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					<!--
 						<h:outputLabel for="parqueoBeanExampleCompania" value="Compania:"/>
 						<h:panelGroup>
 							<h:selectOneMenu converter="#{companiaBean.converter}" id="parqueoBeanExampleCompania" value="#{parqueoBean.example.compania}">
@@ -45,6 +46,7 @@
 							<h:message for="parqueoBeanExampleCompania" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
+					-->	
 						<h:outputLabel for="parqueoBeanExampleDireccion" value="Direccion:"/>
 						<h:panelGroup>
 							<h:inputText id="parqueoBeanExampleDireccion" maxLength="200" value="#{parqueoBean.example.direccion}"/>
@@ -76,7 +78,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Parqueo"/>
 					</f:facet>
-					<h:link outcome="/param/parqueo/view">
+					<h:link outcome="/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemIdParqueo" value="#{_item.idParqueo}"/>
 					</h:link>
@@ -85,7 +87,7 @@
 					<f:facet name="header">
 						<h:outputText value="Direccion"/>
 					</f:facet>
-					<h:link outcome="/param/parqueo/view">
+					<h:link outcome="/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
 					</h:link>
@@ -94,7 +96,7 @@
 					<f:facet name="header">
 						<h:outputText value="Id Ciudad"/>
 					</f:facet>
-					<h:link outcome="/param/parqueo/view">
+					<h:link outcome="/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemIdCiudad" value="#{_item.idCiudad}"/>
 					</h:link>
@@ -103,7 +105,7 @@
 					<f:facet name="header">
 						<h:outputText value="Latitud"/>
 					</f:facet>
-					<h:link outcome="/param/parqueo/view">
+					<h:link outcome="/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemLatitud" value="#{_item.latitud}"/>
 					</h:link>
@@ -112,7 +114,7 @@
 					<f:facet name="header">
 						<h:outputText value="Longitud"/>
 					</f:facet>
-					<h:link outcome="/param/parqueo/view">
+					<h:link outcome="/parqueo/view">
 						<f:param name="id" value="#{_item.idParqueo}"/>
 						<h:outputText id="itemLongitud" value="#{_item.longitud}"/>
 					</h:link>
