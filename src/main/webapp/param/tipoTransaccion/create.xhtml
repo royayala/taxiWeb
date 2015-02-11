@@ -192,16 +192,16 @@
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{tipoTransaccionBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{tipoTransaccionBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty tipoTransaccionBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{tipoTransaccionBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{tipoTransaccionBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{tipoTransaccionBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -29,7 +29,7 @@
 			<h:outputText id="usuarioBeanUsuarioIdUsuario" value="#{usuarioBean.usuario.idUsuario}"/>
 			<h:outputText/>
 			<h:outputLabel for="usuarioBeanUsuarioCompania" value="Compania:"/>
-			<h:link id="usuarioBeanUsuarioCompania" outcome="/param/compania/view" rendered="#{!empty usuarioBean.usuario.compania}" value="#{usuarioBean.usuario.compania}">
+			<h:link id="usuarioBeanUsuarioCompania" outcome="/param/compania/view" rendered="#{!empty usuarioBean.usuario.compania}" value="#{usuarioBean.usuario.compania.nombreLargo}">
 				<f:param name="id" value="#{usuarioBean.usuario.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
@@ -90,9 +90,9 @@
 		</h:panelGrid>
 
 		<div class="buttons">
-			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 
-			<h:link value="Edit" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
-			<h:link value="Create New" outcome="create" styleClass="btn btn-primary"/>
+			<h:link value="Volver" outcome="search" styleClass="btn btn-primary"/> 
+			<h:link value="Editar" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
+			<h:link value="Crear Nuevo" outcome="create" styleClass="btn btn-primary"/>
 		</div>
 	</ui:define>
 

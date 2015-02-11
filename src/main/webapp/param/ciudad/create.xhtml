@@ -109,16 +109,16 @@
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{ciudadBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{ciudadBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty ciudadBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{ciudadBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{ciudadBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{ciudadBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

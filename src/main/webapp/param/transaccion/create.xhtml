@@ -171,16 +171,16 @@
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{transaccionBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{transaccionBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty transaccionBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{transaccionBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{transaccionBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{transaccionBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

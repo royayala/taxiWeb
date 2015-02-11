@@ -39,7 +39,7 @@
 			<h:panelGrid columnClasses="label,component,required" columns="3">
 				<h:outputLabel for="usuarioBeanUsuarioIdUsuario" value="Id Usuario:"/>
 				<h:panelGroup>
-					<h:inputText id="usuarioBeanUsuarioIdUsuario" required="true" value="#{usuarioBean.usuario.idUsuario}"/>
+					<h:inputText id="usuarioBeanUsuarioIdUsuario" required="true" value="#{usuarioBean.usuario.idUsuario}" disabled="true"/>
 					<h:message for="usuarioBeanUsuarioIdUsuario" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
@@ -47,7 +47,7 @@
 				<h:panelGroup>
 					<h:selectOneMenu converter="#{companiaBean.converter}" id="usuarioBeanUsuarioCompania" value="#{usuarioBean.usuario.compania}">
 						<f:selectItem/>
-						<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+						<f:selectItems itemLabel="#{forgeview:display(_item.nombreLargo)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
 					</h:selectOneMenu>
 					<h:message for="usuarioBeanUsuarioCompania" styleClass="error"/>
 				</h:panelGroup>
@@ -157,16 +157,16 @@
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Save" action='#{usuarioBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Guardar" action='#{usuarioBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty usuarioBean.id}'>
-						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{usuarioBean.id}'/>
 						</h:link>
-						<h:commandLink value="Delete" action='#{usuarioBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Eliminar" action='#{usuarioBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

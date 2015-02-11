@@ -82,14 +82,16 @@ public class UsuarioBean implements Serializable
    public String create()
    {
 
-      this.conversation.begin();
+	      System.out.println("Entro por Create()");
+	   this.conversation.begin();
       this.conversation.setTimeout(1800000L);
       return "create?faces-redirect=true";
+
    }
 
    public void retrieve()
    {
-
+	      System.out.println("Entro por Retrieve()");
       if (FacesContext.getCurrentInstance().isPostback())
       {
          return;
@@ -113,7 +115,7 @@ public class UsuarioBean implements Serializable
 
    public Usuario findById(Integer id)
    {
-
+	      System.out.println("Entro por FindBy()");
       return this.entityManager.find(Usuario.class, id);
    }
 
@@ -123,6 +125,7 @@ public class UsuarioBean implements Serializable
 
    public String update()
    {
+	      System.out.println("Entro por Udpdate()");
       this.conversation.end();
 
       try
@@ -147,6 +150,7 @@ public class UsuarioBean implements Serializable
 
    public String delete()
    {
+	      System.out.println("Entro por Delete()");
       this.conversation.end();
 
       try
@@ -204,12 +208,14 @@ public class UsuarioBean implements Serializable
 
    public String search()
    {
+	      System.out.println("Entro por search()");
       this.page = 0;
       return null;
    }
 
    public void paginate()
    {
+	      System.out.println("Entro por paginate()");
 
       CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
 
@@ -235,6 +241,7 @@ public class UsuarioBean implements Serializable
 
    private Predicate[] getSearchPredicates(Root<Usuario> root)
    {
+	      System.out.println("Entro por getSearchPredicate()");
 
       CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
       List<Predicate> predicatesList = new ArrayList<Predicate>();
@@ -285,7 +292,7 @@ public class UsuarioBean implements Serializable
 
    public List<Usuario> getAll()
    {
-
+	      System.out.println("Entro por getAll()");
       CriteriaQuery<Usuario> criteria = this.entityManager
             .getCriteriaBuilder().createQuery(Usuario.class);
       return this.entityManager.createQuery(
@@ -297,7 +304,7 @@ public class UsuarioBean implements Serializable
 
    public Converter getConverter()
    {
-
+	      System.out.println("Entro por getConverter()");
       final UsuarioBean ejbProxy = this.sessionContext.getBusinessObject(UsuarioBean.class);
 
       return new Converter()
@@ -334,11 +341,13 @@ public class UsuarioBean implements Serializable
 
    public Usuario getAdd()
    {
+	      System.out.println("Entro por getAdd()");
       return this.add;
    }
 
    public Usuario getAdded()
    {
+	      System.out.println("Entro por getAdded()");
       Usuario added = this.add;
       this.add = new Usuario();
       return added;
