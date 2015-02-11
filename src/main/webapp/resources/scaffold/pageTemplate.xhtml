@@ -15,7 +15,6 @@
 	
 
 	<div class="container forgecontainer">
-		 <h:panelGrid id="panel" columns="1" border="0" cellpadding="0" cellspacing="2" rendered="#{request.userPrincipal.name!=null}">
 		<div id="navigation">
 			<h:link id="homeLink" outcome="/param/index.xhtml">
 				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 150px; width : 150px;"/>
@@ -23,19 +22,17 @@
 			<h:form>
 			<p:growl autoUpdate="true"/>
 			<p:panelMenu style="width:300px">
-        <p:submenu label="Parametros" rendered="#{request.isUserInRole('ADMIN')}">
+        <p:submenu label="Parametros">
         	<p:menuitem value="Tipo Vehiculo" outcome="/param/tipoVehiculo/search"/>
-            <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
-            <p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>
-            <p:menuitem value="Tipo Transaccion" outcome="/param/tipoTransaccion/search"/>
-            <p:menuitem value="Persona" outcome="/param/persona/search"/>
-            <p:menuitem value="Ciudad" outcome="/param/ciudad/search"/>
+        	<p:menuitem value="Tipo Transaccion" outcome="/param/tipoTransaccion/search"/>
+        	<p:menuitem value="Tipo Persona" outcome="/param/tipoPersona/search"/>
+        	<p:menuitem value="Ciudad" outcome="/param/ciudad/search"/>            
             <p:menuitem value="Departamento" outcome="/param/departamento/search"/>
             <p:menuitem value="Tarifa" outcome="/param/tarifa/search"/>
             <p:menuitem value="Servicio" outcome="/param/servicio/search"/>
             <p:menuitem value="Parqueo" outcome="/param/parqueo/search"/>
         </p:submenu>
-        <p:submenu label="Procesos" rendered="#{request.isUserInRole('USUARIO')}">
+        <p:submenu label="Procesos">
             <p:menuitem value="Persona" outcome="/param/persona/search"/>
             <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
             <p:submenu label="Asignacion">
@@ -68,7 +65,7 @@
 			</h:form>
 
 		</div>
-</h:panelGrid>
+
 		<div id="content">
 			<h1>
 				<ui:insert name="header" />
