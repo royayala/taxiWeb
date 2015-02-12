@@ -17,7 +17,7 @@
 	<div class="container forgecontainer">
 		<div id="navigation">
 			<h:link id="homeLink" outcome="/faces/index.xhtml">
-				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 150px; width : 150px;"/>
+				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 193px; width : 204px;"/>
 			</h:link>
 			<h:form>
 			<p:growl autoUpdate="true"/>
@@ -45,9 +45,8 @@
             <p:menuitem value="Vehiculo" outcome="/param/vehiculo/search"/>
             <p:submenu label="Asignacion">
             	<p:menuitem value="Persona Vehiculo" outcome="/param/vehiculoPersona/search"/>
-            	<p:menuitem value="Chofer Vehiculo" outcome="/param/vehiculoPersona/search"/>
             </p:submenu>
-            <p:menuitem value="Afiliacion" outcome="/param/vehiculoAfiliacion/search"/>
+            <p:menuitem value="Afiliacion" outcome="/procesos/afiliacion/search"/>
             <p:menuitem value="Persona Servicio" outcome="/param/personaServicio/search"/>
             <p:menuitem value="Carrera" outcome="/param/carrera/search"/>
            	<p:menuitem value="Transaccion" outcome="/param/transaccion/search"/>            
@@ -55,6 +54,7 @@
         <p:separator />
         <p:submenu label="Consultas" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO2')}">
             <p:menuitem value="Vehiculos Parqueo" outcome="/param/vehiculoParqueo/search"/>
+            <p:menuitem value="Vehiculos afiliados" outcome="/param/vehiculoAfiliacion/search"/>
             <p:menuitem value="Persona Vehiculo" outcome="/param/vehiculoPersona/search"/>
              <p:submenu label="Transaccion">
             	<p:menuitem value="Ingreso" outcome="/param/vehiculoPersona/search"/>
