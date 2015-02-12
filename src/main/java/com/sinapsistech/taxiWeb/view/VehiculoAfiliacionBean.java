@@ -2,6 +2,7 @@ package com.sinapsistech.taxiWeb.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
@@ -23,12 +25,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
+import com.sinapsistech.taxiWeb.model.Departamento;
 import com.sinapsistech.taxiWeb.model.VehiculoAfiliacion;
 import com.sinapsistech.taxiWeb.model.Compania;
 import com.sinapsistech.taxiWeb.model.Persona;
 import com.sinapsistech.taxiWeb.model.Transaccion;
 import com.sinapsistech.taxiWeb.model.Vehiculo;
+
 import java.util.Iterator;
 
 /**
@@ -48,6 +53,9 @@ public class VehiculoAfiliacionBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving VehiculoAfiliacion entities
@@ -127,17 +135,31 @@ public class VehiculoAfiliacionBean implements Serializable
 
    public String update()
    {
-      this.conversation.end();
+	   
+       System.out.println("Agarrando el contexto.");
+       String nombre = request.getUserPrincipal().getName();
+      
+	   this.conversation.end();
 
       try
       {
          if (this.id == null)
          {
+        	System.out.println("Entro por vehiculoAfiliacion nuevo");
+        	
+        	this.vehiculoAfiliacion.setFechaReg(new Date());
+        	this.vehiculoAfiliacion.setUsuarioReg(nombre);
+        	this.vehiculoAfiliacion.setFlagEstado("AC");
             this.entityManager.persist(this.vehiculoAfiliacion);
             return "search?faces-redirect=true";
          }
          else
          {
+        	System.out.println("Entro por vehiculoAfiliacion actualizar");
+        	
+        	this.vehiculoAfiliacion.setFechaMod(new Date());
+        	this.vehiculoAfiliacion.setUsuarioMod(nombre);
+        	this.vehiculoAfiliacion.setFlagEstado("AC");
             this.entityManager.merge(this.vehiculoAfiliacion);
             return "view?faces-redirect=true&id=" + this.vehiculoAfiliacion.getIdVehiculoAfiliacion();
          }
@@ -155,7 +177,7 @@ public class VehiculoAfiliacionBean implements Serializable
 
       try
       {
-         VehiculoAfiliacion deletableEntity = findById(getId());
+         /*VehiculoAfiliacion deletableEntity = findById(getId());
          Compania compania = deletableEntity.getCompania();
          compania.getVehiculoAfiliacions().remove(deletableEntity);
          deletableEntity.setCompania(null);
@@ -176,9 +198,17 @@ public class VehiculoAfiliacionBean implements Serializable
             iterTransaccions.remove();
             this.entityManager.merge(nextInTransaccions);
          }
+         
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true";*/
+    	  String nombre = request.getUserPrincipal().getName();
+    	  VehiculoAfiliacion deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
       }
       catch (Exception e)
       {

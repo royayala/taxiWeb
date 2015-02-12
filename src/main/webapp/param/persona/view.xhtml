@@ -19,7 +19,7 @@
 	</ui:define>
 
 	<ui:define name="subheader">
-		View existing Persona
+		Detalle de Persona
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -30,12 +30,12 @@
 			<h:outputText id="personaBeanPersonaIdPersona" value="#{personaBean.persona.idPersona}"/>
 			<h:outputText/>
 			<h:outputLabel for="personaBeanPersonaCompania" value="Compania:"/>
-			<h:link id="personaBeanPersonaCompania" outcome="/compania/view" rendered="#{!empty personaBean.persona.compania}" value="#{personaBean.persona.compania}">
+			<h:link id="personaBeanPersonaCompania" outcome="/compania/view" rendered="#{!empty personaBean.persona.compania}" value="#{personaBean.persona.compania.nombreLargo}">
 				<f:param name="id" value="#{personaBean.persona.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="personaBeanPersonaTipoPersona" value="Tipo Persona:"/>
-			<h:link id="personaBeanPersonaTipoPersona" outcome="/tipoPersona/view" rendered="#{!empty personaBean.persona.tipoPersona}" value="#{personaBean.persona.tipoPersona}">
+			<h:link id="personaBeanPersonaTipoPersona" outcome="/tipoPersona/view" rendered="#{!empty personaBean.persona.tipoPersona}" value="#{personaBean.persona.tipoPersona.nombre}">
 				<f:param name="id" value="#{personaBean.persona.tipoPersona.idTipoPersona}"/>
 			</h:link>
 			<h:outputText/>
@@ -95,7 +95,7 @@
 			<h:outputLabel for="personaBeanPersonaUsuarioBorrado" value="Usuario Borrado:"/>
 			<h:outputText id="personaBeanPersonaUsuarioBorrado" value="#{personaBean.persona.usuarioBorrado}"/>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdChofer" value="Vehiculo Personas For Id Chofer:"/>
+			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdChofer" value=" Id Chofer:"/>
 			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdChofer" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdChofer)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -104,6 +104,15 @@
 					<h:link outcome="/param/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 						<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Persona"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoPersona/view">
+						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
+						<h:outputText id="itemIdNombrePersonaC" value="#{_item.idVehiculoPersona.persona.nombre}"/>
 					</h:link>
 				</h:column>
 				<h:column>
@@ -119,7 +128,7 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdPersona" value="Vehiculo Personas For Id Persona:"/>
+			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdPersona" value=" Id Persona:"/>
 			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdPersona" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdPersona)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -128,6 +137,15 @@
 					<h:link outcome="/param/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
 						<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre Persona"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoPersona/view">
+						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
+						<h:outputText id="itemIdNombrePersona" value="#{_item.idVehiculoPersona.persona.nombre}"/>
 					</h:link>
 				</h:column>
 				<h:column>
@@ -236,7 +254,7 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoAfiliacions" value="Vehiculo Afiliacions:"/>
+			<h:outputLabel for="personaBeanPersonaVehiculoAfiliacions" value="Vehiculo Afiliaciones:"/>
 			<h:dataTable id="personaBeanPersonaVehiculoAfiliacions" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoAfiliacions)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -245,6 +263,15 @@
 					<h:link outcome="/param/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
 						<h:outputText id="itemIdVehiculoAfiliacion" value="#{_item.idVehiculoAfiliacion}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoAfiliacion/view">
+						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
+						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.idVehiculoAfiliacion.vehiculo.placa}"/>
 					</h:link>
 				</h:column>
 				<h:column>

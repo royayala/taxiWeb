@@ -2,6 +2,7 @@ package com.sinapsistech.taxiWeb.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
@@ -23,9 +25,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
+import com.sinapsistech.taxiWeb.model.Departamento;
 import com.sinapsistech.taxiWeb.model.TipoPersona;
 import com.sinapsistech.taxiWeb.model.Persona;
+
 import java.util.Iterator;
 
 /**
@@ -45,6 +50,9 @@ public class TipoPersonaBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving TipoPersona entities
@@ -124,18 +132,29 @@ public class TipoPersonaBean implements Serializable
 
    public String update()
    {
+	   System.out.println("Agarrando el contexto.");
+       String nombre = request.getUserPrincipal().getName();
+       
       this.conversation.end();
 
       try
       {
          if (this.id == null)
          {
+        	 System.out.println("Entro por TipoPersona nuevo");
+        	 this.tipoPersona.setFechaReg(new Date());
+        	 this.tipoPersona.setUsuarioReg(nombre);
+        	 this.tipoPersona.setFlagEstado("AC");
             this.entityManager.persist(this.tipoPersona);
             return "search?faces-redirect=true";
          }
          else
          {
-            this.entityManager.merge(this.tipoPersona);
+        	 System.out.println("Entro por TipoPersona actualizado");
+        	 this.tipoPersona.setFechaMod(new Date());
+        	 this.tipoPersona.setUsuarioMod(nombre);
+        	 this.tipoPersona.setFlagEstado("AC");
+        	 this.entityManager.merge(this.tipoPersona);
             return "view?faces-redirect=true&id=" + this.tipoPersona.getIdTipoPersona();
          }
       }
@@ -152,7 +171,7 @@ public class TipoPersonaBean implements Serializable
 
       try
       {
-         TipoPersona deletableEntity = findById(getId());
+         /*TipoPersona deletableEntity = findById(getId());
          Iterator<Persona> iterPersonas = deletableEntity.getPersonas().iterator();
          for (; iterPersonas.hasNext();)
          {
@@ -163,7 +182,14 @@ public class TipoPersonaBean implements Serializable
          }
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true";*/
+    	  String nombre = request.getUserPrincipal().getName();
+    	  TipoPersona deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
       }
       catch (Exception e)
       {

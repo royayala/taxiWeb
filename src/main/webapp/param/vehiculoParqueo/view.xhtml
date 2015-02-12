@@ -18,7 +18,7 @@
 	</ui:define>
 
 	<ui:define name="subheader">
-		View existing Vehiculo Parqueo
+		Detalle de Vehiculo Parqueo
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -29,17 +29,17 @@
 			<h:outputText id="vehiculoParqueoBeanVehiculoParqueoIdVehiculoParqueo" value="#{vehiculoParqueoBean.vehiculoParqueo.idVehiculoParqueo}"/>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoCompania" value="Compania:"/>
-			<h:link id="vehiculoParqueoBeanVehiculoParqueoCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.compania}" value="#{vehiculoParqueoBean.vehiculoParqueo.compania}">
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.compania}" value="#{vehiculoParqueoBean.vehiculoParqueo.compania.nombreLargo}">
 				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoParqueo" value="Parqueo:"/>
-			<h:link id="vehiculoParqueoBeanVehiculoParqueoParqueo" outcome="/param/parqueo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.parqueo}" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo}">
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoParqueo" outcome="/param/parqueo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.parqueo}" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo.direccion}">
 				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.parqueo.idParqueo}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoVehiculo" value="Vehiculo:"/>
-			<h:link id="vehiculoParqueoBeanVehiculoParqueoVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.vehiculo}" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo}">
+			<h:outputLabel for="vehiculoParqueoBeanVehiculoParqueoVehiculo" value="Placa Vehiculo:"/>
+			<h:link id="vehiculoParqueoBeanVehiculoParqueoVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoParqueoBean.vehiculoParqueo.vehiculo}" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo.placa}">
 				<f:param name="id" value="#{vehiculoParqueoBean.vehiculoParqueo.vehiculo.idVehiculo}"/>
 			</h:link>
 			<h:outputText/>
