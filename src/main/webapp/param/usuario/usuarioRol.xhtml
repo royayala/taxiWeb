@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{usuarioRolAccion.id}' />
+		<f:event type="preRenderView" listener='#{usuarioRolAccion.retrieve}' />
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Usuario" />
+
+	<ui:define name="header">
+		Usuario
+	</ui:define>
+
+	<ui:define name="subheader">
+		View existing Usuario
+	</ui:define>
+
+	<ui:define name="footer" />
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="usuarioRolAccionUsuarioIdUsuario"
+				value="Id Usuario:" />
+			<h:outputText id="usuarioRolAccionUsuarioIdUsuario"
+				value="#{usuarioRolAccion.usuario.idUsuario}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioCompania2"
+				value="Compania:" />
+			<h:link id="usuarioRolAccionUsuarioCompania2"
+				outcome="/param/compania/view"
+				rendered="#{!empty usuarioRolAccion.usuario.compania}"
+				value="#{usuarioRolAccion.usuario.compania.nombreLargo}">
+				<f:param name="id"
+					value="#{usuarioRolAccion.usuario.compania.idCia}" />
+			</h:link>
+
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioNombreCompleto"
+				value="Nombre Completo:" />
+			<h:outputText id="usuarioRolAccionUsuarioNombreCompleto"
+				value="#{usuarioRolAccion.usuario.nombreCompleto}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioUsuarioLogin"
+				value="Usuario Login:" />
+			<h:outputText id="usuarioRolAccionUsuarioUsuarioLogin"
+				value="#{usuarioRolAccion.usuario.usuarioLogin}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioUsuarioPassword"
+				value="Usuario Password:" />
+			<h:outputText id="usuarioRolAccionUsuarioUsuarioPassword"
+				value="#{usuarioRolAccion.usuario.usuarioPassword}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioFlagLdap"
+				value="Flag Ldap:" />
+			<h:outputText id="usuarioRolAccionUsuarioFlagLdap"
+				value="#{usuarioRolAccion.usuario.flagLdap}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioIdioma" value="Idioma:" />
+			<h:outputText id="usuarioRolAccionUsuarioIdioma"
+				value="#{usuarioRolAccion.usuario.idioma}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioEmailUsuario"
+				value="Email Usuario:" />
+			<h:outputText id="usuarioRolAccionUsuarioEmailUsuario"
+				value="#{usuarioRolAccion.usuario.emailUsuario}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioTelefono"
+				value="Telefono:" />
+			<h:outputText id="usuarioRolAccionUsuarioTelefono"
+				value="#{usuarioRolAccion.usuario.telefono}" />
+			<h:outputText />
+			<h:outputLabel for="usuarioRolAccionUsuarioTipoUsuario"
+				value="Tipo Usuario:" />
+			<h:outputText id="usuarioRolAccionUsuarioTipoUsuario"
+				value="#{usuarioRolAccion.usuario.tipoUsuario}" />
+			<h:outputText />
+
+
+
+		</h:panelGrid>
+		<h:panelGrid>
+
+			<h:form>
+				<p:growl id="msg" showDetail="true" escape="false" />
+
+
+				<h3 style="margin-top: 0">Seleccione el Rol</h3>
+				<p:pickList id="pickList" value="#{usuarioRolAccion.roles}"
+					var="varLocal" itemLabel="#{varLocal}" itemValue="#{varLocal}" >
+						 <f:facet name="sourceCaption">Roles Disponibles</f:facet>
+						    <f:facet name="targetCaption">Roles asociados</f:facet>    
+    </p:pickList>
+
+				<div class="buttons">
+					<h:link value="Volver" outcome="search"
+						styleClass="btn btn-primary" />
+					<h:commandLink value="Guardar"
+						action='#{usuarioRolAccion.grabarRoles()}'
+						styleClass="btn btn-primary" />
+				</div>
+
+			</h:form>
+		</h:panelGrid>
+
+
+	</ui:define>
+
+</ui:composition>
