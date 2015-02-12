@@ -27,6 +27,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 
+import com.sinapsistech.taxiWeb.model.Departamento;
 import com.sinapsistech.taxiWeb.model.VehiculoParqueo;
 import com.sinapsistech.taxiWeb.model.Compania;
 import com.sinapsistech.taxiWeb.model.Parqueo;
@@ -49,6 +50,9 @@ public class VehiculoParqueoBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving VehiculoParqueo entities
@@ -128,9 +132,6 @@ public class VehiculoParqueoBean implements Serializable
 
    public String update()
    {
-	   FacesContext context = FacesContext.getCurrentInstance();
-       ExternalContext externalContext = context.getExternalContext();
-       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
        System.out.println("Agarrando el contexto.");
        String nombre = request.getUserPrincipal().getName();
 	   
@@ -140,19 +141,21 @@ public class VehiculoParqueoBean implements Serializable
       {
          if (this.id == null)
          {
-        	 System.out.println("Entro por usuario nuevo");
+        	 System.out.println("Entro por vehiculoParqueo nuevo");
         	 
         	 this.vehiculoParqueo.setFechaIngreso(new Date());
         	 this.vehiculoParqueo.setUsuarioReg(nombre);
+        	 this.vehiculoParqueo.setFlagEstado("AC");
         	 this.entityManager.persist(this.vehiculoParqueo);
         	 return "search?faces-redirect=true";
          }
          else
          {
-         	System.out.println("Entro por usuario actualizando");
+         	System.out.println("Entro por vehiculoParqueo actualizando");
 
         	this.vehiculoParqueo.setFechaMod(new Date());
         	this.vehiculoParqueo.setUsuarioMod(nombre);
+        	this.vehiculoParqueo.setFlagEstado("AC");
         	this.entityManager.merge(this.vehiculoParqueo);
             return "view?faces-redirect=true&id=" + this.vehiculoParqueo.getIdVehiculoParqueo();
          }
@@ -170,7 +173,7 @@ public class VehiculoParqueoBean implements Serializable
 
       try
       {
-         VehiculoParqueo deletableEntity = findById(getId());
+         /*VehiculoParqueo deletableEntity = findById(getId());
          Compania compania = deletableEntity.getCompania();
          compania.getVehiculoParqueos().remove(deletableEntity);
          deletableEntity.setCompania(null);
@@ -185,7 +188,14 @@ public class VehiculoParqueoBean implements Serializable
          this.entityManager.merge(vehiculo);
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true";*/
+    	  String nombre = request.getUserPrincipal().getName();
+    	  VehiculoParqueo deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
       }
       catch (Exception e)
       {

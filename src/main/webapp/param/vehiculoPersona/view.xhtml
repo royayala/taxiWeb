@@ -33,17 +33,17 @@
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value=" Id Chofer:"/>
-			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}">
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value="Nombre Chofer:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer.nombre}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer.idPersona}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value=" Id Persona:"/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value="Nombre Propietario:"/>
 			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona.nombre}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona.idPersona}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="Vehiculo:"/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="Placa Vehiculo:"/>
 			<h:link id="vehiculoPersonaBeanVehiculoPersonaVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.vehiculo}" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo.placa}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo.idVehiculo}"/>
 			</h:link>

@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.sinapsistech.taxiWeb.model.Ciudad;
 import com.sinapsistech.taxiWeb.model.Departamento;
+import com.sinapsistech.taxiWeb.model.Usuario;
 
 /**
  * Backing bean for Ciudad entities.
@@ -47,6 +48,9 @@ public class CiudadBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving Ciudad entities
@@ -126,9 +130,6 @@ public class CiudadBean implements Serializable
 
    public String update()
    {
-	   FacesContext context = FacesContext.getCurrentInstance();
-       ExternalContext externalContext = context.getExternalContext();
-       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
        System.out.println("Agarrando el contexto.");
        String nombre = request.getUserPrincipal().getName();
 	   
@@ -138,19 +139,21 @@ public class CiudadBean implements Serializable
       {
          if (this.id == null)
          {
-        	 System.out.println("Entro por usuario nuevo");
+        	 System.out.println("Entro por ciudad nueva");
         	 this.ciudad.setFechaReg(new Date());
         	 this.ciudad.setUsuarioReg(nombre);
+        	 this.ciudad.setFlagEstado("AC");
         	 this.entityManager.persist(this.ciudad);
             return "search?faces-redirect=true";
          }
          else
          {
         	 
-        	System.out.println("Entro por usuario actulizando");
+        	System.out.println("Entro por ciudad actulizanda");
         	this.ciudad.setFechaMod(new Date());
         	this.ciudad.setUsuarioMod(nombre);
             this.entityManager.merge(this.ciudad);
+            this.ciudad.setFlagEstado("AC");
             return "view?faces-redirect=true&id=" + this.ciudad.getIdCiudad();
          }
       }
@@ -167,14 +170,21 @@ public class CiudadBean implements Serializable
 
       try
       {
-         Ciudad deletableEntity = findById(getId());
+       /*  Ciudad deletableEntity = findById(getId());
          Departamento departamento = deletableEntity.getDepartamento();
          departamento.getCiudads().remove(deletableEntity);
          deletableEntity.setDepartamento(null);
          this.entityManager.merge(departamento);
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true"; */
+    	  String nombre = request.getUserPrincipal().getName();
+    	  Ciudad deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
       }
       catch (Exception e)
       {

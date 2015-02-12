@@ -30,7 +30,7 @@
 			<h:outputText id="parqueoBeanParqueoIdParqueo" value="#{parqueoBean.parqueo.idParqueo}"/>
 			<h:outputText/>
 			<h:outputLabel for="parqueoBeanParqueoCompania" value="Compania:"/>
-			<h:link id="parqueoBeanParqueoCompania" outcome="/compania/view" rendered="#{!empty parqueoBean.parqueo.compania}" value="#{parqueoBean.parqueo.compania.nombreCorto}">
+			<h:link id="parqueoBeanParqueoCompania" outcome="/compania/view" rendered="#{!empty parqueoBean.parqueo.compania}" value="#{parqueoBean.parqueo.compania.nombreLargo}">
 				<f:param name="id" value="#{parqueoBean.parqueo.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
@@ -84,6 +84,17 @@
 						<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 					</h:link>
 				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Placa Vehiculo"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoParqueo/view">
+						<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
+						<h:outputText id="itemIdPLacaVehiculo" value="#{_item.idVehiculoParqueo.vehiculo.placa}"/>
+					</h:link>
+				</h:column>
+				
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Fecha Ingreso"/>

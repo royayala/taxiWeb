@@ -29,7 +29,7 @@
 			<h:outputText id="ciudadBeanCiudadIdCiudad" value="#{ciudadBean.ciudad.idCiudad}"/>
 			<h:outputText/>
 			<h:outputLabel for="ciudadBeanCiudadDepartamento" value="Departamento:"/>
-			<h:link id="ciudadBeanCiudadDepartamento" outcome="/param/departamento/view" rendered="#{!empty ciudadBean.ciudad.departamento}" value="#{ciudadBean.ciudad.departamento}">
+			<h:link id="ciudadBeanCiudadDepartamento" outcome="/param/departamento/view" rendered="#{!empty ciudadBean.ciudad.departamento}" value="#{ciudadBean.ciudad.departamento.nombre}">
 				<f:param name="id" value="#{ciudadBean.ciudad.departamento.idDepartamento}"/>
 			</h:link>
 			<h:outputText/>

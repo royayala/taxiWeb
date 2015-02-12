@@ -27,6 +27,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletRequest;
 
+import com.sinapsistech.taxiWeb.model.Departamento;
 import com.sinapsistech.taxiWeb.model.Persona;
 import com.sinapsistech.taxiWeb.model.Compania;
 import com.sinapsistech.taxiWeb.model.PersonaServicio;
@@ -54,6 +55,9 @@ public class PersonaBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving Persona entities
@@ -133,9 +137,6 @@ public class PersonaBean implements Serializable
 
    public String update()
    {
-	   FacesContext context = FacesContext.getCurrentInstance();
-       ExternalContext externalContext = context.getExternalContext();
-       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
        System.out.println("Agarrando el contexto.");
        String nombre = request.getUserPrincipal().getName();
 	   
@@ -145,18 +146,20 @@ public class PersonaBean implements Serializable
       {
          if (this.id == null)
          {
-        	System.out.println("Entro por usuario nuevo");
+        	System.out.println("Entro por persona nueva");
         	
         	this.persona.setFechaReg(new Date());
         	this.persona.setUsuarioReg(nombre);
+        	this.persona.setFlagEstado("AC");
             this.entityManager.persist(this.persona);
             return "search?faces-redirect=true";
          }
          else
          {
-        	 System.out.println("Entro por usuario actualizando");
+        	 System.out.println("Entro por persona actualizanda");
         	 this.persona.setFechaMod(new Date());
         	 this.persona.setUsuarioMod(nombre);
+        	 this.persona.setFlagEstado("AC");
         	 this.entityManager.merge(this.persona);
             return "view?faces-redirect=true&id=" + this.persona.getIdPersona();
          }
@@ -174,6 +177,7 @@ public class PersonaBean implements Serializable
 
       try
       {
+    	  /*
          Persona deletableEntity = findById(getId());
          Compania compania = deletableEntity.getCompania();
          compania.getPersonas().remove(deletableEntity);
@@ -225,7 +229,15 @@ public class PersonaBean implements Serializable
          }
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true";*/
+    	  
+    	  String nombre = request.getUserPrincipal().getName();
+    	  Persona deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
       }
       catch (Exception e)
       {
