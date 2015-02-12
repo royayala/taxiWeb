@@ -91,6 +91,15 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Placa Vehiculo"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoAfiliacion/view">
+						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
+						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.vehiculo.placa}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Fecha Afiliacion"/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoAfiliacion/view">

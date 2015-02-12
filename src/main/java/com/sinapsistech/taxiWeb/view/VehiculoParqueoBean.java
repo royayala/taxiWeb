@@ -146,6 +146,7 @@ public class VehiculoParqueoBean implements Serializable
         	 this.vehiculoParqueo.setFechaIngreso(new Date());
         	 this.vehiculoParqueo.setUsuarioReg(nombre);
         	 this.vehiculoParqueo.setFlagEstado("AC");
+        	 this.vehiculoParqueo.setFechaIngreso(new Date());
         	 this.entityManager.persist(this.vehiculoParqueo);
         	 return "search?faces-redirect=true";
          }
@@ -156,6 +157,7 @@ public class VehiculoParqueoBean implements Serializable
         	this.vehiculoParqueo.setFechaMod(new Date());
         	this.vehiculoParqueo.setUsuarioMod(nombre);
         	this.vehiculoParqueo.setFlagEstado("AC");
+        	this.vehiculoParqueo.setFechaIngreso(new Date());
         	this.entityManager.merge(this.vehiculoParqueo);
             return "view?faces-redirect=true&id=" + this.vehiculoParqueo.getIdVehiculoParqueo();
          }

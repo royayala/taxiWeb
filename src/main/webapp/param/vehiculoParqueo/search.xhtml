@@ -56,24 +56,6 @@
 							<h:message for="vehiculoParqueoBeanExampleParqueo" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
-						<!-- 
-						<h:outputLabel for="vehiculoParqueoBeanExampleVehiculo" value="Vehiculo:"/>
-						<h:panelGroup>
-							<h:selectOneMenu converter="#{vehiculoBean.converter}" id="vehiculoParqueoBeanExampleVehiculo" value="#{vehiculoParqueoBean.example.vehiculo}">
-								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{vehiculoBean.all}" var="_item"/>
-							</h:selectOneMenu>
-							<h:message for="vehiculoParqueoBeanExampleVehiculo" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						
-						<h:outputLabel for="vehiculoParqueoBeanExampleFlagEstado" value="Flag Estado:"/>
-						<h:panelGroup>
-							<h:inputText id="vehiculoParqueoBeanExampleFlagEstado" maxLength="2" value="#{vehiculoParqueoBean.example.flagEstado}"/>
-							<h:message for="vehiculoParqueoBeanExampleFlagEstado" styleClass="error"/>
-						</h:panelGroup>
-						<h:outputText/>
-						-->
 					</h:panelGrid>
 					<h:panelGroup styleClass="buttons">
 						<h:commandLink value="Buscar" action='#{vehiculoParqueoBean.search}' styleClass="btn btn-primary"/>
@@ -83,7 +65,7 @@
 			</f:validateBean>
 			
 			<h:dataTable id="vehiculoParqueoBeanPageItems" styleClass="data-table" value="#{vehiculoParqueoBean.pageItems}" var="_item">
-			<!--
+			
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Id Vehiculo Parqueo"/>
@@ -93,7 +75,7 @@
 						<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 					</h:link>
 				</h:column>
-			-->
+			
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Direccion Parqueo"/>
@@ -106,7 +88,7 @@
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Vehiculo Marca"/>
+						<h:outputText value="Marca"/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoParqueo/view">
 						<f:param name="id" value="#{_item.vehiculo.marca}"/>
@@ -118,7 +100,7 @@
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Vehiculo Modelo"/>
+						<h:outputText value="Modelo"/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoParqueo/view">
 						<f:param name="id" value="#{_item.vehiculo.modelo}"/>
@@ -130,7 +112,7 @@
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Vehiculo Placa"/>
+						<h:outputText value="Placa"/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoParqueo/view">
 						<f:param name="id" value="#{_item.vehiculo.placa}"/>
