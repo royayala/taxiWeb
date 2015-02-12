@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:forgeview="http://jboss.org/forge/view"
 	template="/resources/scaffold/pageTemplate.xhtml">
 
@@ -95,7 +96,53 @@
 			<h:outputLabel for="personaBeanPersonaUsuarioBorrado" value="Usuario Borrado:"/>
 			<h:outputText id="personaBeanPersonaUsuarioBorrado" value="#{personaBean.persona.usuarioBorrado}"/>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdChofer" value=" Id Chofer:"/>
+			
+			
+			
+			
+			
+		</h:panelGrid>
+
+		<!-- detalle de los tabs -->
+		<h:panelGrid>
+		
+		
+		
+		   <p:tabView>
+		     <p:tab title="Vehiculos">
+            <h:panelGrid columns="2" cellpadding="10">
+            <h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdPersona" value=" Id Persona:"/>
+			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdPersona" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdPersona)}" var="_item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id Vehiculo Persona"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoPersona/view">
+						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
+						<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
+					</h:link>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Inicio"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoPersona/view">
+						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
+						<h:outputText id="itemFechaInicio" value="#{_item.fechaInicio}">
+							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+						</h:outputText>
+					</h:link>
+				</h:column>
+			</h:dataTable>
+			<h:outputText/>
+            
+            </h:panelGrid>
+            </p:tab>
+		   
+        <p:tab title="Chofer">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdChofer" value=" Id Chofer:"/>
 			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdChofer" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdChofer)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -128,40 +175,11 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoPersonasForIdPersona" value=" Id Persona:"/>
-			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdPersona" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdPersona)}" var="_item">
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Id Vehiculo Persona"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculoPersona/view">
-						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
-						<h:outputText id="itemIdVehiculoPersona" value="#{_item.idVehiculoPersona}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nombre Persona"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculoPersona/view">
-						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
-						<h:outputText id="itemIdNombrePersona" value="#{_item.idVehiculoPersona.persona.nombre}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Fecha Inicio"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculoPersona/view">
-						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
-						<h:outputText id="itemFechaInicio" value="#{_item.fechaInicio}">
-							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
-						</h:outputText>
-					</h:link>
-				</h:column>
-			</h:dataTable>
-			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaTransaccions" value="Transaccions:"/>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Transacciones">
+            <h:panelGrid columns="2" cellpadding="10">
+               <h:outputLabel for="personaBeanPersonaTransaccions" value="Transaccions:"/>
 			<h:dataTable id="personaBeanPersonaTransaccions" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.transaccions)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -203,7 +221,11 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaPersonaServicios" value="Persona Servicios:"/>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Servicios">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputLabel for="personaBeanPersonaPersonaServicios" value="Persona Servicios:"/>
 			<h:dataTable id="personaBeanPersonaPersonaServicios" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.personaServicios)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -254,7 +276,11 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
-			<h:outputLabel for="personaBeanPersonaVehiculoAfiliacions" value="Vehiculo Afiliaciones:"/>
+            </h:panelGrid>
+        </p:tab>
+               <p:tab title="Afiliaciones">
+            <h:panelGrid columns="2" cellpadding="10">
+              <h:outputLabel for="personaBeanPersonaVehiculoAfiliacions" value="Vehiculo Afiliaciones:"/>
 			<h:dataTable id="personaBeanPersonaVehiculoAfiliacions" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoAfiliacions)}" var="_item">
 				<h:column>
 					<f:facet name="header">
@@ -271,7 +297,7 @@
 					</f:facet>
 					<h:link outcome="/param/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
-						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.idVehiculoAfiliacion.vehiculo.placa}"/>
+						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.idVehiculoAfiliacion}"/>
 					</h:link>
 				</h:column>
 				<h:column>
@@ -296,8 +322,12 @@
 				</h:column>
 			</h:dataTable>
 			<h:outputText/>
+            </h:panelGrid>
+        </p:tab>
+        
+    </p:tabView>
 		</h:panelGrid>
-
+	
 		<div class="buttons">
 			<h:link value="Volver" outcome="search" styleClass="btn btn-primary"/> 
 			<h:link value="Editar" outcome="create" includeViewParams="true" styleClass="btn btn-primary"/>
