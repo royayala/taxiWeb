@@ -47,6 +47,9 @@ public class UsuarioBean implements Serializable
 {
 
    private static final long serialVersionUID = 1L;
+   FacesContext context = FacesContext.getCurrentInstance();
+   ExternalContext externalContext = context.getExternalContext();
+   HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
 
    /*
     * Support creating and retrieving Usuario entities
@@ -128,9 +131,7 @@ public class UsuarioBean implements Serializable
 
    public String update()
    {
-	   FacesContext context = FacesContext.getCurrentInstance();
-       ExternalContext externalContext = context.getExternalContext();
-       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+	  
        System.out.println("Agarrando el contexto.");
        String nombre = request.getUserPrincipal().getName();
 	   
@@ -172,14 +173,22 @@ public class UsuarioBean implements Serializable
 
       try
       {
-         Usuario deletableEntity = findById(getId());
+         /*Usuario deletableEntity = findById(getId());
          Compania compania = deletableEntity.getCompania();
          compania.getUsuarios().remove(deletableEntity);
          deletableEntity.setCompania(null);
          this.entityManager.merge(compania);
          this.entityManager.remove(deletableEntity);
          this.entityManager.flush();
-         return "search?faces-redirect=true";
+         return "search?faces-redirect=true";*/
+    	  String nombre = request.getUserPrincipal().getName();
+    	  Usuario deletableEntity = findById(getId());
+    	  deletableEntity.setFlagEstado("IN");
+    	  deletableEntity.setUsuarioBorrado(nombre);
+    	  deletableEntity.setFechaBorrado(new Date());
+    	  this.entityManager.flush();
+          return "search?faces-redirect=true";
+    	  
       }
       catch (Exception e)
       {

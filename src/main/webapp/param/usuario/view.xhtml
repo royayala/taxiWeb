@@ -28,10 +28,11 @@
 			<h:outputLabel for="usuarioBeanUsuarioIdUsuario" value="Id Usuario:"/>
 			<h:outputText id="usuarioBeanUsuarioIdUsuario" value="#{usuarioBean.usuario.idUsuario}"/>
 			<h:outputText/>
-			<h:outputLabel for="usuarioBeanUsuarioCompania" value="Compania:"/>
-			<h:link id="usuarioBeanUsuarioCompania" outcome="/param/compania/view" rendered="#{!empty usuarioBean.usuario.compania}" value="#{usuarioBean.usuario.compania.nombreLargo}">
+			<h:outputLabel for="usuarioBeanUsuarioCompania2" value="Compania:"/>
+			<h:link id="usuarioBeanUsuarioCompania2" outcome="/param/compania/view" rendered="#{!empty usuarioBean.usuario.compania}" value="#{usuarioBean.usuario.compania.nombreLargo}">
 				<f:param name="id" value="#{usuarioBean.usuario.compania.idCia}"/>
 			</h:link>
+			
 			<h:outputText/>
 			<h:outputLabel for="usuarioBeanUsuarioNombreCompleto" value="Nombre Completo:"/>
 			<h:outputText id="usuarioBeanUsuarioNombreCompleto" value="#{usuarioBean.usuario.nombreCompleto}"/>
@@ -87,6 +88,7 @@
 			<h:outputLabel for="usuarioBeanUsuarioIpUsuario" value="Ip Usuario:"/>
 			<h:outputText id="usuarioBeanUsuarioIpUsuario" value="#{usuarioBean.usuario.ipUsuario}"/>
 			<h:outputText/>
+			
 		</h:panelGrid>
 
 		<div class="buttons">
