@@ -3,6 +3,7 @@ package com.sinapsistech.taxiWeb.view;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
@@ -11,6 +12,7 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
@@ -23,9 +25,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
 import com.sinapsistech.taxiWeb.model.TipoVehiculo;
 import com.sinapsistech.taxiWeb.model.Vehiculo;
+
 import java.util.Iterator;
 
 /**
@@ -124,18 +128,32 @@ public class TipoVehiculoBean implements Serializable
 
    public String update()
    {
-      this.conversation.end();
+	   FacesContext context = FacesContext.getCurrentInstance();
+       ExternalContext externalContext = context.getExternalContext();
+       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+       System.out.println("Agarrando el contexto.");
+       String nombre = request.getUserPrincipal().getName();
+	   
+	   this.conversation.end();
 
       try
       {
          if (this.id == null)
          {
-            this.entityManager.persist(this.tipoVehiculo);
+        	 System.out.println("Entro por usuario nuevo");
+        	 
+        	 this.tipoVehiculo.setFechaReg(new Date());
+        	 this.tipoVehiculo.setUsuarioReg(nombre);
+        	 this.entityManager.persist(this.tipoVehiculo);
             return "search?faces-redirect=true";
          }
          else
          {
-            this.entityManager.merge(this.tipoVehiculo);
+        	 System.out.println("Entro por usuario actualizando");
+        	 
+        	 this.tipoVehiculo.setFechaMod(new Date());
+        	 this.tipoVehiculo.setUsuarioMod(nombre);
+        	 this.entityManager.merge(this.tipoVehiculo);
             return "view?faces-redirect=true&id=" + this.tipoVehiculo.getIdTipoVehiculo();
          }
       }

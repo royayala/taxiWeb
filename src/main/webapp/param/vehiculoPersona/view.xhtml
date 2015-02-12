@@ -18,7 +18,7 @@
 	</ui:define>
 
 	<ui:define name="subheader">
-		View existing Vehiculo Persona
+		Detalle de Vehiculo Persona
 	</ui:define>
 
 	<ui:define name="footer"/>
@@ -29,22 +29,22 @@
 			<h:outputText id="vehiculoPersonaBeanVehiculoPersonaIdVehiculoPersona" value="#{vehiculoPersonaBean.vehiculoPersona.idVehiculoPersona}"/>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaCompania" value="Compania:"/>
-			<h:link id="vehiculoPersonaBeanVehiculoPersonaCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.compania}" value="#{vehiculoPersonaBean.vehiculoPersona.compania}">
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaCompania" outcome="/param/compania/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.compania}" value="#{vehiculoPersonaBean.vehiculoPersona.compania.nombreLargo}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.compania.idCia}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value="Persona By Id Chofer:"/>
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" value=" Id Chofer:"/>
 			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdChofer" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdChofer.idPersona}"/>
 			</h:link>
 			<h:outputText/>
-			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value="Persona By Id Persona:"/>
-			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}">
+			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" value=" Id Persona:"/>
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaPersonaByIdPersona" outcome="/param/persona/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.personaByIdPersona}" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona.nombre}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.personaByIdPersona.idPersona}"/>
 			</h:link>
 			<h:outputText/>
 			<h:outputLabel for="vehiculoPersonaBeanVehiculoPersonaVehiculo" value="Vehiculo:"/>
-			<h:link id="vehiculoPersonaBeanVehiculoPersonaVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.vehiculo}" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo}">
+			<h:link id="vehiculoPersonaBeanVehiculoPersonaVehiculo" outcome="/param/vehiculo/view" rendered="#{!empty vehiculoPersonaBean.vehiculoPersona.vehiculo}" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo.placa}">
 				<f:param name="id" value="#{vehiculoPersonaBean.vehiculoPersona.vehiculo.idVehiculo}"/>
 			</h:link>
 			<h:outputText/>

@@ -2,6 +2,7 @@ package com.sinapsistech.taxiWeb.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Inject;
@@ -23,6 +25,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
 
 import com.sinapsistech.taxiWeb.model.VehiculoPersona;
 import com.sinapsistech.taxiWeb.model.Compania;
@@ -125,17 +128,29 @@ public class VehiculoPersonaBean implements Serializable
 
    public String update()
    {
-      this.conversation.end();
+	   FacesContext context = FacesContext.getCurrentInstance();
+       ExternalContext externalContext = context.getExternalContext();
+       HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
+       System.out.println("Agarrando el contexto.");
+       String nombre = request.getUserPrincipal().getName();
+	   
+	   this.conversation.end();
 
       try
       {
          if (this.id == null)
          {
+        	System.out.println("Entro por VehiculoPersona nuevo");
+        	this.vehiculoPersona.setFechaReg(new Date());
+        	this.vehiculoPersona.setUsuarioReg(nombre);
             this.entityManager.persist(this.vehiculoPersona);
             return "search?faces-redirect=true";
          }
          else
          {
+        	System.out.println("Entro por vehiculopersona actualizado");
+        	this.vehiculoPersona.setFechaMod(new Date());
+        	this.vehiculoPersona.setUsuarioMod(nombre);
             this.entityManager.merge(this.vehiculoPersona);
             return "view?faces-redirect=true&id=" + this.vehiculoPersona.getIdVehiculoPersona();
          }
