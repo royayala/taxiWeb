@@ -5,11 +5,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:forgeview="http://jboss.org/forge/view"
-	template="/resources/scaffold/TemplateBlanco.xhtml">
+	template="/resources/scaffold/pageTemplate.xhtml">
 
-	<f:metadata>
+	<f:metadata>	
 		<f:viewParam name="page" value='#{vehiculoAfiliacionBean.page}'/>
 		<f:event type="preRenderView" listener='#{vehiculoAfiliacionBean.paginate}'/>
+		<f:viewParam name="page" value='#{personaBean.page}'/>
+		<f:event type="preRenderView" listener='#{personaBean.paginate}'/>
 	</f:metadata>
 
 	<ui:param name="pageTitle" value="Search Vehiculo Afiliacion entities"/>
@@ -28,10 +30,35 @@
 				<h:panelGroup styleClass="search">
 
 					<h:panelGrid columnClasses="label,component,required" columns="3">
+						
+						<h:outputLabel for="personaBeanExampleCompania" value="Compania:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{companiaBean.converter}" id="personaBeanExampleCompania" value="#{personaBean.example.compania}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item.nombreLargo)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="personaBeanExampleCompania" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="personaBeanExampleTipoPersona" value="Tipo Persona:"/>
+						<h:panelGroup>
+							<h:selectOneMenu converter="#{tipoPersonaBean.converter}" id="personaBeanExampleTipoPersona" value="#{personaBean.example.tipoPersona}">
+								<f:selectItem/>
+								<f:selectItems itemLabel="#{forgeview:display(_item.nombre)}" itemValue="#{_item}" value="#{tipoPersonaBean.all}" var="_item"/>
+							</h:selectOneMenu>
+							<h:message for="personaBeanExampleTipoPersona" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
 						<h:outputLabel for="personaBeanExampleNombre" value="Nombre:"/>
 						<h:panelGroup>
 							<h:inputText id="personaBeanExampleNombre" maxLength="20" value="#{personaBean.example.nombre}"/>
 							<h:message for="personaBeanExampleNombre" styleClass="error"/>
+						</h:panelGroup>
+						<h:outputText/>
+						<h:outputLabel for="personaBeanExampleApellidoPaterno" value="Apellido Paterno:"/>
+						<h:panelGroup>
+							<h:inputText id="personaBeanExampleApellidoPaterno" maxLength="20" value="#{personaBean.example.apellidoPaterno}"/>
+							<h:message for="personaBeanExampleApellidoPaterno" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
 					</h:panelGrid>
@@ -40,7 +67,6 @@
 					</h:panelGroup>
 				</h:panelGroup>
 			</f:validateBean>
-			
 			
 			<h:dataTable id="personaBeanPageItems" styleClass="data-table" value="#{personaBean.pageItems}" var="_item">
 				
@@ -56,26 +82,6 @@
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Telefonos"/>
-					</f:facet>
-					<h:link outcome="/param/persona/view">
-						<f:param name="id" value="#{_item.idPersona}"/>
-						<h:outputText id="itemTelefono1" value="#{_item.telefono1} ~ #{_item.telefono2}"/>
-					</h:link>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Direccion"/>
-					</f:facet>
-					<h:link outcome="/param/persona/view">
-						<f:param name="id" value="#{_item.idPersona}"/>
-						<h:outputText id="itemDireccion" value="#{_item.direccion}"/>
-					</h:link>
-				</h:column>
-				
-				<h:column>
-					<f:facet name="header">
 						<h:outputText value="C.I"/>
 					</f:facet>
 					<h:link outcome="/param/persona/view">
@@ -83,91 +89,49 @@
 						<h:outputText id="itemDocumentoIdentidad" value="#{_item.documentoIdentidad}"/>
 					</h:link>
 				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Seleccionar" />
+					</f:facet>
+					<h:selectOneRadio value="#{_item.idPersona}">
+						<f:param name="id" value="#{_item.idPersona}"/>
+					</h:selectOneRadio>
+				</h:column>
 			</h:dataTable>
 			<ui:include src="/resources/scaffold/paginator.xhtml">
-				<ui:param name="paginatorBean" value='#{vehiculoAfiliacionBean}'/>
+				<ui:param name="paginatorBean" value='#{personaBean}'/>
 			</ui:include>
 		</h:form>
-			
-	</ui:define>
-	
-	<ui:define name="main2">
-		<h:form id="search2">
-			<f:validateBean disabled="true">
-				<h:panelGroup styleClass="search">
-
-					<h:panelGrid columnClasses="label,component,required" columns="3">
-						<h:outputLabel for="vehiculoBeanExamplePlaca" value="Placa:"/>
+		
+		<h:panelGrid>
+			<h:outputLabel for="vehiculoBeanExamplePlaca" value="Placa:"/>
 						<h:panelGroup>
-							<h:inputText id="vehiculoBeanExamplePlaca" maxLength="10" value="#{vehiculoBean.example.placa}"/>
+							<h:inputText id="vehiculoBeanExamplePlaca" maxLength="10" value="#{vehiculoBean.example.placa}" style=" width : 250px;"/>
 							<h:message for="vehiculoBeanExamplePlaca" styleClass="error"/>
 						</h:panelGroup>
-						<h:outputText/>
-					</h:panelGrid>
-						<h:panelGroup styleClass="buttons">
-						<h:commandLink value="Buscar" action='#{vehiculoBean.search}' styleClass="btn btn-primary"/>
-						<h:commandLink value="Adicionar" action='#{vehiculoBean.create}' styleClass="btn btn-primary"/>
-					</h:panelGroup>
-				</h:panelGroup>
-			</f:validateBean>
+			<h:form>
+				<p:growl id="msg" showDetail="true" escape="false" />
+
+
+				<h3 style="margin-top: 0">Seleccione el Rol</h3>
+				<p:pickList id="pickList" value="#{usuarioRolAccion.roles}"
+					var="varLocal" itemLabel="#{varLocal}" itemValue="#{varLocal}" >
+						 <f:facet name="sourceCaption">Roles Disponibles</f:facet>
+						    <f:facet name="targetCaption">Roles asociados</f:facet>    
+    </p:pickList>
+
+				<div class="buttons">
+					<h:link value="Volver" outcome="search"
+						styleClass="btn btn-primary" />
+					<h:commandLink value="Guardar"
+						action='#{usuarioRolAccion.grabarRoles()}'
+						styleClass="btn btn-primary" />
+				</div>
+
+			</h:form>
+		</h:panelGrid>
 			
-			<h:dataTable id="vehiculoBeanPageItems" styleClass="data-table" value="#{vehiculoBean.pageItems}" var="_item">
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Id Vehiculo"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculo/view">
-						<f:param name="id" value="#{_item.idVehiculo}"/>
-						<h:outputText id="itemIdVehiculo" value="#{_item.idVehiculo}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Placa"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculo/view">
-						<f:param name="id" value="#{_item.idVehiculo}"/>
-						<h:outputText id="itemPlaca" value="#{_item.placa}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Modelo"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculo/view">
-						<f:param name="id" value="#{_item.idVehiculo}"/>
-						<h:outputText id="itemModelo" value="#{_item.modelo}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Marca"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculo/view">
-						<f:param name="id" value="#{_item.idVehiculo}"/>
-						<h:outputText id="itemMarca" value="#{_item.marca}"/>
-					</h:link>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Numero Motor"/>
-					</f:facet>
-					<h:link outcome="/param/vehiculo/view">
-						<f:param name="id" value="#{_item.idVehiculo}"/>
-						<h:outputText id="itemNumeroMotor" value="#{_item.numeroMotor}"/>
-					</h:link>
-				</h:column>
-			</h:dataTable>
-			<ui:include src="/resources/scaffold/paginator.xhtml">
-				<ui:param name="paginatorBean" value='#{vehiculoBean}'/>
-			</ui:include>
-		</h:form>
-	</ui:define>
-
-
-
-	<ui:define name="footer"/>
-
-	
+	</ui:define>	
 
 </ui:composition>
