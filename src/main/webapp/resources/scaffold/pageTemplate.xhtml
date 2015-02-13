@@ -64,7 +64,7 @@
         </p:submenu>
         <p:separator />
         <p:submenu label="Reportes" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO2')}">
-            
+             <p:menuitem value="Reporte Vehiculos" outcome="/reportes/searchVehiculos"/>
         </p:submenu>
         <p:separator />
         <p:submenu label="Utilitarios" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN')}">

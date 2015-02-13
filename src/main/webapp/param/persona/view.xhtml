@@ -115,7 +115,7 @@
 			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdPersona" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdPersona)}" var="_item">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Id Vehiculo Persona"/>
+						<h:outputText value="Nro."/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
@@ -123,6 +123,7 @@
 					</h:link>
 				</h:column>
 				
+		
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Fecha Inicio"/>
@@ -134,6 +135,18 @@
 						</h:outputText>
 					</h:link>
 				</h:column>
+				
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Fin"/>
+					</f:facet>
+					<h:link outcome="/param/vehiculoPersona/view">
+						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
+						<h:outputText id="itemFechaFin" value="#{_item.fechaFin}">
+							<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
+						</h:outputText>
+					</h:link>
+				</h:column>						
 			</h:dataTable>
 			<h:outputText/>
             
@@ -146,7 +159,7 @@
 			<h:dataTable id="personaBeanPersonaVehiculoPersonasForIdChofer" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoPersonasForIdChofer)}" var="_item">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Id Vehiculo Persona"/>
+						<h:outputText value="Nro."/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
@@ -159,7 +172,7 @@
 					</f:facet>
 					<h:link outcome="/param/vehiculoPersona/view">
 						<f:param name="id" value="#{_item.idVehiculoPersona}"/>
-						<h:outputText id="itemIdNombrePersonaC" value="#{_item.idVehiculoPersona.persona.nombre}"/>
+						<h:outputText id="itemIdNombrePersonaC" value="#{_item.personaByIdChofer.nombre} #{_item.personaByIdChofer.apellidoPaterno} #{_item.personaByIdChofer.apellidoMaterno}"/>
 					</h:link>
 				</h:column>
 				<h:column>
@@ -284,7 +297,7 @@
 			<h:dataTable id="personaBeanPersonaVehiculoAfiliacions" styleClass="data-table" value="#{forgeview:asList(personaBean.persona.vehiculoAfiliacions)}" var="_item">
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Id Vehiculo Afiliacion"/>
+						<h:outputText value="Nro."/>
 					</f:facet>
 					<h:link outcome="/param/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
@@ -297,7 +310,7 @@
 					</f:facet>
 					<h:link outcome="/param/vehiculoAfiliacion/view">
 						<f:param name="id" value="#{_item.idVehiculoAfiliacion}"/>
-						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.idVehiculoAfiliacion}"/>
+						<h:outputText id="itemIdPlacaVehiculo" value="#{_item.vehiculo.placa}"/>
 					</h:link>
 				</h:column>
 				<h:column>
