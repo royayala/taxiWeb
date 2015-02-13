@@ -22,10 +22,10 @@
 	<ui:define name="subheader">
 		<c:choose>
 			<c:when test='#{!empty parqueoBean.id}'>
-				Editar Parqueo
+				Edit existing Parqueo
 			</c:when>
 			<c:otherwise>
-				Crear nuevo Parqueo
+				Create a new Parqueo
 			</c:otherwise>
 		</c:choose>
 	</ui:define>
@@ -60,10 +60,8 @@
 				<h:outputText value="*"/>
 				<h:outputLabel for="parqueoBeanParqueoIdCiudad" value="Id Ciudad:"/>
 				<h:panelGroup>
-					<h:selectOneMenu>
-                		<f:selectItem id="parqueoBeanParqueoIdCiudad" itemLabel="#{ciudadBean.ciudad.nombre}" 
-                		itemValue="#{ciudadBean.ciudad.idCiudad}" value="#{parqueoBean.parqueo.idCiudad}" />
-            		</h:selectOneMenu>
+					<h:inputText id="parqueoBeanParqueoIdCiudad" required="true" value="#{parqueoBean.parqueo.idCiudad}"/>
+					<h:message for="parqueoBeanParqueoIdCiudad" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>
 				<h:outputLabel for="parqueoBeanParqueoLatitud" value="Latitud:"/>
@@ -134,7 +132,7 @@
 							<f:facet name="header">
 								<h:outputText value="Id Vehiculo Parqueo"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemIdVehiculoParqueo" value="#{_item.idVehiculoParqueo}"/>
 							</h:link>
@@ -147,7 +145,7 @@
 							<f:facet name="header">
 								<h:outputText value="Fecha Ingreso"/>
 							</f:facet>
-							<h:link outcome="/param/vehiculoParqueo/view">
+							<h:link outcome="/vehiculoParqueo/view">
 								<f:param name="id" value="#{_item.idVehiculoParqueo}"/>
 								<h:outputText id="itemFechaIngreso" value="#{_item.fechaIngreso}">
 									<f:convertDateTime pattern="MMM d, yyyy hh:mm:ss a" type="both"/>
@@ -174,16 +172,16 @@
 			</h:panelGrid>
 
 			<div class="buttons">
-				<h:commandLink value="Guardar" action='#{parqueoBean.update}' styleClass="btn btn-primary"/>
+				<h:commandLink value="Save" action='#{parqueoBean.update}' styleClass="btn btn-primary"/>
 				<c:choose>
 					<c:when test='#{!empty parqueoBean.id}'>
-						<h:link value="Cancelar" outcome="view" styleClass="btn btn-primary">
+						<h:link value="Cancel" outcome="view" styleClass="btn btn-primary">
 							<f:param name="id" value='#{parqueoBean.id}'/>
 						</h:link>
-						<h:commandLink value="Eliminar" action='#{parqueoBean.delete}' styleClass="btn btn-primary"/>
+						<h:commandLink value="Delete" action='#{parqueoBean.delete}' styleClass="btn btn-primary"/>
 					</c:when>
 					<c:otherwise>
-						<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
+						<h:link value="Cancel" outcome="search" styleClass="btn btn-primary"/>
 					</c:otherwise>
 				</c:choose>
 			</div>

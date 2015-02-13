@@ -36,17 +36,17 @@
 							<h:message for="parqueoBeanExampleIdParqueo" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
-					<!--
+					
 						<h:outputLabel for="parqueoBeanExampleCompania" value="Compania:"/>
 						<h:panelGroup>
 							<h:selectOneMenu converter="#{companiaBean.converter}" id="parqueoBeanExampleCompania" value="#{parqueoBean.example.compania}">
 								<f:selectItem/>
-								<f:selectItems itemLabel="#{forgeview:display(_item)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
+								<f:selectItems itemLabel="#{forgeview:display(_item.nombreLargo)}" itemValue="#{_item}" value="#{companiaBean.all}" var="_item"/>
 							</h:selectOneMenu>
 							<h:message for="parqueoBeanExampleCompania" styleClass="error"/>
 						</h:panelGroup>
 						<h:outputText/>
-					-->	
+					
 						<h:outputLabel for="parqueoBeanExampleDireccion" value="Direccion:"/>
 						<h:panelGroup>
 							<h:inputText id="parqueoBeanExampleDireccion" maxLength="200" value="#{parqueoBean.example.direccion}"/>
