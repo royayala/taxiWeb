@@ -5,10 +5,27 @@
 	template="/resources/scaffold/pageTemplate.xhtml"
                 xmlns:h="http://java.sun.com/jsf/html">
 
-	<ui:param name="pageTitle" value="Welcome to Forge" />
+	<ui:param name="pageTitle" value="Bienvenidos al Sistema el Veloz" />
 
 	<ui:define name="header">
-		Sistema el Veloz
+		<table style="width:100%">
+		  <tr>
+		    <td>Sistema el Veloz</td>
+		    <td><h:outputText rendered="#{request.getUserPrincipal() == null}" value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() == null}" value="#{request.contextPath}/faces/login.xhtml" >
+                            
+                            <h:graphicImage value="/resources/login.png" width="80" height="80"  />
+                        </h:outputLink>
+			 <h:outputText value="  " />
+                        <h:outputLink rendered="#{request.getUserPrincipal() != null}" value="#{request.contextPath}/logoutServlet" >
+                            
+                            <h:graphicImage  value="/resources/logout.jpg" width="80" height="80" />
+                        </h:outputLink>
+              </td> 
+		  </tr>
+		
+		</table>
+		
 	</ui:define>
 
 	<ui:define name="main">
@@ -31,7 +48,8 @@
                         </h:outputLink>
 			 <h:outputText value="  " />
                         <h:outputLink rendered="#{request.getUserPrincipal() != null}" value="#{request.contextPath}/logoutServlet" >
-                            <h:outputText value="Log out" />
+                        <br/>
+                            <h:outputText value="Salir de la aplicacion" />
                         </h:outputLink>
 	</ui:define>
 
