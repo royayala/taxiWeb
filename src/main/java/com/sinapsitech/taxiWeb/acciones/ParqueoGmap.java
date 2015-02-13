@@ -31,7 +31,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.sinapsistech.taxiWeb.model.Departamento;
 import com.sinapsistech.taxiWeb.model.Parqueo;
 import com.sinapsistech.taxiWeb.model.Compania;
+import com.sinapsistech.taxiWeb.model.Vehiculo;
 import com.sinapsistech.taxiWeb.model.VehiculoParqueo;
+import com.sinapsistech.taxiWeb.view.ParqueoBean;
 
 import java.util.Iterator;
 
@@ -63,26 +65,38 @@ public class ParqueoGmap implements Serializable
    /*
     * Support creating and retrieving Parqueo entities
     */
+   
+   @Inject ParqueoBean parqueoBean;
 
    private Integer id;
 
    private MapModel simpleModel;
    
+   List<Parqueo> listaParqueo;
+   
    @PostConstruct
    public void init() {
+	   
+	   //obtener la lista de parqueos
+	   listaParqueo=parqueoBean.getAll();
+	   
        simpleModel = new DefaultMapModel();
          
+       // interactuar en la lista de parqueos para adicionarlo la simpleModel
+       
+       for(Iterator<Parqueo> it = listaParqueo.iterator(); it.hasNext();) {
+   		   
+   		 Parqueo objetoParqueo = it.next();
+       
        //Shared coordinates
-       LatLng coord1 = new LatLng(36.879466, 30.667648);
-       LatLng coord2 = new LatLng(36.883707, 30.689216);
-       LatLng coord3 = new LatLng(36.879703, 30.706707);
-       LatLng coord4 = new LatLng(36.885233, 30.702323);
+       LatLng coord1 = new LatLng(new Double(objetoParqueo.getLatitud()),new Double( objetoParqueo.getLongitud()));
+      
          
        //Basic marker
-       simpleModel.addOverlay(new Marker(coord1, "Konyaalti"));
-       simpleModel.addOverlay(new Marker(coord2, "Ataturk Parki"));
-       simpleModel.addOverlay(new Marker(coord3, "Karaalioglu Parki"));
-       simpleModel.addOverlay(new Marker(coord4, "Kaleici"));
+       simpleModel.addOverlay(new Marker(coord1, objetoParqueo.getDireccion()));
+       
+       }
+       
    }
  
    public MapModel getSimpleModel() {

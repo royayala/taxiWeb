@@ -9,6 +9,8 @@
 	<link rel="icon" href='#{resource["favicon.ico"]}' />
 	<h:outputStylesheet name="bootstrap.css" />
 	<h:outputStylesheet name="forge-style.css" />
+	<script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
 </h:head>
 
 <h:body>
@@ -16,7 +18,7 @@
 
 	<div class="container forgecontainer">
 		<div id="navigation">
-			<h:link id="homeLink" outcome="/param/index.xhtml">
+			<h:link id="homeLink" outcome="/faces/index.xhtml">
 				<img src='#{resource["taxi.png"]}' alt="Forge... get hammered" border="0" style="height : 193px; width : 204px;"/>
 			</h:link>
 		</div>

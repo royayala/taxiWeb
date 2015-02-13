@@ -60,6 +60,7 @@
             	<p:menuitem value="Ingreso" outcome="/param/vehiculoPersona/search"/>
             	<p:menuitem value="Egreso" outcome="/param/parqueo/search"/>
             </p:submenu>
+            <p:menuitem value="Parqueos en Gmap" outcome="/consultas/basic"/>
         </p:submenu>
         <p:separator />
         <p:submenu label="Reportes" rendered="#{request.isUserInRole('SUPER') or request.isUserInRole('ADMIN') or request.isUserInRole('USUARIO2')}">
