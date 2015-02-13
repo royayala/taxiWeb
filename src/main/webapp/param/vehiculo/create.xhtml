@@ -39,7 +39,7 @@
 			<h:panelGrid columnClasses="label,component,required" columns="3">
 				<h:outputLabel for="vehiculoBeanVehiculoIdVehiculo" value="Id Vehiculo:"/>
 				<h:panelGroup>
-					<h:inputText id="vehiculoBeanVehiculoIdVehiculo" required="true" value="#{vehiculoBean.vehiculo.idVehiculo}" style=" width : 350px;"/>
+					<h:inputText id="vehiculoBeanVehiculoIdVehiculo" value="#{vehiculoBean.vehiculo.idVehiculo}" style=" width : 350px;" disabled="true"/>
 					<h:message for="vehiculoBeanVehiculoIdVehiculo" styleClass="error"/>
 				</h:panelGroup>
 				<h:outputText value="*"/>

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:forgeview="http://jboss.org/forge/view"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value='#{afiliacionBean.id}'/>
+		<f:viewParam name="vehiculosFacturar" value='#{afiliacion.vehiculosFacturar}'/>
+		<f:event type="preRenderView" listener='#{afiliacionBean.retrieve}'/>
+	</f:metadata>
+
+	<ui:param name="pageTitle" value="View Persona"/>
+
+	<ui:define name="header">
+		Afiliacion
+	</ui:define>
+
+	<ui:define name="subheader">
+		Paso3 - Total a pagar y Confirmar
+	</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="afiliacionBeanPersonaIdPersona" value="Id Persona:"/>
+			<h:outputText id="afiliacionBeanPersonaIdPersona" value="#{afiliacionBean.persona.idPersona}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaCompania" value="Compania:"/>
+			<h:link id="afiliacionBeanPersonaCompania" outcome="/compania/view" rendered="#{!empty afiliacionBean.persona.compania}" value="#{afiliacionBean.persona.compania.nombreLargo}">
+				<f:param name="id" value="#{afiliacionBean.persona.compania.idCia}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaTipoPersona" value="Tipo Persona:"/>
+			<h:link id="afiliacionBeanPersonaTipoPersona" outcome="/tipoPersona/view" rendered="#{!empty afiliacionBean.persona.tipoPersona}" value="#{afiliacionBean.persona.tipoPersona.nombre}">
+				<f:param name="id" value="#{afiliacionBean.persona.tipoPersona.idTipoPersona}"/>
+			</h:link>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaNombre" value="Nombre:"/>
+			<h:outputText id="afiliacionBeanPersonaNombre" value="#{afiliacionBean.persona.nombre}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaApellidoPaterno" value="Apellido Paterno:"/>
+			<h:outputText id="afiliacionBeanPersonaApellidoPaterno" value="#{afiliacionBean.persona.apellidoPaterno}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaApellidoMaterno" value="Apellido Materno:"/>
+			<h:outputText id="afiliacionBeanPersonaApellidoMaterno" value="#{afiliacionBean.persona.apellidoMaterno}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaDireccion" value="Direccion:"/>
+			<h:outputText id="afiliacionBeanPersonaDireccion" value="#{afiliacionBean.persona.direccion}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaTelefono1" value="Telefono 1:"/>
+			<h:outputText id="afiliacionBeanPersonaTelefono1" value="#{afiliacionBean.persona.telefono1}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaTelefono2" value="Telefono 2:"/>
+			<h:outputText id="afiliacionBeanPersonaTelefono2" value="#{afiliacionBean.persona.telefono2}"/>
+			<h:outputText/>
+			<h:outputLabel for="afiliacionBeanPersonaDocumentoIdentidad" value="Documento Identidad:"/>
+			<h:outputText id="afiliacionBeanPersonaDocumentoIdentidad" value="#{afiliacionBean.persona.documentoIdentidad}"/>
+			<h:outputText/>
+			
+			
+		</h:panelGrid>
+
+		<h:panelGrid>
+			<p:dataTable id="checkboxDT" var="car" value="#{afiliacionBean.selectedVehiculo}" rowKey="#{car.idVehiculo}" style="margin-bottom:0">
+		        <f:facet name="header">
+		            Seleccione el vehiculo
+		        </f:facet>
+		        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+		        <p:column headerText="Id">
+		            <h:outputText value="#{car.idVehiculo}" />
+		        </p:column>
+		        <p:column headerText="Placa">
+		            <h:outputText value="#{car.placa}" />
+		        </p:column>
+		        <p:column headerText="Marca">
+		            <h:outputText value="#{car.marca}" />
+		        </p:column>
+		        <p:column headerText="Modelo">
+		            <h:outputText value="#{car.modelo}" />
+		        </p:column>
+	
+		    </p:dataTable>
+		</h:panelGrid>
+	
+		<div class="buttons">
+			<h:link value="Volver" outcome="paso1" styleClass="btn btn-primary"/> 
+			<h:link value="Siguiente" outcome="paso3" includeViewParams="true" styleClass="btn btn-primary">
+				<f:param name="vehiculosFacturar" value="#{afiliacionBean.selectedVehiculo}" />
+			</h:link>
+			<h:link value="Cancelar" outcome="search" styleClass="btn btn-primary"/>
+		</div>
+	</ui:define>
+
+</ui:composition>

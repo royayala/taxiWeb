@@ -5,9 +5,12 @@ package com.sinapsistech.taxiWeb.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -98,7 +101,8 @@ public class Vehiculo implements java.io.Serializable
    }
 
    @Id
-   @Column(name = "id_vehiculo", unique = true, nullable = false)
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @Column(name = "id_vehiculo", unique = true, nullable = false, insertable=false)
    public int getIdVehiculo()
    {
       return this.idVehiculo;

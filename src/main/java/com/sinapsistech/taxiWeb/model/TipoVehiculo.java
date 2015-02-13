@@ -32,6 +32,7 @@ public class TipoVehiculo implements java.io.Serializable
    private String usuarioMod;
    private Date fechaBorrado;
    private String usuarioBorrado;
+   private double montoAfiliacion;
    private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>(0);
 
    public TipoVehiculo()
@@ -44,7 +45,7 @@ public class TipoVehiculo implements java.io.Serializable
       this.nombre = nombre;
    }
 
-   public TipoVehiculo(int idTipoVehiculo, String nombre, String flagEstado, Date fechaReg, String usuarioReg, Date fechaMod, String usuarioMod, Date fechaBorrado, String usuarioBorrado, Set<Vehiculo> vehiculos)
+   public TipoVehiculo(int idTipoVehiculo, String nombre, String flagEstado, Date fechaReg, String usuarioReg, Date fechaMod, String usuarioMod, Date fechaBorrado, String usuarioBorrado, Set<Vehiculo> vehiculos, double montoAfiliacion)
    {
       this.idTipoVehiculo = idTipoVehiculo;
       this.nombre = nombre;
@@ -56,6 +57,7 @@ public class TipoVehiculo implements java.io.Serializable
       this.fechaBorrado = fechaBorrado;
       this.usuarioBorrado = usuarioBorrado;
       this.vehiculos = vehiculos;
+      this.montoAfiliacion = montoAfiliacion;
    }
 
    @Id
@@ -171,5 +173,14 @@ public class TipoVehiculo implements java.io.Serializable
    {
       this.vehiculos = vehiculos;
    }
+   @Column(name = "monto_afiliacion", nullable = false, precision = 17, scale = 17)
+   public double getMontoAfiliacion()
+   {
+      return this.montoAfiliacion;
+   }
 
+   public void setMontoAfiliacion(double montoAfiliacion)
+   {
+      this.montoAfiliacion = montoAfiliacion;
+   }
 }
